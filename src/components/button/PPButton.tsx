@@ -25,7 +25,7 @@ const PPButton = ({
   return (
     <button
       className={`pp-button pp-bg-${backgroundColour} pp-text-colour-${textColour} ${
-        disabled || (loading && "pp-button-disabled")
+        (disabled || loading) && "pp-button-disabled"
       }`}
       style={{ width }}
       disabled={disabled || loading}
