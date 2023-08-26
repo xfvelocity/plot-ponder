@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body,
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
+@each $prop, $abbrev in (color: pp-text-colour-, background-color: pp-bg-) {
+  @each $name, $colour in $pp-colours {
+    .#{$abbrev}#{$name} {
+      #{$prop}: #{$colour} !important;
+    }
+  }
+}
+
+@each $name, $colour in $pp-colours {
+  .pp-icon {
+    &--#{$name} {
+      path {
+        fill: #{$colour};
+      }
+    }
+
+    &-stroke-#{$name} {
+      path,
+      circle {
+        stroke: #{$colour};
+      }
+    }
+  }
+}
