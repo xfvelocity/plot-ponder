@@ -1,7 +1,9 @@
+import PPSlider from "./components/basic/slider/PPSlider";
+
 const App = () => {
   return (
-    <div>
-      <h1 className="underline">Hello World</h1>
+    <div style={{ margin: "20px" }}>
+      <PPSlider />
     </div>
   );
 };
