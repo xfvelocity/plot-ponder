@@ -1,15 +1,15 @@
-$translateY: 35px;
+$translateY: 15px;
 
 .pp-input {
   position: relative;
 
   label {
-    position: absolute;
+    position: relative;
     left: 9px;
-    bottom: 4px;
     transition: all 0.3s ease;
     background: transparent;
     z-index: 1;
+    font-size: 14px;
   }
 
   input,
@@ -36,7 +36,6 @@ $translateY: 35px;
     margin-top: calc($translateY - 20px);
 
     label {
-      bottom: 7px;
       padding: 2px 5px;
     }
   }

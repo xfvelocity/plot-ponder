@@ -4,32 +4,25 @@
   &-toggle {
     display: flex;
     align-items: flex-end;
-    padding: 5px 0;
-    border-bottom: 1px solid black;
+    padding: 15px 0 15px 0;
     position: relative;
-    color: black;
   }
 
   &-value {
     padding-left: 10px;
+    position: absolute;
+    left: 3px;
+    bottom: 10px;
   }
 
   &:focus {
     border: 0;
     outline: none;
-
-    .pp-select-toggle {
-      border-bottom: 2px solid black;
-    }
   }
 
   &-input {
     margin-right: 5px;
     margin-left: -2px;
-  }
-
-  &-no-results {
-    text-align: center;
   }
 
   &-items {
@@ -43,10 +36,6 @@
     color: black;
     max-height: 200px;
     overflow-y: auto;
-
-    &-top {
-      transform: translateY(calc(-100% - 60px));
-    }
 
     &-item {
       cursor: pointer;
