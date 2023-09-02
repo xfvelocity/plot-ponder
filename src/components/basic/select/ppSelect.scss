@@ -50,7 +50,11 @@
   }
 
   &-arrow {
-    transition: all 0.4s ease-out;
+    margin-left: auto;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+    transition: all 0.3s ease-out;
 
     &-active {
       transform: rotate(180deg);

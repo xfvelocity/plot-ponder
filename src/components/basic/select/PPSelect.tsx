@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { ReactSVG } from "react-svg";
 
 import "./ppSelect.scss";
 import { clickOutside } from "../../../composables/generic";
@@ -46,7 +47,12 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
           <label className={`pp-text-colour-black`}>{label}</label>
           <span className="pp-select-value">{value}</span>
 
-          {/* select icon */}
+          <ReactSVG
+            className={`pp-select-arrow ${
+              selectActive ? "pp-select-arrow-active" : ""
+            }`}
+            src="/icons/chevron-down.svg"
+          />
         </div>
         {selectActive && options.length && (
           <div className="pp-select-items">
