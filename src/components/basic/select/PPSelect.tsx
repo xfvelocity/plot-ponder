@@ -1,36 +1,35 @@
 import { useRef, useState } from "react";
 import { ReactSVG } from "react-svg";
 
+// ** Styles **
 import "./ppSelect.scss";
+
+// ** Composables **
 import { clickOutside } from "../../../composables/generic";
 
-interface SelectOption {
-  text: string;
-  value: string | number;
-}
-
+// ** Types **
 interface Props {
   label: string;
-  options: SelectOption[];
-  value: string;
-  updateValue: React.Dispatch<React.SetStateAction<any>>;
+  options: string[];
+  selectedOption: string;
+  setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
+  children?: any;
 }
 
-const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
+const PPSelect = (props: Props) => {
   // ** Data **
   const select = useRef<HTMLDivElement | null>(null);
-
-  const [selectActive, setSelectActive] = useState<boolean>(false);
+  const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
 
   // ** Methods **
   document.addEventListener("click", (e: MouseEvent) =>
-    clickOutside(e, select, () => setSelectActive(false))
+    clickOutside(e, select, () => setIsSelectOpen(false))
   );
 
-  const optionSelected = (option: SelectOption): void => {
-    if (option.text !== value && selectActive) {
-      updateValue(option.value);
-      setSelectActive(false);
+  const optionSelected = (option: string): void => {
+    if (option !== props.selectedOption && isSelectOpen) {
+      props.setSelectedOption(option);
+      setIsSelectOpen(false);
     }
   };
 
@@ -39,33 +38,36 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
       <div className="pp-select">
         <div
           className={`pp-select-toggle pp-input pp-input-outlined 
-             ${value ? "pp-input-populated" : ""} ${
-            selectActive ? "pp-input-active" : ""
-          }`}
-          onClick={() => setSelectActive(true)}
+             ${props.selectedOption || isSelectOpen ? "pp-input-active" : ""}`}
+          onClick={() => setIsSelectOpen(true)}
         >
-          <label className={`pp-text-colour-black`}>{label}</label>
-          <span className="pp-select-value">{value}</span>
+          <label className={`pp-text-colour-black`}>{props.label}</label>
+          <span className="pp-select-value">{props.selectedOption}</span>
+
+          {props.children}
 
           <ReactSVG
             className={`pp-select-arrow ${
-              selectActive ? "pp-select-arrow-active" : ""
+              isSelectOpen ? "pp-select-arrow-active" : ""
             }`}
             src="/icons/chevron-down.svg"
           />
         </div>
-        {selectActive && options.length && (
+
+        {isSelectOpen && props.options.length ? (
           <div className="pp-select-items">
-            {options.map((opt, i) => (
+            {props.options.map((option, i) => (
               <div
                 key={i}
                 className="pp-select-items-item"
-                onClick={() => optionSelected(opt)}
+                onClick={() => optionSelected(option)}
               >
-                {opt.text}
+                {option}
               </div>
             ))}
           </div>
+        ) : (
+          ""
         )}
       </div>
     </div>
