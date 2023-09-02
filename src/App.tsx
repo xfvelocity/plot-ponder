@@ -1,8 +1,14 @@
 import { useState } from "react";
 import PPSelect from "./components/basic/select/PPSelect";
+import PPAutoComplete from "./components/basic/select/PPAutocomplete";
+import PPChip from "./components/basic/chip/PPChip";
 
 const App = () => {
   const [pizza, setPizza] = useState("");
+
+  const movie = {
+    genres: ["action", "superhero"],
+  };
 
   return (
     <div>
@@ -13,11 +19,10 @@ const App = () => {
           label="Types of Pizza"
           value={pizza}
           updateValue={setPizza}
-          options={[
-            { text: "Pepperoni", value: "pepperoni" },
-            { text: "Chicken", value: "chicken" },
-          ]}
+          options={["Pepperoni", "Chicken"]}
         />
+
+        <PPAutoComplete />
       </div>
     </div>
   );

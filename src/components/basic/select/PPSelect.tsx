@@ -4,19 +4,23 @@ import { ReactSVG } from "react-svg";
 import "./ppSelect.scss";
 import { clickOutside } from "../../../composables/generic";
 
-interface SelectOption {
-  text: string;
-  value: string | number;
-}
-
 interface Props {
   label: string;
-  options: SelectOption[];
+  options: string[];
   value: string;
   updateValue: React.Dispatch<React.SetStateAction<any>>;
+  children?: any;
+  showOptions?: boolean;
 }
 
-const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
+const PPSelect = ({
+  label,
+  options,
+  value = "",
+  updateValue,
+  children,
+  showOptions,
+}: Props) => {
   // ** Data **
   const select = useRef<HTMLDivElement | null>(null);
 
@@ -27,9 +31,9 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
     clickOutside(e, select, () => setSelectActive(false))
   );
 
-  const optionSelected = (option: SelectOption): void => {
-    if (option.text !== value && selectActive) {
-      updateValue(option.value);
+  const optionSelected = (option: string): void => {
+    if (option !== value && selectActive) {
+      updateValue(option);
       setSelectActive(false);
     }
   };
@@ -47,6 +51,8 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
           <label className={`pp-text-colour-black`}>{label}</label>
           <span className="pp-select-value">{value}</span>
 
+          {children}
+
           <ReactSVG
             className={`pp-select-arrow ${
               selectActive ? "pp-select-arrow-active" : ""
@@ -54,7 +60,7 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
             src="/icons/chevron-down.svg"
           />
         </div>
-        {selectActive && options.length && (
+        {selectActive && options.length && showOptions ? (
           <div className="pp-select-items">
             {options.map((opt, i) => (
               <div
@@ -62,10 +68,12 @@ const PPSelect = ({ label, options, value = "", updateValue }: Props) => {
                 className="pp-select-items-item"
                 onClick={() => optionSelected(opt)}
               >
-                {opt.text}
+                {opt}
               </div>
             ))}
           </div>
+        ) : (
+          ""
         )}
       </div>
     </div>
