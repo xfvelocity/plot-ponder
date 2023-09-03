@@ -9,11 +9,11 @@ interface Props {
 }
 
 //component
-function Chip({
+const Chip = ({
   text,
   backgroundColour = "blue-chip",
   textColour = "primary",
-}: Props) {
+}: Props) => {
   return (
     <div
       className={`chip pp-bg-${backgroundColour} pp-text-colour-${textColour}`}
@@ -21,6 +21,6 @@ function Chip({
       {text}
     </div>
   );
-}
+};
 
 export default Chip;
