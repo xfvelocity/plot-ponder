@@ -1,6 +1,6 @@
 // ** Components **
-import PPButton from "./components/button/PPButton";
-import Chip from "./components/chip/chip.tsx";
+import PPButton from "./components/basic/button/PPButton.tsx";
+import Chip from "./components/basic/chip/chip.tsx";
 
 const App = () => {
   return (
