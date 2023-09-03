@@ -1,7 +1,9 @@
+import Chip from "./components/chip/chip.tsx";
+
 const App = () => {
   return (
     <div>
-      <h1 className="underline">Hello World</h1>
+      <Chip text="Action" />
     </div>
   );
 };
