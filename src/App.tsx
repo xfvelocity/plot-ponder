@@ -1,11 +1,12 @@
 // ** Components **
 import PPButton from "./components/button/PPButton";
+import Chip from "./components/chip/chip.tsx";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div style={{ margin: "10px" }}>
       <PPButton text="Click me" />
+      <Chip text="Action" />
     </div>
   );
 };
