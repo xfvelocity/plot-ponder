@@ -14,7 +14,7 @@ const Button = ({
   name,
   link,
   backgroundColour = "white",
-  textColour,
+  textColour = "primary",
 }: Props) => {
   return (
     <button
