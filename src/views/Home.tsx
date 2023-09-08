@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 // ** Components **
-import PPSelect from "./components/basic/select/PPSelect";
-import Chip from "./components/basic/chip/chip.tsx";
-import PPDateChip from "./components/basic/date-chip/PPDateChip.tsx";
-import PPButton from "./components/basic/button/PPButton.tsx";
+import PPSelect from "@/components/basic/select/PPSelect";
+import Chip from "@/components/basic/chip/chip.tsx";
+import PPDateChip from "@/components/basic/date-chip/PPDateChip.tsx";
+import PPButton from "@/components/basic/button/PPButton.tsx";
 
-const App = () => {
+const Home = () => {
   // ** Data **
   const [pizza, setPizza] = useState("");
 
@@ -27,4 +27,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
