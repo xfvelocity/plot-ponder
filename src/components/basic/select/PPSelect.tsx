@@ -5,7 +5,7 @@ import { ReactSVG } from "react-svg";
 import "./ppSelect.scss";
 
 // ** Composables **
-import { clickOutside } from "../../../composables/generic";
+import { clickOutside } from "@/composables/generic";
 
 // ** Types **
 interface Props {
