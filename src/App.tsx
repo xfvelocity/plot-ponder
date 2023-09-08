@@ -12,10 +12,6 @@ const App = () => {
   // ** Data **
   const [pizza, setPizza] = useState("");
 
-  const movie = {
-    genres: ["action", "superhero"],
-  };
-
   return (
     <div style={{ margin: "20px" }}>
       <PPButton text="Click me" />
@@ -24,12 +20,17 @@ const App = () => {
 
       <PPSelect
         label="Types of Pizza"
-        value={pizza}
-        updateValue={setPizza}
+        selectedOption={pizza}
+        setSelectedOption={setPizza}
         options={["Pepperoni", "Chicken"]}
       />
 
-      <PPAutoComplete />
+      <PPAutoComplete
+        label="Types of Pizza"
+        selectedOption={pizza}
+        setSelectedOption={setPizza}
+        options={["Pepperoni", "Chicken"]}
+      />
     </div>
   );
 };

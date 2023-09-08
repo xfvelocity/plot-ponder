@@ -1,20 +1,27 @@
 import { useState } from "react";
 
+// ** Components **
 import PPSelect from "./PPSelect";
 
-const PPAutoComplete = () => {
-  const [value, setValue] = useState("");
+// ** Types **
+interface Props {
+  label: string;
+  selectedOption: string;
+  setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
+  options: string[];
+}
+
+const PPAutoComplete = (props: Props) => {
+  // ** Data **
   const [search, setSearch] = useState("");
 
-  const options: string[] = ["Pepper", "Salt", "Vinegar"];
-
+  // TODO: Filter options based on search with API
   return (
     <PPSelect
-      label="Chicken seasoning"
-      value={value}
-      updateValue={setValue}
-      options={options}
-      autocomplete={true}
+      label={props.label}
+      selectedOption={props.selectedOption}
+      setSelectedOption={props.setSelectedOption}
+      options={props.options}
     >
       <input value={search} onChange={(e) => setSearch(e.target.value)} />
     </PPSelect>

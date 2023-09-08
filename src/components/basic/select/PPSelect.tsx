@@ -14,7 +14,6 @@ interface Props {
   selectedOption: string;
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
   children?: any;
-  showOptions?: boolean;
 }
 
 const PPSelect = (props: Props) => {
@@ -54,7 +53,7 @@ const PPSelect = (props: Props) => {
             src="/icons/chevron-down.svg"
           />
         </div>
-        {isSelectOpen && props.options.length && props.showOptions ? (
+        {isSelectOpen && props.options.length ? (
           <div className="pp-select-items">
             {props.options.map((option, i) => (
               <div
