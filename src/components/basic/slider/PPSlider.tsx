@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { clsx } from "clsx";
 
 import "./ppSlider.scss";
@@ -14,17 +14,6 @@ const PPSlider = () => {
   const startTracking = (): void => {
     window.addEventListener("mousemove", handleMouseMove);
   };
-
-  const stopTracking = (): void => {
-    window.removeEventListener("mousemove", handleMouseMove);
-
-    if (selectorElement.current) {
-      // Move the selector left in 5% increments
-      selectorElement.current.style.left = `${selectedNumber * 10}%`;
-    }
-  };
-
-  window.addEventListener("mouseup", stopTracking);
 
   const handleMouseMove = (e: MouseEvent): void => {
     if (!selectorElement.current || !sliderElement.current) return;
@@ -45,6 +34,26 @@ const PPSlider = () => {
       selectorElement.current.style.left = `${moveX}px`;
     }
   };
+
+  const stopTracking = (): void => {
+    window.removeEventListener("mousemove", handleMouseMove);
+
+    if (selectorElement.current && sliderElement.current) {
+      // Move the selector left in 5% increments
+      selectorElement.current.style.left = `translateX(calc(${
+        selectedNumber * 10
+      }% - 15px)`;
+    }
+
+    console.log("stopTracking");
+  };
+
+  useEffect(() => {
+    console.log("useEffect");
+    window.addEventListener("mouseup", stopTracking);
+
+    return () => window.removeEventListener("mouseup", stopTracking);
+  }, [selectedNumber]);
 
   return (
     <>
