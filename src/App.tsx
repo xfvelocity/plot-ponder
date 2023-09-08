@@ -1,9 +1,15 @@
+// ** Components **
 import { useState } from "react";
+
+// ** Components **
 import PPSelect from "./components/basic/select/PPSelect";
 import PPAutoComplete from "./components/basic/select/PPAutocomplete";
-import PPChip from "./components/basic/chip/PPChip";
+import Chip from "./components/basic/chip/chip.tsx";
+import PPDateChip from "./components/basic/date-chip/PPDateChip.tsx";
+import PPButton from "./components/basic/button/PPButton.tsx";
 
 const App = () => {
+  // ** Data **
   const [pizza, setPizza] = useState("");
 
   const movie = {
@@ -11,19 +17,19 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1 className="underline">Hello World</h1>
+    <div style={{ margin: "20px" }}>
+      <PPButton text="Click me" />
+      <Chip text="Action" />
+      <PPDateChip date={new Date("2023-08-10")} />
 
-      <div style={{ margin: "10px" }}>
-        <PPSelect
-          label="Types of Pizza"
-          value={pizza}
-          updateValue={setPizza}
-          options={["Pepperoni", "Chicken"]}
-        />
+      <PPSelect
+        label="Types of Pizza"
+        value={pizza}
+        updateValue={setPizza}
+        options={["Pepperoni", "Chicken"]}
+      />
 
-        <PPAutoComplete />
-      </div>
+      <PPAutoComplete />
     </div>
   );
 };
