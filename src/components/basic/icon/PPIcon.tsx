@@ -15,7 +15,12 @@ const PPIcon = ({ src, className, size = 24 }: Props) => {
     <ReactSVG
       className={`pp-icon ${className}`}
       src={`icons/${src}.svg`}
-      style={{ "--height": `${size}px`, "--width": `${size}px` }}
+      style={
+        {
+          "--height": `${size}px`,
+          "--width": `${size}px`,
+        } as React.CSSProperties
+      }
     />
   );
 };

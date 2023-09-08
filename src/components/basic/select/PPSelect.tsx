@@ -7,7 +7,7 @@ import "./ppSelect.scss";
 import { clickOutside } from "@/composables/generic";
 
 // ** Components **
-import PPIcon from "@/components/basic/icon/ppIcon";
+import PPIcon from "@/components/basic/icon/PPIcon";
 
 // ** Types **
 interface Props {

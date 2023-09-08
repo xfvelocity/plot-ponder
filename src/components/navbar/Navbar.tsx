@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import "./navbar.scss";
 
 // ** Components **
-import PPIcon from "../basic/icon/ppIcon";
+import PPIcon from "@/components/basic/icon/PPIcon";
 
 // ** Types **
 interface Props {
