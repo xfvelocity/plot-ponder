@@ -1,0 +1,44 @@
+.navbar {
+  border-bottom: 1px solid map-get($pp-colours, "grey-lighten-3");
+  padding: 15px;
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.1);
+
+  &-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &-back-btn {
+    grid-column-start: 1;
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    grid-column-start: 2;
+
+    h3 {
+      color: map-get($pp-colours, "primary");
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  }
+
+  &-custom {
+    grid-column-start: 3;
+  }
+
+  &-progress-bar {
+    height: 3px;
+    width: 100%;
+    background-color: map-get($pp-colours, "grey-lighten-3");
+
+    &-inner {
+      height: 3px;
+      background-color: map-get($pp-colours, "primary");
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      transition: width 0.3s ease-in-out;
+    }
+  }
+}
