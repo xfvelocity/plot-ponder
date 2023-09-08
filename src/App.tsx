@@ -1,9 +1,11 @@
+// ** Components **
 import { useState } from "react";
 
 // ** Components **
 import PPSelect from "./components/basic/select/PPSelect";
-import Chip from "./components/chip/chip.tsx";
-import PPDateChip from "./components/date-chip/PPDateChip";
+import Chip from "./components/basic/chip/chip.tsx";
+import PPDateChip from "./components/basic/date-chip/PPDateChip.tsx";
+import PPButton from "./components/basic/button/PPButton.tsx";
 
 const App = () => {
   // ** Data **
@@ -11,6 +13,7 @@ const App = () => {
 
   return (
     <div style={{ margin: "20px" }}>
+      <PPButton text="Click me" />
       <Chip text="Action" />
       <PPDateChip date={new Date("2023-08-10")} />
 
