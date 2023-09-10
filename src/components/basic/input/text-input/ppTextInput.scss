@@ -1,5 +1,12 @@
 .pp-text-input {
   height: 45px;
+  display: grid;
+  grid-template-columns: 92% 8%;
+  align-items: center;
+
+  &-content {
+    height: 100%;
+  }
 
   label {
     top: 10px;

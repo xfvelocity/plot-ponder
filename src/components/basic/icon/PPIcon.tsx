@@ -1,4 +1,5 @@
 import { ReactSVG } from "react-svg";
+import clsx from "clsx";
 
 // ** Styles **
 import "./ppIcon.scss";
@@ -8,18 +9,22 @@ interface Props {
   src: string;
   className?: string;
   size?: number;
+  onClick?: () => void;
 }
 
-const PPIcon = ({ src, className, size = 24 }: Props) => {
+const PPIcon = ({ src, className = "", size = 24, onClick }: Props) => {
   return (
     <ReactSVG
-      className={`pp-icon ${className}`}
+      className={clsx(`pp-icon ${className}`, {
+        "pp-hover": !!onClick,
+      })}
       src={`icons/${src}.svg`}
       style={
         {
           "--size": `${size}px`,
         } as React.CSSProperties
       }
+      onClick={onClick}
     />
   );
 };
