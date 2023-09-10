@@ -2,7 +2,7 @@
 import "./ppButton.scss";
 
 // ** Components **
-import PPLoading from "../loading/PPLoading";
+import PPLoading from "@/components/basic/loading/PPLoading";
 
 // ** Types **
 interface Props {

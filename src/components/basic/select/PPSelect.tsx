@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
-import { ReactSVG } from "react-svg";
 
 // ** Styles **
 import "./ppSelect.scss";
 
 // ** Composables **
-import { clickOutside } from "../../../composables/generic";
+import { clickOutside } from "@/composables/generic";
+
+// ** Components **
+import PPIcon from "@/components/basic/icon/PPIcon";
 
 // ** Types **
 interface Props {
@@ -46,11 +48,11 @@ const PPSelect = (props: Props) => {
 
           {props.children}
 
-          <ReactSVG
+          <PPIcon
             className={`pp-select-arrow ${
               isSelectOpen ? "pp-select-arrow-active" : ""
             }`}
-            src="/icons/chevron-down.svg"
+            src="chevron-down"
           />
         </div>
 
