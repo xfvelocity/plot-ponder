@@ -31,17 +31,17 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <Button
-        image={<ReactSVG src="src/components/footer/svg/home.svg" />}
+        image={<ReactSVG src="svg/home.svg" />}
         name={"Home"}
         link={"Will add later"}
       />
       <Button
-        image={<ReactSVG src="src/components/footer/svg/review.svg" />}
+        image={<ReactSVG src="svg/review.svg" />}
         name={"Review"}
         link={"Will add later"}
       />
       <Button
-        image={<ReactSVG src="src/components/footer/svg/profile-pic.svg" />}
+        image={<ReactSVG src="svg/profile-pic.svg" />}
         name={"Profile"}
         link={"Will add later"}
       />
