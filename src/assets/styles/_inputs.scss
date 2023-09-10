@@ -4,6 +4,7 @@ $translateY: 15px;
   position: relative;
 
   label {
+    display: block;
     position: relative;
     left: 9px;
     transition: all 0.3s ease;
@@ -19,6 +20,10 @@ $translateY: 15px;
     width: 100%;
     border: 0;
     z-index: 2;
+    position: absolute;
+    left: 11px;
+    bottom: 13px;
+    font-size: 12px;
 
     &:focus {
       outline: none;
