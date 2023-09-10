@@ -1,52 +1,54 @@
 import "./footer.scss";
 import { ReactSVG } from "react-svg";
 
-interface Props {
-  image: any;
+interface Button {
   name: string;
-  link: any;
-  backgroundColour?: string;
-  textColour?: string;
+  image: string;
+  link: string;
 }
 
-const Button = ({
-  image,
-  name,
-  link,
-  backgroundColour = "white",
-  textColour = "primary",
-}: Props) => {
-  return (
-    <button
-      className={`footer-button pp-text-colour-${textColour} pp-bg-${backgroundColour}`}
-      onClick={link}
-    >
-      {image}
-      {name}
-    </button>
-  );
-};
+const buttons: Button[] = [
+  {
+    name: "Home",
+    image: "svg/home.svg",
+    link: "will add later",
+  },
+  {
+    name: "Review",
+    image: "svg/review.svg",
+    link: "will add later",
+  },
+  {
+    name: "Profile",
+    image: "src",
+    link: "will add later",
+  },
+];
 
 const Footer = () => {
-  return (
-    <div className="footer-container">
-      <Button
-        image={<ReactSVG src="svg/home.svg" />}
-        name={"Home"}
-        link={"Will add later"}
-      />
-      <Button
-        image={<ReactSVG src="svg/review.svg" />}
-        name={"Review"}
-        link={"Will add later"}
-      />
-      <Button
-        image={<ReactSVG src="svg/profile-pic.svg" />}
-        name={"Profile"}
-        link={"Will add later"}
-      />
-    </div>
-  );
+  return buttons.map((button) => {
+    return (
+      <button className={`footer-button pp-text-colour-primary pp-bg-white`}>
+        {button.image}
+        <p>{button.name}</p>
+      </button>
+    );
+  });
 };
+
+// const Footer = (buttons) => {
+//   buttons.forEach(element => {
+//     return (
+//       <button
+//       className={`footer-button pp-text-colour-${textColour} pp-bg-${backgroundColour}`}
+//       onClick={element.link}
+//     >
+//       <img {element.image} alt="" />
+//       <p></p>
+//     </button>
+//     );
+//   });
+
+// };
 
 export default Footer;
