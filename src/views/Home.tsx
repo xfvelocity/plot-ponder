@@ -1,4 +1,5 @@
 // ** Components **
+import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <div>
         <h1>Home</h1>
       </div>
+      <Footer />
     </>
   );
 };

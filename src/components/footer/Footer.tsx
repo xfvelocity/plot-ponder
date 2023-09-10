@@ -1,39 +1,57 @@
+import PPIcon from "../basic/icon/PPIcon";
 import "./footer.scss";
-import { ReactSVG } from "react-svg";
 
 interface Button {
   name: string;
-  image: string;
+  svg?: string;
+  png?: string;
   link: string;
 }
 
 const buttons: Button[] = [
   {
     name: "Home",
-    image: "svg/home.svg",
+    svg: "home",
     link: "will add later",
   },
   {
     name: "Review",
-    image: "svg/review.svg",
+    svg: "review",
     link: "will add later",
   },
   {
     name: "Profile",
-    image: "src",
+    png: "images/profile-pic.png",
     link: "will add later",
   },
 ];
 
 const Footer = () => {
-  return buttons.map((button) => {
-    return (
-      <button className={`footer-button pp-text-colour-primary pp-bg-white`}>
-        {button.image}
-        <p>{button.name}</p>
-      </button>
-    );
-  });
+  return (
+    <div className="footer-container">
+      {buttons.map((button) =>
+        button.svg ? (
+          <button
+            className={`footer-button pp-text-colour-primary pp-bg-white`}
+          >
+            <PPIcon src={button.svg} size={20} />
+            <p>{button.name}</p>
+          </button>
+        ) : (
+          <button
+            className={`footer-button pp-text-colour-primary pp-bg-white`}
+          >
+            <img
+              src={button.png}
+              className="profile-picture"
+              alt="profile picture"
+            />
+            <p>{button.name}</p>
+          </button>
+        )
+      )}
+    </div>
+  );
 };
 
 // const Footer = (buttons) => {
