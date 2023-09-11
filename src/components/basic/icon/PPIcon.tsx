@@ -7,15 +7,22 @@ import "./ppIcon.scss";
 // ** Types **
 interface Props {
   src: string;
+  colour?: string;
   className?: string;
   size?: number;
   onClick?: () => void;
 }
 
-const PPIcon = ({ src, className = "", size = 24, onClick }: Props) => {
+const PPIcon = ({
+  src,
+  className = "",
+  colour = "grey-darken-2",
+  size = 24,
+  onClick,
+}: Props) => {
   return (
     <ReactSVG
-      className={clsx(`pp-icon ${className}`, {
+      className={clsx(`pp-icon ${className} pp-icon-colour-${colour}`, {
         "pp-hover": !!onClick,
       })}
       src={`icons/${src}.svg`}

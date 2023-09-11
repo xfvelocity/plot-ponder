@@ -10,7 +10,7 @@ import PPIcon from "@/components/basic/icon/PPIcon";
 // ** Types **
 interface Props {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue: (e: string) => void;
   type?: string;
   placeholder?: string;
   label?: string;
