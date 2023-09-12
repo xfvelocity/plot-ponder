@@ -13,17 +13,12 @@ interface Props {
   onClick?: () => void;
 }
 
-const PPIcon = ({
-  src,
-  className = "",
-  colour = "grey-darken-2",
-  size = 24,
-  onClick,
-}: Props) => {
+const PPIcon = ({ src, className = "", colour, size = 24, onClick }: Props) => {
   return (
     <ReactSVG
-      className={clsx(`pp-icon ${className} pp-icon-colour-${colour}`, {
+      className={clsx(`pp-icon ${className} `, {
         "pp-hover": !!onClick,
+        [`pp-icon-colour-${colour}`]: colour,
       })}
       src={`icons/${src}.svg`}
       style={

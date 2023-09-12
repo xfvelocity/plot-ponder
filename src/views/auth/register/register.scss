@@ -1,7 +1,11 @@
 .register {
-  padding-top: 20px;
+  padding: 20px;
+
+  &-btn {
+    width: 100%;
+  }
 
   .pp-text-input {
-    margin: 10px;
+    margin: 10px 0;
   }
 }

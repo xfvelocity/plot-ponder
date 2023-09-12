@@ -9,6 +9,11 @@
     height: 100%;
   }
 
+  .pp-icon {
+    position: relative;
+    z-index: 4;
+  }
+
   label {
     top: 10px;
   }
