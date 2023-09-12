@@ -17,6 +17,7 @@ interface Props {
   disabled?: boolean;
   required?: boolean;
   icon?: string;
+  iconColour?: string;
   iconFn?: () => void;
   onEnter?: (e: any) => void;
 }
@@ -30,6 +31,7 @@ const PPTextInput = ({
   disabled = false,
   icon,
   required = false,
+  iconColour,
   iconFn,
   onEnter,
 }: Props) => {
@@ -62,7 +64,9 @@ const PPTextInput = ({
         {label && <label>{label}</label>}
       </div>
 
-      {icon && <PPIcon src={icon} size={16} onClick={iconFn} />}
+      {icon && (
+        <PPIcon src={icon} colour={iconColour} size={16} onClick={iconFn} />
+      )}
     </div>
   );
 };

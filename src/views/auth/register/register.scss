@@ -1,11 +1,25 @@
 .register {
-  padding: 20px;
+  min-width: 260px;
 
   &-btn {
     width: 100%;
   }
 
+  &-message {
+    text-align: center;
+    margin-bottom: 30px;
+
+    p {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    a {
+      color: map-get($pp-colours, "primary");
+    }
+  }
+
   .pp-text-input {
-    margin: 10px 0;
+    margin: 20px 0;
   }
 }

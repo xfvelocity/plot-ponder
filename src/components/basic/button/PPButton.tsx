@@ -19,7 +19,7 @@ interface Props {
 
 const PPButton = ({
   text,
-  backgroundColour = "blue-darken-3",
+  backgroundColour = "primary",
   textColour = "white",
   width = 200,
   className = "",

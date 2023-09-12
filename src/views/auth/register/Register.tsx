@@ -9,6 +9,7 @@ import "./register.scss";
 // ** Components **
 import PPTextInput from "@/components/basic/input/text-input/PPTextInput";
 import PPButton from "@/components/basic/button/PPButton";
+import Navbar from "@/components/navbar/Navbar";
 
 interface Form {
   name: string;
@@ -49,9 +50,11 @@ const Register = () => {
     });
   };
 
-  const createAccount = async (): Promise<void> => {
+  const createAccount = async (e: any): Promise<void> => {
+    e.preventDefault();
+
     // If the form is disabled or the passwords don't match, return
-    // if (submitDisabled || form.password !== form.confirmPassword) return;
+    if (submitDisabled || form.password !== form.confirmPassword) return;
 
     setLoading(true);
 
@@ -70,54 +73,66 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
-      <form className="register-form" onSubmit={createAccount}>
-        <PPTextInput
-          label="Name"
-          type="name"
-          required={true}
-          value={form.name}
-          setValue={(e) => setFormValue("name", e)}
-          onEnter={createAccount}
-        />
-        <PPTextInput
-          label="Email"
-          type="email"
-          required={true}
-          value={form.email}
-          setValue={(e) => setFormValue("email", e)}
-          onEnter={createAccount}
-        />
-        <PPTextInput
-          label="Password"
-          value={form.password}
-          required={true}
-          icon={isPasswordShowing ? "eye-slash" : "eye"}
-          type={isPasswordShowing ? "text" : "password"}
-          setValue={(e) => setFormValue("password", e)}
-          iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
-          onEnter={createAccount}
-        />
-        <PPTextInput
-          label="Confirm Password"
-          value={form.confirmPassword}
-          required={true}
-          type={isPasswordShowing ? "text" : "password"}
-          icon={isPasswordShowing ? "eye-slash" : "eye"}
-          setValue={(e) => setFormValue("confirmPassword", e)}
-          iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
-          onEnter={createAccount}
-        />
+    <>
+      <Navbar />
 
-        <PPButton
-          width="100%"
-          text="Create account"
-          type="submit"
-          loading={loading}
-          disabled={submitDisabled}
-        />
-      </form>
-    </div>
+      <div className="register pp-center">
+        <div className="register-message">
+          <h2 className="pp-text-colour-primary">Create an account</h2>
+          <p>
+            Already have an account? <a href="/login">Login</a>
+          </p>
+        </div>
+
+        <form className="register-form" onSubmit={createAccount}>
+          <PPTextInput
+            label="Name"
+            type="name"
+            required={true}
+            value={form.name}
+            setValue={(e) => setFormValue("name", e)}
+            onEnter={createAccount}
+          />
+          <PPTextInput
+            label="Email"
+            type="email"
+            required={true}
+            value={form.email}
+            setValue={(e) => setFormValue("email", e)}
+            onEnter={createAccount}
+          />
+          <PPTextInput
+            label="Password"
+            value={form.password}
+            required={true}
+            icon={isPasswordShowing ? "eye-slash" : "eye"}
+            type={isPasswordShowing ? "text" : "password"}
+            iconColour="grey"
+            setValue={(e) => setFormValue("password", e)}
+            iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
+            onEnter={createAccount}
+          />
+          <PPTextInput
+            label="Confirm Password"
+            value={form.confirmPassword}
+            required={true}
+            type={isPasswordShowing ? "text" : "password"}
+            icon={isPasswordShowing ? "eye-slash" : "eye"}
+            iconColour="grey"
+            setValue={(e) => setFormValue("confirmPassword", e)}
+            iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
+            onEnter={createAccount}
+          />
+
+          <PPButton
+            width="100%"
+            text="Create account"
+            type="submit"
+            loading={loading}
+          />
+        </form>
+      </div>
+    </>
   );
 };
 

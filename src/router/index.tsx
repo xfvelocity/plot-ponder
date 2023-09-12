@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router-dom";
 // ** Pages **
 import Home from "@/views/Home";
 import Register from "@/views/auth/register/Register";
+import RouteGuard from "@/RouteGuard";
+import Login from "@/views/auth/login/Login";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial
@@ -11,11 +13,27 @@ import Register from "@/views/auth/register/Register";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <RouteGuard>
+        <Home />
+      </RouteGuard>
+    ),
   },
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <RouteGuard>
+        <Register />
+      </RouteGuard>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <RouteGuard>
+        <Login />
+      </RouteGuard>
+    ),
   },
 ]);
 
