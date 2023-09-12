@@ -1,34 +1,35 @@
-.footer-container {
-  position: fixed;
-  display: flex;
-  width: 100%;
-  bottom: 0;
-  box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
-}
-
-.footer-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 60px;
-  border: none;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-
-  &:hover{
-    background-color: #DCEAFF;
+.footer {
+  &-container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
-  .pp-icon{
+  &-button {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 3px;
-  }
-
-  .profile-picture{
-    height: 22px;
-    border-radius: 50%;
-    margin-bottom: 1px;
-    border: 1px solid map-get($pp-colours, 'primary');
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  
+    &:hover{
+      background-color: #DCEAFF;
+    }
+  
+    .pp-icon{
+      margin-bottom: 3px;
+    }
+  
+    .profile-picture{
+      height: 22px;
+      border-radius: 50%;
+      margin-bottom: 1px;
+      border: 1px solid map-get($pp-colours, 'primary');
+    }
   }
 }

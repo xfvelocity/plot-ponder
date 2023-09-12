@@ -1,4 +1,6 @@
 import PPIcon from "../basic/icon/PPIcon";
+
+// ** Styles **
 import "./footer.scss";
 
 interface Button {
@@ -8,24 +10,26 @@ interface Button {
   link: string;
 }
 
+// ** Button Data **
 const buttons: Button[] = [
   {
     name: "Home",
     svg: "home",
-    link: "will add later",
+    link: "/",
   },
   {
     name: "Review",
     svg: "review",
-    link: "will add later",
+    link: "/",
   },
   {
     name: "Profile",
     png: "images/profile-pic.png",
-    link: "will add later",
+    link: "/",
   },
 ];
 
+// ** Component **
 const Footer = () => {
   return (
     <div className="footer-container">
@@ -53,20 +57,5 @@ const Footer = () => {
     </div>
   );
 };
-
-// const Footer = (buttons) => {
-//   buttons.forEach(element => {
-//     return (
-//       <button
-//       className={`footer-button pp-text-colour-${textColour} pp-bg-${backgroundColour}`}
-//       onClick={element.link}
-//     >
-//       <img {element.image} alt="" />
-//       <p></p>
-//     </button>
-//     );
-//   });
-
-// };
 
 export default Footer;
