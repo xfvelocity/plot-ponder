@@ -13,6 +13,7 @@ interface Props {
   className?: string;
   disabled?: boolean;
   loading?: boolean;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ const PPButton = ({
   width = 200,
   className = "",
   disabled = false,
+  type = "button",
   loading = false,
   onClick,
 }: Props) => {
@@ -33,6 +35,7 @@ const PPButton = ({
       }`}
       style={{ width }}
       disabled={disabled || loading}
+      type={type}
       onClick={onClick}
     >
       {text}

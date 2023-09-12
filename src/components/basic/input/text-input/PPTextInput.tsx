@@ -15,8 +15,10 @@ interface Props {
   placeholder?: string;
   label?: string;
   disabled?: boolean;
+  required?: boolean;
   icon?: string;
   iconFn?: () => void;
+  onEnter?: (e: any) => void;
 }
 
 const PPTextInput = ({
@@ -27,7 +29,9 @@ const PPTextInput = ({
   label,
   disabled = false,
   icon,
+  required = false,
   iconFn,
+  onEnter,
 }: Props) => {
   // ** Data **
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -43,10 +47,16 @@ const PPTextInput = ({
         <input
           value={value}
           type={type}
+          required={required}
           placeholder={placeholder}
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsActive(true)}
           onBlur={() => setIsActive(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && onEnter) {
+              onEnter(e);
+            }
+          }}
         />
 
         {label && <label>{label}</label>}
