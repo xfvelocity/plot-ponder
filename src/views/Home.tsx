@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div>
+      <div style={{ margin: "20px" }}>
         <h1>Home</h1>
       </div>
     </>
