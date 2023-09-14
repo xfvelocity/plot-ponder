@@ -1,6 +1,6 @@
 import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ** Components **
@@ -28,13 +28,12 @@ const Login = () => {
     password: "",
   });
 
-  // ** Computed **
-  const submitDisabled = useMemo((): boolean => {
+  // ** Functions **
+  const invalidForm = (): boolean => {
     // Check if all items in the form have values
     return Object.values(form).some((value) => !value);
-  }, [form]);
+  };
 
-  // ** Functions **
   const setFormValue = (key: string, value: string): void => {
     // Update a value in the form state based on the key
     setForm({
@@ -47,7 +46,7 @@ const Login = () => {
     e.preventDefault();
 
     // If the form is disabled or the passwords don't match, return
-    if (submitDisabled) return;
+    if (invalidForm()) return;
 
     setLoading(true);
 

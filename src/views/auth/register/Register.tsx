@@ -35,13 +35,12 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  // ** Computed **
+  // ** Functions **
   const formInvalid = (): boolean => {
     // Check if all items in the form have values
     return Object.values(form).some((value) => !value);
   };
 
-  // ** Functions **
   const setFormValue = (key: string, value: string): void => {
     // Update a value in the form state based on the key
     setForm({
