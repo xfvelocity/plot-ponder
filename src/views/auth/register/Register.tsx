@@ -1,6 +1,6 @@
 import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ** Styles **
@@ -36,10 +36,10 @@ const Register = () => {
   });
 
   // ** Computed **
-  const submitDisabled = useMemo((): boolean => {
+  const formInvalid = (): boolean => {
     // Check if all items in the form have values
     return Object.values(form).some((value) => !value);
-  }, [form]);
+  };
 
   // ** Functions **
   const setFormValue = (key: string, value: string): void => {
@@ -54,7 +54,7 @@ const Register = () => {
     e.preventDefault();
 
     // If the form is disabled or the passwords don't match, return
-    if (submitDisabled || form.password !== form.confirmPassword) return;
+    if (formInvalid() || form.password !== form.confirmPassword) return;
 
     setLoading(true);
 
@@ -91,7 +91,6 @@ const Register = () => {
             required={true}
             value={form.name}
             setValue={(e) => setFormValue("name", e)}
-            onEnter={createAccount}
           />
           <PPTextInput
             label="Email"
@@ -99,7 +98,6 @@ const Register = () => {
             required={true}
             value={form.email}
             setValue={(e) => setFormValue("email", e)}
-            onEnter={createAccount}
           />
           <PPTextInput
             label="Password"
@@ -110,7 +108,6 @@ const Register = () => {
             iconColour="grey"
             setValue={(e) => setFormValue("password", e)}
             iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
-            onEnter={createAccount}
           />
           <PPTextInput
             label="Confirm Password"
@@ -121,7 +118,6 @@ const Register = () => {
             iconColour="grey"
             setValue={(e) => setFormValue("confirmPassword", e)}
             iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
-            onEnter={createAccount}
           />
 
           <PPButton
