@@ -16,7 +16,7 @@ interface Props {
 const PPIcon = ({ src, className = "", colour, size = 24, onClick }: Props) => {
   return (
     <ReactSVG
-      className={clsx(`pp-icon ${className} `, {
+      className={clsx(`pp-icon ${className}`, {
         "pp-hover": !!onClick,
         [`pp-icon-colour-${colour}`]: colour,
       })}
