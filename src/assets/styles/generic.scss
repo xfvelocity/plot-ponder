@@ -50,6 +50,18 @@ textarea {
   @extend .pp-hover;
 }
 
+.pp-center {
+  @include center(true, true);
+
+  &-horizontal {
+    @include center(true, false);
+  }
+
+  &-vertical {
+    @include center(false, true);
+  }
+}
+
 @each $prop, $abbrev in (color: pp-text-colour-, background-color: pp-bg-) {
   @each $name, $colour in $pp-colours {
     .#{$abbrev}#{$name} {

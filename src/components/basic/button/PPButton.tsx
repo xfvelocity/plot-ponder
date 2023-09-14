@@ -10,25 +10,33 @@ interface Props {
   backgroundColour?: string;
   textColour?: string;
   width?: number | string;
+  className?: string;
   disabled?: boolean;
   loading?: boolean;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 const PPButton = ({
   text,
-  backgroundColour = "blue-darken-3",
+  backgroundColour = "primary",
   textColour = "white",
   width = 200,
+  className = "",
   disabled = false,
+  type = "button",
   loading = false,
+  onClick,
 }: Props) => {
   return (
     <button
-      className={`pp-button pp-bg-${backgroundColour} pp-text-colour-${textColour} ${
+      className={`pp-button pp-bg-${backgroundColour} ${className} pp-text-colour-${textColour} ${
         (disabled || loading) && "pp-button-disabled"
       }`}
       style={{ width }}
       disabled={disabled || loading}
+      type={type}
+      onClick={onClick}
     >
       {text}
 

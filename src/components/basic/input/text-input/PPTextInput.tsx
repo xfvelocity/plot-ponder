@@ -10,13 +10,16 @@ import PPIcon from "@/components/basic/icon/PPIcon";
 // ** Types **
 interface Props {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue: (e: string) => void;
   type?: string;
   placeholder?: string;
   label?: string;
   disabled?: boolean;
+  required?: boolean;
   icon?: string;
+  iconColour?: string;
   iconFn?: () => void;
+  onEnter?: (e: any) => void;
 }
 
 const PPTextInput = ({
@@ -27,7 +30,10 @@ const PPTextInput = ({
   label,
   disabled = false,
   icon,
+  required = false,
+  iconColour,
   iconFn,
+  onEnter,
 }: Props) => {
   // ** Data **
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -43,16 +49,24 @@ const PPTextInput = ({
         <input
           value={value}
           type={type}
+          required={required}
           placeholder={placeholder}
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsActive(true)}
           onBlur={() => setIsActive(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && onEnter) {
+              onEnter(e);
+            }
+          }}
         />
 
         {label && <label>{label}</label>}
       </div>
 
-      {icon && <PPIcon src={icon} size={16} onClick={iconFn} />}
+      {icon && (
+        <PPIcon src={icon} colour={iconColour} size={16} onClick={iconFn} />
+      )}
     </div>
   );
 };

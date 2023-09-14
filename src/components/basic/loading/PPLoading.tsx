@@ -22,7 +22,7 @@ const PPLoading = ({ colour = "black", size = 32 }: Props) => {
             cy="25"
             r="20"
             fill="none"
-            stroke-width="5"
+            strokeWidth="5"
           />
         </svg>
       </span>

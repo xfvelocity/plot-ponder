@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import { useLocation } from "react-router-dom";
 
 // ** Styles **
 import "./navbar.scss";
@@ -15,12 +14,12 @@ interface Props {
     total: number;
     current: number;
   };
+  showBackBtn?: boolean;
 }
 
-const Navbar = ({ title, children, progress }: Props) => {
+const Navbar = ({ title, children, progress, showBackBtn }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
-  const location = useLocation();
 
   // ** Methods **
   const back = (): void => {
@@ -31,7 +30,7 @@ const Navbar = ({ title, children, progress }: Props) => {
     <>
       <div className="navbar">
         <div className="navbar-content">
-          {location.key !== "default" && (
+          {showBackBtn && (
             <button className="pp-button-reset" onClick={back}>
               <PPIcon
                 className="navbar-back-btn"

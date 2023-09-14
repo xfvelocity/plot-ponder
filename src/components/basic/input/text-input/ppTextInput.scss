@@ -1,11 +1,17 @@
 .pp-text-input {
   height: 45px;
   display: grid;
-  grid-template-columns: 92% 8%;
+  grid-template-columns: 1fr 30px;
   align-items: center;
+  border-color: map-get($pp-colours, "grey") !important;
 
   &-content {
     height: 100%;
+  }
+
+  .pp-icon {
+    position: relative;
+    z-index: 4;
   }
 
   label {

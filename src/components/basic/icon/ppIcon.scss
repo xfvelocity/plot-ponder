@@ -7,3 +7,12 @@
     width: var(--size) !important;
   }
 }
+
+@each $name, $colour in $pp-colours {
+  .pp-icon-colour-#{$name} {
+    path,
+    rect {
+      fill: #{$colour} !important;
+    }
+  }
+}
