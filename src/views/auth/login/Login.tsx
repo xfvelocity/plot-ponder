@@ -51,7 +51,7 @@ const Login = () => {
     setLoading(true);
 
     // Send the form data off to the API
-    const res = await api("POST", "/auth/login", form);
+    const res = await api("POST", "/login", form, false);
 
     // If user was created, set the user in the store and navigate to the home page
     if (res?.uuid) {
