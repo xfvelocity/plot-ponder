@@ -33,8 +33,11 @@ const buttons: Button[] = [
 const Footer = () => {
   return (
     <div className="footer-container">
-      {buttons.map((button) => (
-        <button className={`footer-button pp-text-colour-primary pp-bg-white`}>
+      {buttons.map((button, i) => (
+        <button
+          className={`footer-button pp-text-colour-primary pp-bg-white`}
+          key={i}
+        >
           {button.svg ? (
             <PPIcon src={button.svg} size={20} />
           ) : (
