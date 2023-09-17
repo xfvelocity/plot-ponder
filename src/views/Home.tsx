@@ -1,4 +1,5 @@
 // ** Components **
+import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 
 const Home = () => {
@@ -6,9 +7,10 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div>
+      <div style={{ margin: "20px" }}>
         <h1>Home</h1>
       </div>
+      <Footer />
     </>
   );
 };
