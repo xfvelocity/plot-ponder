@@ -1,15 +1,32 @@
+import { useUserStore } from "@/stores/user";
 import { client } from "./api";
+import { AxiosRequestConfig } from "axios";
 
-export const api = async (type: string, url: string, data = {}) => {
+export const api = async (
+  type: string,
+  url: string,
+  data = {},
+  auth = true
+) => {
   let res: any;
-  const config = {};
+  let config: AxiosRequestConfig = {};
 
   try {
+    if (auth) {
+      const user = useUserStore.getState().user;
+
+      config = {
+        headers: {
+          Authorization: `${user.accessToken}`,
+        },
+      };
+    }
+
     // Decide which method to use based on the passed type
     if (type === "GET") {
       res = await client.get(url, config);
     } else if (type === "POST") {
-      res = await client.post(url, data);
+      res = await client.post(url, data, config);
     }
 
     // If the response is not 200 (successful), throw an error

@@ -35,13 +35,12 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  // ** Computed **
+  // ** Functions **
   const formInvalid = (): boolean => {
     // Check if all items in the form have values
     return Object.values(form).some((value) => !value);
   };
 
-  // ** Functions **
   const setFormValue = (key: string, value: string): void => {
     // Update a value in the form state based on the key
     setForm({
@@ -61,7 +60,12 @@ const Register = () => {
     const { name, email, password } = form;
 
     // Send the form data off to the API
-    const res = await api("POST", "/register", { name, email, password });
+    const res = await api(
+      "POST",
+      "/register",
+      { name, email, password },
+      false
+    );
 
     // If user was created, set the user in the store and navigate to the home page
     if (res?.uuid) {

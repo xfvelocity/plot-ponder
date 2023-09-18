@@ -5,6 +5,7 @@ interface User {
   uuid: string;
   name: string;
   email: string;
+  accessToken: string;
 }
 
 interface UserStore {
@@ -29,6 +30,7 @@ export const useUserStore = create<UserStore>()(
           uuid: "",
           name: "",
           email: "",
+          accessToken: "",
         },
         setUser: (user) =>
           set(() => ({
