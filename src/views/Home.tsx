@@ -10,6 +10,7 @@ const Home = () => {
       <div style={{ margin: "20px" }}>
         <h1>Home</h1>
       </div>
+
       <Footer />
     </>
   );
