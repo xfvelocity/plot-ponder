@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import clsx from "clsx";
 
 // ** Styles **
 import "./ppSelect.scss";
@@ -10,12 +11,18 @@ import { clickOutside } from "@/composables/generic";
 import PPIcon from "@/components/basic/icon/PPIcon";
 
 // ** Types **
+export interface SelectOption {
+  text: string;
+  value: string | number;
+}
+
 interface Props {
   label: string;
-  options: string[];
-  selectedOption: string;
+  options: SelectOption[];
+  selectedOption: string | number;
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
   children?: any;
+  searchTerm?: string;
 }
 
 const PPSelect = (props: Props) => {
@@ -28,23 +35,33 @@ const PPSelect = (props: Props) => {
     clickOutside(e, select, () => setIsSelectOpen(false))
   );
 
-  const optionSelected = (option: string): void => {
-    if (option !== props.selectedOption && isSelectOpen) {
-      props.setSelectedOption(option);
+  const optionSelected = (option: SelectOption): void => {
+    if (option.value != props.selectedOption && isSelectOpen) {
+      props.setSelectedOption(option.value);
       setIsSelectOpen(false);
     }
+  };
+
+  const findMatchingOption = (): string => {
+    const matchingOption = props.options.find(
+      (option) => option.value == props.selectedOption
+    );
+
+    return matchingOption ? matchingOption.text : "";
   };
 
   return (
     <div ref={select}>
       <div className="pp-select">
         <div
-          className={`pp-select-toggle pp-input pp-input-outlined 
-             ${props.selectedOption || isSelectOpen ? "pp-input-active" : ""}`}
+          className={clsx(`pp-select-toggle pp-input pp-input-outlined`, {
+            "pp-input-active":
+              props.selectedOption || isSelectOpen || props.searchTerm,
+          })}
           onClick={() => setIsSelectOpen(true)}
         >
           <label className={`pp-text-colour-black`}>{props.label}</label>
-          <span className="pp-select-value">{props.selectedOption}</span>
+          <span className="pp-select-value">{findMatchingOption()}</span>
 
           {props.children}
 
@@ -63,7 +80,7 @@ const PPSelect = (props: Props) => {
                 className="pp-select-items-item"
                 onClick={() => optionSelected(option)}
               >
-                {option}
+                {option.text}
               </div>
             ))}
           </div>

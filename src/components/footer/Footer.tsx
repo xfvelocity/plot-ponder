@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import PPIcon from "../basic/icon/PPIcon";
 
 // ** Styles **
@@ -20,7 +21,7 @@ const buttons: Button[] = [
   {
     name: "Review",
     svg: "review",
-    link: "/",
+    link: "/review/film",
   },
   {
     name: "Profile",
@@ -31,12 +32,16 @@ const buttons: Button[] = [
 
 // ** Component **
 const Footer = () => {
+  // ** Hooks **
+  const navigate = useNavigate();
+
   return (
     <div className="footer-container">
       {buttons.map((button, i) => (
         <button
           className={`footer-button pp-text-colour-primary pp-bg-white`}
           key={i}
+          onClick={() => navigate(button.link)}
         >
           {button.svg ? (
             <PPIcon src={button.svg} size={20} />

@@ -17,6 +17,7 @@ export const api = async (
 
       config = {
         headers: {
+          accept: "application/json",
           Authorization: `${user.accessToken}`,
         },
       };
