@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import PPFilm from "./components/basic/film/PPFilm";
+import PPFilm from "./components/film/PPFilm";
 
 // ** Router **
 import router from "./router/index";
