@@ -1,29 +1,31 @@
+import { ReviewFilm } from "@/stores/review";
+
 // *Styles*
 import "./ppFilm.scss";
 
 import Chip from "../basic/chip/chip";
 
-const fakeData = {
-  title: "The Avengers",
-  poster: "images/poster.jpeg",
-  description:
-    "Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth. His squad of superheroes put their mindas together to accomplish the task.",
-  releaseYear: "2012",
-  genres: ["Action", "Superhero"],
-};
+interface Props {
+  review: ReviewFilm;
+}
 
-const PPFilm = () => {
+const PPFilm = ({ review }: Props) => {
   return (
     <div className="pp-film-container">
-      <img src={fakeData.poster} className="pp-film-poster" />
+      <img src={review.image} className="pp-film-poster" />
+
       <div className="pp-film-info">
-        <p className="pp-film-title">{fakeData.title}</p>
-        <p className="pp-film-description">{fakeData.description}</p>
+        <p className="pp-film-title">{review.name}</p>
+        <p className="pp-film-description pp-text-ellipsis-5">
+          {review.overview}
+        </p>
+
         <div className="pp-film-chip-container">
-          {fakeData.genres.map((genre, i) => (
+          {review.genres.map((genre, i) => (
             <Chip text={genre} key={i} />
           ))}
-          <p className="pp-film-year">{fakeData.releaseYear}</p>
+
+          <p className="pp-film-year">{review.release_date.split("-")[0]}</p>
         </div>
       </div>
     </div>

@@ -1,40 +1,47 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
-interface ReviewFilm {
+export interface ReviewFilm {
   name: string;
   id: number;
+  genres: string[];
+  release_date: string;
+  overview: string;
+  image: string;
 }
 
-interface Review {
-  film: ReviewFilm;
-}
+interface Review {}
 
 interface ReviewStore {
   progress: number;
   review: Review;
+  film: ReviewFilm;
   setProgress: (progress: number) => void;
   setFilm: (film: ReviewFilm) => void;
 }
 
 export const useReviewStore = create<ReviewStore>()(
-  devtools((set) => ({
-    progress: 1,
-    review: {
+  persist(
+    devtools((set) => ({
+      progress: 1,
+      review: {},
       film: {
         name: "",
         id: 0,
+        genres: [],
+        release_date: "",
+        overview: "",
+        image: "",
       },
-    },
-    setProgress: (progress: number) =>
-      set(() => ({
-        progress,
-      })),
-    setFilm: (film: ReviewFilm) =>
-      set(() => ({
-        review: {
+      setProgress: (progress: number) =>
+        set(() => ({
+          progress,
+        })),
+      setFilm: (film: ReviewFilm) =>
+        set(() => ({
           film,
-        },
-      })),
-  }))
+        })),
+    })),
+    { name: "review" }
+  )
 );

@@ -2,13 +2,16 @@
   &-container {
     border-radius: 10px;
     display: flex;
-    padding: 25px 35px;
-    margin: 5px;
+    padding: 10px;
+    margin: 10px;
+    background: white;
+    border-radius: 5px;
   }
 
   &-poster {
     height: 150px;
     margin-right: 15px;
+    border-radius: 5px;
   }
 
   &-info {

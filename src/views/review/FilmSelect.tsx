@@ -15,7 +15,7 @@ import Navbar from "@/components/navbar/Navbar";
 
 const FilmSelect = () => {
   const navigate = useNavigate();
-  const { progress, review, setFilm } = useReviewStore();
+  const { progress, film, setFilm } = useReviewStore();
 
   const [options, setOptions] = useState<SelectOption[]>([]);
 
@@ -38,12 +38,12 @@ const FilmSelect = () => {
     );
   }, 300);
 
-  const matchingFilm = (id: number): any => {
+  const matchingFilm = (id: number): { name: string; id: number } => {
     const film = options.find((option: SelectOption) => option.value === id);
 
     return {
       name: film?.text || "",
-      id: film?.value || 0,
+      id: (film?.value as number) || 0,
     };
   };
 
@@ -63,9 +63,9 @@ const FilmSelect = () => {
 
         <PPAutoComplete
           label="Film"
-          selectedOption={review.film.name}
+          selectedOption={film.name}
           setSelectedOption={(id: number) => {
-            setFilm(matchingFilm(id));
+            setFilm({ ...film, ...matchingFilm(id) });
             navigate("/review/review");
           }}
           options={options}
