@@ -9,6 +9,8 @@ import { clickOutside } from "@/composables/generic";
 
 // ** Components **
 import PPIcon from "@/components/basic/icon/PPIcon";
+import PPLoading from "../../loading/PPLoading";
+
 // ** Types **
 export interface SelectOption {
   text: string;
@@ -22,6 +24,7 @@ interface Props {
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
   setSearchTerm: (val: string) => void;
   searchTerm?: string;
+  loading?: boolean;
 }
 
 const PPAutoComplete = (props: Props) => {
@@ -61,12 +64,17 @@ const PPAutoComplete = (props: Props) => {
             }}
           />
 
-          <PPIcon
-            className={`pp-select-arrow ${
-              isSelectOpen ? "pp-select-arrow-active" : ""
-            }`}
-            src="chevron-down"
-          />
+          <div className="pp-select-icons">
+            {props.loading && <PPLoading size={12} />}
+
+            <PPIcon
+              className={`pp-select-arrow ${
+                isSelectOpen ? "pp-select-arrow-active" : ""
+              }`}
+              src="chevron-down"
+              size={12}
+            />
+          </div>
         </div>
         {isSelectOpen && props.options.length ? (
           <div className="pp-select-items">

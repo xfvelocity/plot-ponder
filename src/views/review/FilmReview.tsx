@@ -1,39 +1,32 @@
 import { useReviewStore } from "@/stores/review";
-import { useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 
+// ** Components **
 import Navbar from "@/components/navbar/Navbar";
-import PPFilm from "@/components/film/ppFilm";
+import Film from "@/components/film/Film";
+import PPSelect from "@/components/basic/input/select/PPSelect";
+import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
+import PPButton from "@/components/basic/button/PPButton";
+import PPTextInput from "@/components/basic/input/text-input/PPTextInput";
+
+const options = [
+  {
+    text: "Cinema",
+    value: "cinema",
+  },
+  {
+    text: "At home",
+    value: "atHome",
+  },
+];
 
 const FilmReview = () => {
-  const { progress, film, setFilm } = useReviewStore();
+  const { progress, film } = useReviewStore();
 
-  const getMovieDetails = async (): Promise<void> => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${film.id}`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-        },
-      }
-    );
-
-    const { title, id, genres, release_date, overview, poster_path } = res.data;
-
-    setFilm({
-      name: title,
-      id,
-      genres: genres.map((x: any) => x.name),
-      release_date,
-      overview,
-      image: `https://image.tmdb.org/t/p/original${poster_path}`,
-    });
-  };
-
-  useEffect(() => {
-    getMovieDetails();
-  }, []);
+  const [rating, setRating] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [comments, setComments] = useState<string>("");
+  const [watched, setWatched] = useState<string>("");
 
   return (
     <>
@@ -46,7 +39,35 @@ const FilmReview = () => {
         showBackBtn
       />
 
-      <PPFilm review={film} />
+      <div className="film">
+        <Film review={film} />
+
+        <div className="film-review">
+          <h2>What did you think?</h2>
+
+          <div className="film-review-content">
+            <PPTextInput label="Rating" value={rating} setValue={setRating} />
+            <PPTextInput label="Date" value={date} setValue={setDate} />
+
+            <PPSelect
+              label="Where did you watch this?"
+              options={options}
+              selectedOption={watched}
+              setSelectedOption={setWatched}
+            />
+
+            <PPTextArea
+              label="Comments"
+              value={comments}
+              setValue={setComments}
+            />
+          </div>
+        </div>
+
+        <div className="film-review-btn">
+          <PPButton text="Submit" width={250} />
+        </div>
+      </div>
     </>
   );
 };

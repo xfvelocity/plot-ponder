@@ -1,6 +1,14 @@
 .pp-select {
   position: relative;
 
+  &-icons {
+    display: flex;
+    position: relative;
+    top: 3px;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
   &-toggle {
     display: flex;
     align-items: flex-end;
@@ -12,7 +20,8 @@
     padding-left: 10px;
     position: absolute;
     left: 3px;
-    bottom: 10px;
+    bottom: 13px;
+    font-size: 12px;
   }
 
   &:focus {
@@ -29,14 +38,12 @@
     position: absolute;
     background: white;
     width: 100%;
-    padding: 10px 0;
+    padding: 5px 0;
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
     z-index: 10;
-    margin-top: 2px;
-    color: black;
     max-height: 200px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 12px;
 
     &-item {
       cursor: pointer;
@@ -54,12 +61,15 @@
     }
   }
 
-  &-arrow {
-    margin-left: auto;
-    margin-right: 10px;
+  &-s-arrow {
     position: relative;
-    top: 3px;
+    top: -2px;
+    margin-right: 10px;
+  }
+
+  &-arrow {
     transition: all 0.3s ease-out;
+    margin-left: 5px;
 
     &-active {
       transform: rotate(180deg);

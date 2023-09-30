@@ -15,19 +15,25 @@ import Navbar from "@/components/navbar/Navbar";
 
 const FilmSelect = () => {
   const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
+    },
+  };
+
   const { progress, film, setFilm } = useReviewStore();
 
   const [options, setOptions] = useState<SelectOption[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const movieSearch = debounce(async (term: string): Promise<void> => {
+    setLoading(true);
+
     const res = await axios.get(
       `https://api.themoviedb.org/3/search/movie?query=${term}&language=en-US&page=1`,
-      {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-        },
-      }
+      config
     );
 
     setOptions(
@@ -36,15 +42,32 @@ const FilmSelect = () => {
         value: result.id,
       }))
     );
+
+    setLoading(false);
   }, 300);
 
-  const matchingFilm = (id: number): { name: string; id: number } => {
-    const film = options.find((option: SelectOption) => option.value === id);
+  const movieSelected = async (movieId: number): Promise<void> => {
+    setLoading(true);
 
-    return {
-      name: film?.text || "",
-      id: (film?.value as number) || 0,
-    };
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}`,
+      config
+    );
+
+    const { title, id, genres, release_date, overview, poster_path } = res.data;
+
+    setFilm({
+      name: title,
+      id,
+      genres: genres.map((x: any) => x.name),
+      release_date,
+      overview,
+      image: `https://image.tmdb.org/t/p/original${poster_path}`,
+    });
+
+    setLoading(false);
+
+    navigate("/review/review");
   };
 
   return (
@@ -58,17 +81,15 @@ const FilmSelect = () => {
         showBackBtn
       />
 
-      <div className="review">
+      <div className="film film-select">
         <h2>Select a film</h2>
 
         <PPAutoComplete
           label="Film"
           selectedOption={film.name}
-          setSelectedOption={(id: number) => {
-            setFilm({ ...film, ...matchingFilm(id) });
-            navigate("/review/review");
-          }}
+          setSelectedOption={(id: number) => movieSelected(id)}
           options={options}
+          loading={loading}
           setSearchTerm={movieSearch}
         />
       </div>

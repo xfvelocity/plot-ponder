@@ -1,15 +1,17 @@
 import { ReviewFilm } from "@/stores/review";
 
 // *Styles*
-import "./ppFilm.scss";
+import "./film.scss";
 
-import Chip from "../basic/chip/chip";
+// ** Components **
+import Chip from "../basic/chip/PPChip";
 
+// ** Types **
 interface Props {
   review: ReviewFilm;
 }
 
-const PPFilm = ({ review }: Props) => {
+const Film = ({ review }: Props) => {
   return (
     <div className="pp-film-container">
       <img src={review.image} className="pp-film-poster" />
@@ -20,16 +22,16 @@ const PPFilm = ({ review }: Props) => {
           {review.overview}
         </p>
 
-        <div className="pp-film-chip-container">
+        <div className="pp-film-chips">
           {review.genres.map((genre, i) => (
             <Chip text={genre} key={i} />
           ))}
-
-          <p className="pp-film-year">{review.release_date.split("-")[0]}</p>
         </div>
+
+        <p className="pp-film-year">{review.release_date.split("-")[0]}</p>
       </div>
     </div>
   );
 };
 
-export default PPFilm;
+export default Film;

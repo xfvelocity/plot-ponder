@@ -21,8 +21,6 @@ interface Props {
   options: SelectOption[];
   selectedOption: string | number;
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
-  children?: any;
-  searchTerm?: string;
 }
 
 const PPSelect = (props: Props) => {
@@ -55,21 +53,22 @@ const PPSelect = (props: Props) => {
       <div className="pp-select">
         <div
           className={clsx(`pp-select-toggle pp-input pp-input-outlined`, {
-            "pp-input-active":
-              props.selectedOption || isSelectOpen || props.searchTerm,
+            "pp-input-active": props.selectedOption || isSelectOpen,
           })}
           onClick={() => setIsSelectOpen(true)}
         >
-          <label className={`pp-text-colour-black`}>{props.label}</label>
+          <label className={`pp-text-colour-grey-darken-2`}>
+            {props.label}
+          </label>
           <span className="pp-select-value">{findMatchingOption()}</span>
 
-          {props.children}
-
           <PPIcon
-            className={`pp-select-arrow ${
+            className={`pp-select-arrow pp-select-s-arrow ${
               isSelectOpen ? "pp-select-arrow-active" : ""
             }`}
             src="chevron-down"
+            colour="grey-darken-2"
+            size={12}
           />
         </div>
         {isSelectOpen && props.options.length ? (

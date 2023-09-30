@@ -12,6 +12,7 @@ $translateY: 15px;
     z-index: 1;
     font-size: 12px;
     width: 100%;
+    color: map-get($pp-colours, "grey-darken-2");
   }
 
   input,
@@ -33,11 +34,11 @@ $translateY: 15px;
 
   &-border {
     margin-top: calc($translateY - 5px);
-    border-bottom: 1px solid;
+    border-bottom: 1px solid map-get($pp-colours, "grey-lighten-2");
   }
 
   &-outlined {
-    border: 1px solid;
+    border: 1px solid map-get($pp-colours, "grey-lighten-2");
     border-radius: 5px;
     margin-top: calc($translateY - 20px);
 
