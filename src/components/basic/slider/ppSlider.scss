@@ -1,72 +1,48 @@
-.pp-slider {
-  position: relative;
-  width: 100%;
-  height: 25px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(
-    90deg,
-    #ff9c9c 0%,
-    #ffcc84 30%,
-    #ffcc84 50%,
-    #acff9e 100%
-  );
+.rc-slider {
+  &-rail {
+    height: 20px;
+    background: linear-gradient(
+      90deg,
+      #ff9c9c 0%,
+      #ffcc84 30%,
+      #ffcc84 50%,
+      #acff9e 100%
+    );
+  }
 
-  &-selector {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    border-radius: 50%;
-    background-color: white;
-    border: 1px solid rgb(201, 201, 201);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    height: 30px;
-    width: 30px;
-    cursor: grab;
+  &-track {
+    height: 20px;
+    visibility: hidden;
+  }
 
-    &:active {
-      cursor: grabbing;
+  &-step {
+    visibility: hidden;
+  }
+
+  &-handle {
+    margin-top: -4px;
+    height: 28px;
+    width: 28px;
+    opacity: 1;
+    border: 4px solid rgb(200, 200, 200) !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+    &-dragging {
+      border-color: map-get($pp-colours, "primary") !important;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1) !important;
     }
   }
 
-  &-values {
-    padding: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  &-mark {
+    top: 35px;
 
-  &-number {
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
+    &-text {
+      color: rgb(178, 178, 178);
 
-    &-show {
-      opacity: 1;
-    }
-  }
-
-  &-value {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-size: 14px;
-    font-weight: 600;
-    width: 15px;
-
-    &-decimal {
-      &::before {
-        height: 2px !important;
+      &-active {
+        color: map-get($pp-colours, "primary");
+        font-weight: 600;
       }
-    }
-
-    &::before {
-      content: "";
-      background-color: #dedede;
-      height: 5px;
-      width: 1px;
-      margin-bottom: 2px;
     }
   }
 }
