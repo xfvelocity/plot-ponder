@@ -1,0 +1,18 @@
+.pp-icon {
+  width: var(--size) !important;
+
+  svg,
+  div {
+    height: var(--size) !important;
+    width: var(--size) !important;
+  }
+}
+
+@each $name, $colour in $pp-colours {
+  .pp-icon-colour-#{$name} {
+    path,
+    rect {
+      fill: #{$colour} !important;
+    }
+  }
+}

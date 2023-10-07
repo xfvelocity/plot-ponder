@@ -1,0 +1,57 @@
+$translateY: 15px;
+
+.pp-input {
+  position: relative;
+
+  label {
+    display: block;
+    position: relative;
+    left: 9px;
+    transition: all 0.3s ease;
+    background: transparent;
+    z-index: 1;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  input,
+  select,
+  &-input {
+    background: transparent;
+    width: 100%;
+    border: 0;
+    z-index: 2;
+    position: absolute;
+    left: 11px;
+    bottom: 13px;
+    font-size: 12px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-border {
+    margin-top: calc($translateY - 5px);
+    border-bottom: 1px solid;
+  }
+
+  &-outlined {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: calc($translateY - 20px);
+
+    label {
+      padding: 2px 5px;
+    }
+  }
+
+  &-active {
+    border-bottom-width: 2px;
+
+    label {
+      transform-origin: left;
+      transform: scale(0.75) translateY(-$translateY);
+    }
+  }
+}
