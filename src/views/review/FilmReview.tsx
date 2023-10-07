@@ -1,5 +1,8 @@
 import { useReviewStore } from "@/stores/review";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
+import { api } from "@/api";
 
 // ** Components **
 import Navbar from "@/components/navbar/Navbar";
@@ -7,7 +10,6 @@ import Film from "@/components/film/Film";
 import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
-import PPTextInput from "@/components/basic/input/text-input/PPTextInput";
 
 const options = [
   {
@@ -21,12 +23,37 @@ const options = [
 ];
 
 const FilmReview = () => {
+  const navigate = useNavigate();
   const { progress, film } = useReviewStore();
 
-  const [rating, setRating] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const [comments, setComments] = useState<string>("");
-  const [watched, setWatched] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+
+  const submitFilm = async (): Promise<void> => {
+    setLoading(true);
+
+    // TODO: Update when date picker/slider is added
+    // TODO: Show success chip once merged
+    const res = await api("POST", "/review", {
+      film: {
+        name: film.name,
+        id: film.id,
+        genres: film.genres,
+        image: film.image,
+      },
+      rating: 8,
+      comments,
+      date: new Date(),
+      location,
+    });
+
+    setLoading(false);
+
+    if (!res?.error) {
+      navigate("/");
+    }
+  };
 
   return (
     <>
@@ -46,14 +73,14 @@ const FilmReview = () => {
           <h2>What did you think?</h2>
 
           <div className="film-review-content">
-            <PPTextInput label="Rating" value={rating} setValue={setRating} />
-            <PPTextInput label="Date" value={date} setValue={setDate} />
+            {/* TODO: Add slider */}
+            {/* TODO: Add date picker */}
 
             <PPSelect
               label="Where did you watch this?"
               options={options}
-              selectedOption={watched}
-              setSelectedOption={setWatched}
+              selectedOption={location}
+              setSelectedOption={setLocation}
             />
 
             <PPTextArea
@@ -65,7 +92,12 @@ const FilmReview = () => {
         </div>
 
         <div className="film-review-btn">
-          <PPButton text="Submit" width={250} />
+          <PPButton
+            text="Submit"
+            loading={loading}
+            width={250}
+            onClick={submitFilm}
+          />
         </div>
       </div>
     </>
