@@ -11,7 +11,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid #C2C2C2;
+    border: 1px solid map-get($pp-colours, "grey");
     padding: 3px;
     margin: 0px 45px;
     border-radius: 5px;
