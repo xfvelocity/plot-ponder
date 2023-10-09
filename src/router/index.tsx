@@ -5,6 +5,7 @@ import Home from "@/views/Home";
 import Register from "@/views/auth/register/Register";
 import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
+import Profile from "@/views/user/Profile";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial
@@ -32,6 +33,22 @@ const router = createBrowserRouter([
     element: (
       <ContentWrapper>
         <Login />
+      </ContentWrapper>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <ContentWrapper>
+        <Profile />
+      </ContentWrapper>
+    ),
+  },
+  {
+    path: "/user/:username",
+    element: (
+      <ContentWrapper>
+        <Profile />
       </ContentWrapper>
     ),
   },
