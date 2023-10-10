@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 // ** Componets **
 import PPIcon from "../basic/icon/PPIcon";
+import PPAvatar from "../basic/avatar/PPAvatar";
 
 // ** Styles **
 import "./footer.scss";
@@ -44,15 +45,7 @@ const Footer = () => {
           key={i}
           onClick={() => navigate(button.link)}
         >
-          {button.svg ? (
-            <PPIcon src={button.svg} size={20} />
-          ) : (
-            <img
-              src={button.png}
-              className="profile-picture"
-              alt="profile picture"
-            />
-          )}
+          {button.svg ? <PPIcon src={button.svg} size={20} /> : <PPAvatar />}
           <p>{button.name}</p>
         </button>
       ))}

@@ -16,20 +16,13 @@
     height: 60px;
     border: none;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
-  
-    &:hover{
-      background-color: #DCEAFF;
+
+    &:hover {
+      background-color: #dceaff;
     }
-  
-    .pp-icon{
+
+    .pp-icon {
       margin-bottom: 3px;
-    }
-  
-    .profile-picture{
-      height: 22px;
-      border-radius: 50%;
-      margin-bottom: 1px;
-      border: 1px solid map-get($pp-colours, 'primary');
     }
   }
 }
