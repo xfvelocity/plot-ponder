@@ -10,12 +10,14 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import PPReview from "@/components/review/PPReview";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
+import PPLoading from "@/components/basic/loading/PPLoading";
 
 const Profile = () => {
   const params = useParams();
 
-  const [user, setUser] = useState<any>();
-  const [reviews, setReviews] = useState<any>([]);
+  const [user, setUser] = useState<any>({});
+  const [reviews, setReviews] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getUsersProfile = async (): Promise<void> => {
     const res = params.username
@@ -38,8 +40,12 @@ const Profile = () => {
   };
 
   const getUserContent = async (): Promise<void> => {
+    setLoading(true);
+
     await getUsersProfile();
     await getUsersReview();
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -50,20 +56,25 @@ const Profile = () => {
     <>
       <Navbar />
 
-      {user && (
-        <div className="pp-profile">
-          <PPAvatar size={60} />
+      <div className="pp-profile">
+        {loading ? (
+          <PPLoading />
+        ) : (
+          <div className="pp-profile-user">
+            <PPAvatar size={60} />
 
-          <h3>{user.name}</h3>
-          <p className="pp-text-colour-primary">
-            <span className="pp-profile-at">@</span>
-            {user.username}
-          </p>
-        </div>
-      )}
+            <h3>{user.name}</h3>
+            <p className="pp-text-colour-primary">
+              <span className="pp-profile-user-at">@</span>
+              {user.username}
+            </p>
+          </div>
+        )}
 
-      {reviews.length &&
-        reviews.map((review, i) => <PPReview key={i} review={review} />)}
+        {!loading
+          ? reviews.map((review, i) => <PPReview key={i} review={review} />)
+          : null}
+      </div>
 
       <Footer />
     </>
