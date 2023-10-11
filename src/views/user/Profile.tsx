@@ -12,11 +12,18 @@ import PPReview from "@/components/review/PPReview";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
 import PPLoading from "@/components/basic/loading/PPLoading";
 
+// ** Types **
+import { ProfileUser, Review } from "@/types/generic";
+
 const Profile = () => {
   const params = useParams();
 
-  const [user, setUser] = useState<any>({});
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [user, setUser] = useState<ProfileUser>({
+    name: "",
+    username: "",
+    uuid: "",
+  });
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const getUsersProfile = async (): Promise<void> => {

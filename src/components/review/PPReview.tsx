@@ -6,19 +6,10 @@ import PPDateChip from "../basic/date-chip/PPDateChip";
 import PPIcon from "../basic/icon/PPIcon";
 
 // ** Types **
+import { Review } from "@/types/generic";
+
 interface Props {
-  review: {
-    comments: string;
-    date: string;
-    location: string;
-    rating: number;
-    userUuid: string;
-    film: {
-      genres: string[];
-      image: string;
-      name: string;
-    };
-  };
+  review: Review;
 }
 
 const PPReview = ({ review }: Props) => {
