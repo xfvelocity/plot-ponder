@@ -1,7 +1,6 @@
 import { useReviewStore } from "@/stores/review";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-
 import { api } from "@/api";
 
 // ** Components **
@@ -11,7 +10,7 @@ import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
 import PPDatePicker from "@/components/basic/date-picker/PPDatePicker";
-import { useAppStore } from "@/stores/app";
+import PPSlider from "@/components/basic/slider/PPSlider";
 
 const options = [
   {
@@ -27,7 +26,6 @@ const options = [
 const FilmReview = () => {
   const navigate = useNavigate();
 
-  const { setSnackbar } = useAppStore();
   const { progress, film, reset } = useReviewStore();
 
   // ** Data **
@@ -35,6 +33,7 @@ const FilmReview = () => {
   const [comments, setComments] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [location, setLocation] = useState<string>("");
+  const [rating, setRating] = useState<number>(0);
 
   // ** Methods **
   const submitFilm = async (): Promise<void> => {
@@ -47,7 +46,7 @@ const FilmReview = () => {
         genres: film.genres,
         image: film.image,
       },
-      rating: 8,
+      rating,
       comments,
       date: new Date(date),
       location,
@@ -57,13 +56,7 @@ const FilmReview = () => {
 
     if (!res?.error) {
       navigate("/");
-
       reset();
-      setSnackbar({
-        text: "Review added",
-        type: "success",
-        isOpen: true,
-      });
     }
   };
 
@@ -85,7 +78,7 @@ const FilmReview = () => {
           <h2>What did you think?</h2>
 
           <div className="film-review-content">
-            {/* TODO: Add slider */}
+            <PPSlider value={rating} setValue={setRating} />
             <PPDatePicker date={date} setDate={setDate} />
 
             <PPSelect
