@@ -1,19 +1,30 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../../stores/user";
+import PPSnackbar from "../basic/snackbar/PPSnackbar";
+import { useAppStore } from "@/stores/app";
 
 // ** Types **
 interface Props {
   children: React.ReactNode;
 }
 
-const RouteGuard = (props: Props) => {
+const ContentWrapper = (props: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
   const location = useLocation();
 
   // ** Store Hooks **
   const { user } = useUserStore();
+  const { snackbar, setSnackbar } = useAppStore();
+
+  // ** Functions **
+  const closeSnackbar = (): void => {
+    setSnackbar({
+      ...snackbar,
+      isOpen: false,
+    });
+  };
 
   useEffect(() => {
     if (["/login", "/register"].includes(location.pathname)) {
@@ -29,7 +40,18 @@ const RouteGuard = (props: Props) => {
     }
   }, [location]);
 
-  return <>{props.children}</>;
+  return (
+    <>
+      <div>{props.children}</div>
+
+      <PPSnackbar
+        text={snackbar.text}
+        type={snackbar.type}
+        isOpen={snackbar.isOpen}
+        closeFn={closeSnackbar}
+      />
+    </>
+  );
 };
 
-export default RouteGuard;
+export default ContentWrapper;

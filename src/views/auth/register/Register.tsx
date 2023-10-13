@@ -12,6 +12,7 @@ import PPButton from "@/components/basic/button/PPButton";
 import Navbar from "@/components/navbar/Navbar";
 
 interface Form {
+  username: string;
   name: string;
   email: string;
   password: string;
@@ -29,6 +30,7 @@ const Register = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isPasswordShowing, setIsPasswordShowing] = useState<boolean>(false);
   const [form, setForm] = useState<Form>({
+    username: "",
     name: "",
     email: "",
     password: "",
@@ -57,13 +59,13 @@ const Register = () => {
 
     setLoading(true);
 
-    const { name, email, password } = form;
+    const { name, email, password, username } = form;
 
     // Send the form data off to the API
     const res = await api(
       "POST",
       "/register",
-      { name, email, password },
+      { username, name, email, password },
       false
     );
 
@@ -89,6 +91,13 @@ const Register = () => {
         </div>
 
         <form className="register-form" onSubmit={createAccount}>
+          <PPTextInput
+            label="Username"
+            type="username"
+            required={true}
+            value={form.username}
+            setValue={(e) => setFormValue("username", e)}
+          />
           <PPTextInput
             label="Name"
             type="name"

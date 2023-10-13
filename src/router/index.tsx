@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 // ** Pages **
 import Home from "@/views/Home";
 import Register from "@/views/auth/register/Register";
-import RouteGuard from "@/components/route-guard/RouteGuard";
+import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
 import FilmSelect from "@/views/review/FilmSelect";
 import FilmReview from "@/views/review/FilmReview";
@@ -16,25 +16,25 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <RouteGuard>
+      <ContentWrapper>
         <Home />
-      </RouteGuard>
+      </ContentWrapper>
     ),
   },
   {
     path: "/register",
     element: (
-      <RouteGuard>
+      <ContentWrapper>
         <Register />
-      </RouteGuard>
+      </ContentWrapper>
     ),
   },
   {
     path: "/login",
     element: (
-      <RouteGuard>
+      <ContentWrapper>
         <Login />
-      </RouteGuard>
+      </ContentWrapper>
     ),
   },
   {
