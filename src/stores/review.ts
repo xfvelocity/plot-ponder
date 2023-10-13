@@ -18,29 +18,29 @@ interface ReviewStore {
   film: ReviewFilm;
   setProgress: (progress: number) => void;
   setFilm: (film: ReviewFilm) => void;
+  reset: () => void;
 }
+
+const initialState = {
+  progress: 1,
+  review: {},
+  film: {
+    name: "",
+    id: 0,
+    genres: [],
+    release_date: "",
+    overview: "",
+    image: "",
+  },
+};
 
 export const useReviewStore = create<ReviewStore>()(
   persist(
     devtools((set) => ({
-      progress: 1,
-      review: {},
-      film: {
-        name: "",
-        id: 0,
-        genres: [],
-        release_date: "",
-        overview: "",
-        image: "",
-      },
-      setProgress: (progress: number) =>
-        set(() => ({
-          progress,
-        })),
-      setFilm: (film: ReviewFilm) =>
-        set(() => ({
-          film,
-        })),
+      ...initialState,
+      setProgress: (progress: number) => set({ progress }),
+      setFilm: (film: ReviewFilm) => set({ film }),
+      reset: () => set(initialState),
     })),
     { name: "review" }
   )

@@ -43,11 +43,13 @@ export const api = async (
 
     if (e?.response) {
       setSnackbar({
-        text: e.response.data,
+        text: e.response?.data?.message || "An error occured",
         type: "error",
         isOpen: true,
       });
     }
+
+    res = { error: e.response.data };
   }
 
   return res;

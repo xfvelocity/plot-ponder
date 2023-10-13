@@ -20,9 +20,6 @@ export const useAppStore = create<SnackbarStore>()(
       type: "success",
       isOpen: false,
     },
-    setSnackbar: (snackbar) =>
-      set(() => ({
-        snackbar,
-      })),
+    setSnackbar: (snackbar) => set({ snackbar }),
   }))
 );

@@ -11,6 +11,7 @@ import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
 import PPDatePicker from "@/components/basic/date-picker/PPDatePicker";
+import { useAppStore } from "@/stores/app";
 
 const options = [
   {
@@ -25,7 +26,9 @@ const options = [
 
 const FilmReview = () => {
   const navigate = useNavigate();
-  const { progress, film } = useReviewStore();
+
+  const { setSnackbar } = useAppStore();
+  const { progress, film, reset } = useReviewStore();
 
   // ** Data **
   const [loading, setLoading] = useState<boolean>(false);
@@ -37,7 +40,6 @@ const FilmReview = () => {
   const submitFilm = async (): Promise<void> => {
     setLoading(true);
 
-    // TODO: Show success chip once merged
     const res = await api("POST", "/review", {
       film: {
         name: film.name,
@@ -47,7 +49,7 @@ const FilmReview = () => {
       },
       rating: 8,
       comments,
-      date,
+      date: new Date(date),
       location,
     });
 
@@ -55,6 +57,13 @@ const FilmReview = () => {
 
     if (!res?.error) {
       navigate("/");
+
+      reset();
+      setSnackbar({
+        text: "Review added",
+        type: "success",
+        isOpen: true,
+      });
     }
   };
 
@@ -89,6 +98,7 @@ const FilmReview = () => {
             <PPTextArea
               label="Comments"
               value={comments}
+              rows={5}
               setValue={setComments}
             />
           </div>
