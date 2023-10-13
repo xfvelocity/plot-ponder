@@ -10,6 +10,7 @@ import Film from "@/components/film/Film";
 import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
+import PPDatePicker from "@/components/basic/date-picker/PPDatePicker";
 
 const options = [
   {
@@ -26,14 +27,16 @@ const FilmReview = () => {
   const navigate = useNavigate();
   const { progress, film } = useReviewStore();
 
+  // ** Data **
   const [loading, setLoading] = useState<boolean>(false);
   const [comments, setComments] = useState<string>("");
+  const [date, setDate] = useState<string>("");
   const [location, setLocation] = useState<string>("");
 
+  // ** Methods **
   const submitFilm = async (): Promise<void> => {
     setLoading(true);
 
-    // TODO: Update when date picker/slider is added
     // TODO: Show success chip once merged
     const res = await api("POST", "/review", {
       film: {
@@ -44,7 +47,7 @@ const FilmReview = () => {
       },
       rating: 8,
       comments,
-      date: new Date(),
+      date,
       location,
     });
 
@@ -74,7 +77,7 @@ const FilmReview = () => {
 
           <div className="film-review-content">
             {/* TODO: Add slider */}
-            {/* TODO: Add date picker */}
+            <PPDatePicker date={date} setDate={setDate} />
 
             <PPSelect
               label="Where did you watch this?"

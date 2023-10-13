@@ -43,17 +43,17 @@ const router = createBrowserRouter([
       {
         path: "film",
         element: (
-          <RouteGuard>
+          <ContentWrapper>
             <FilmSelect />
-          </RouteGuard>
+          </ContentWrapper>
         ),
       },
       {
         path: "review",
         element: (
-          <RouteGuard>
+          <ContentWrapper>
             <FilmReview />
-          </RouteGuard>
+          </ContentWrapper>
         ),
       },
     ],
