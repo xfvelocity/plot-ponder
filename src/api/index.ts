@@ -1,6 +1,7 @@
 import { useUserStore } from "@/stores/user";
 import { client } from "./api";
 import { AxiosRequestConfig } from "axios";
+import { useAppStore } from "@/stores/app";
 
 export const api = async (
   type: string,
@@ -37,9 +38,15 @@ export const api = async (
       res = res?.data || {};
     }
   } catch (e: any) {
-    // TODO: Implement error handling
-    // res = { error: e?.response?.data };
-    res = {};
+    const setSnackbar = useAppStore.getState().setSnackbar;
+
+    if (e?.response) {
+      setSnackbar({
+        text: e.response.data,
+        type: "error",
+        isOpen: true,
+      });
+    }
   }
 
   return res;
