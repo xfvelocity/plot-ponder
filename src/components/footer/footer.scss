@@ -1,9 +1,10 @@
 .footer {
   &-container {
-    position: fixed;
+    position: sticky;
     display: flex;
     width: 100%;
     bottom: 0;
+    z-index: 10;
     box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
