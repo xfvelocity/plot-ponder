@@ -54,7 +54,7 @@ const Home = () => {
 
       <div>
         {reviews.map((review, i) => (
-          <PPReview review={review} key={i} />
+          <PPReview review={review} showUser={true} key={i} />
         ))}
 
         {scrollDisabled ? null : (
