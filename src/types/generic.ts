@@ -2,6 +2,7 @@ export interface ProfileUser {
   name: string;
   username: string;
   uuid: string;
+  avatar: string;
 }
 
 export interface Review {
@@ -9,8 +10,8 @@ export interface Review {
   date: string;
   location: string;
   rating: number;
-  userUuid: string;
   film: ReviewFilm;
+  user: ProfileUser;
 }
 
 export interface ReviewFilm {
