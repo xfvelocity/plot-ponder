@@ -5,11 +5,12 @@ import "./ppLoading.scss";
 interface Props {
   colour?: string;
   size?: number;
+  className?: string;
 }
 
-const PPLoading = ({ colour = "black", size = 32 }: Props) => {
+const PPLoading = ({ colour = "black", size = 32, className = "" }: Props) => {
   return (
-    <div className="pp-loading">
+    <div className={`pp-loading ${className}`}>
       <span className="pp-loading-content">
         <svg
           className={`pp-loading-icon pp-icon-stroke-${colour}`}
