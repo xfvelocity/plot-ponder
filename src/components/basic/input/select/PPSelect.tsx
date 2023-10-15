@@ -55,7 +55,6 @@ const PPSelect = (props: Props) => {
             src="chevron-down"
           />
         </div>
-
         {isSelectOpen && props.options.length ? (
           <div className="pp-select-items">
             {props.options.map((option, i) => (

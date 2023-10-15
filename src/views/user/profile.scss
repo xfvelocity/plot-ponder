@@ -1,0 +1,22 @@
+.pp-profile {
+  .pp-loading {
+    margin: 20px auto;
+    width: max-content;
+  }
+
+  &-user {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 180px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid map-get($pp-colours, "grey-lighten-1");
+
+    &-at {
+      font-size: 10px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
