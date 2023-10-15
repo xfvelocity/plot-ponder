@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background: #f5f5f5;
 }
 
 h1,
@@ -68,6 +69,24 @@ textarea {
 
 .pp-w-100 {
   width: 100%;
+}
+
+.pp-text {
+  &-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @for $i from 1 through 5 {
+      &-#{$i} {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: $i;
+        line-clamp: $i;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
 }
 
 @each $prop, $abbrev in (color: pp-text-colour-, background-color: pp-bg-) {

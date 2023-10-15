@@ -32,10 +32,7 @@ export const useUserStore = create<UserStore>()(
           email: "",
           accessToken: "",
         },
-        setUser: (user) =>
-          set(() => ({
-            user,
-          })),
+        setUser: (user) => set({ user }),
       }),
       {
         name: "user",

@@ -1,15 +1,15 @@
-//Styles
-import "./chip.scss";
+// ** Styles **
+import "./ppChip.scss";
 
-//interface
+// ** Types **
 interface Props {
   text: string;
   backgroundColour?: string;
   textColour?: string;
 }
 
-//component
-const Chip = ({
+// ** Component **
+const PPChip = ({
   text,
   backgroundColour = "blue-chip",
   textColour = "primary",
@@ -23,4 +23,4 @@ const Chip = ({
   );
 };
 
-export default Chip;
+export default PPChip;

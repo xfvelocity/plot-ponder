@@ -24,7 +24,7 @@ const buttons: Button[] = [
   {
     name: "Review",
     svg: "review",
-    link: "/",
+    link: "/review/film",
   },
   {
     name: "Profile",
@@ -35,6 +35,7 @@ const buttons: Button[] = [
 
 // ** Component **
 const Footer = () => {
+  // ** Hooks **
   const navigate = useNavigate();
 
   return (

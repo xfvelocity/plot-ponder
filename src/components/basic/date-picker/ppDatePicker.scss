@@ -1,0 +1,25 @@
+.pp-date-picker {
+  padding: 15px 0px;
+
+  input {
+    max-width: 93%;
+
+    &::-webkit-calendar-picker-indicator {
+      background: transparent;
+      color: transparent;
+      cursor: pointer;
+      width: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    @include center(false, true);
+    right: 10px;
+  }
+}
