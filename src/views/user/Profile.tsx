@@ -22,6 +22,7 @@ const Profile = () => {
     name: "",
     username: "",
     uuid: "",
+    avatar: "",
   });
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
