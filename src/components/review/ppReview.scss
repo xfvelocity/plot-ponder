@@ -1,21 +1,21 @@
 .pp-review {
   border-bottom: 3px solid map-get($pp-colours, "grey");
+  background: white;
+  padding: 10px 20px;
 
   &-container {
     border-radius: 10px;
     display: flex;
     align-items: stretch;
-    padding: 10px 20px;
-    background: white;
     border-radius: 5px;
   }
 
   &-user {
-    padding: 10px 20px 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
+    margin-bottom: 10px;
     color: map-get($pp-colours, "primary");
 
     &-user {
@@ -63,6 +63,7 @@
 
   &-rating {
     font-weight: 700;
+    margin-left: auto;
     color: map-get($pp-colours, "primary");
     font-size: 18px;
   }

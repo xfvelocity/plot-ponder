@@ -9,7 +9,7 @@ import PPReview from "@/components/review/PPReview";
 
 const Home = () => {
   const loader = useRef(null);
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
   const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
   const [reviews, setReviews] = useState<any[]>([]);
 
@@ -38,11 +38,9 @@ const Home = () => {
         threshold: 0.5,
       }
     );
-
     if (loader.current) {
       observer.observe(loader.current);
     }
-
     return () => {
       if (loader.current) {
         observer.unobserve(loader.current);
@@ -60,8 +58,8 @@ const Home = () => {
         ))}
 
         {scrollDisabled ? null : (
-          <div ref={loader}>
-            <PPLoading />
+          <div ref={loader} style={{ marginTop: "20px" }}>
+            <PPLoading className="pp-mx-auto" size={24} />
           </div>
         )}
       </div>
