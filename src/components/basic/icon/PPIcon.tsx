@@ -20,7 +20,7 @@ const PPIcon = ({ src, className = "", colour, size = 24, onClick }: Props) => {
         "pp-hover": !!onClick,
         [`pp-icon-colour-${colour}`]: colour,
       })}
-      src={`icons/${src}.svg`}
+      src={`/icons/${src}.svg`}
       style={
         {
           "--size": `${size}px`,

@@ -42,7 +42,7 @@ const ContentWrapper = (props: Props) => {
 
   return (
     <>
-      <div>{props.children}</div>
+      <div className="pp-h-100">{props.children}</div>
 
       <PPSnackbar
         text={snackbar.text}

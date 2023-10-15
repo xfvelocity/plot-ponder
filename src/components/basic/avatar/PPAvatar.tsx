@@ -1,0 +1,20 @@
+// ** Styles **
+import "./ppAvatar.scss";
+
+// ** Types **
+interface Props {
+  size?: number;
+}
+
+const PPAvatar = ({ size = 20 }: Props) => {
+  return (
+    <img
+      className="pp-avatar"
+      width={size}
+      height={size}
+      src="/images/profile-pic.png"
+    />
+  );
+};
+
+export default PPAvatar;
