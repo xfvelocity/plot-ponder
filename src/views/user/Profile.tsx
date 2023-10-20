@@ -54,7 +54,7 @@ const Profile = () => {
       setReviews([...reviews, ...res.data]);
     }
 
-    if (page === res.meta.totalPages) {
+    if (page === res.meta.totalPages || res.data.length === 0) {
       setScrollDisabled(true);
     } else {
       setPage(page + 1);
