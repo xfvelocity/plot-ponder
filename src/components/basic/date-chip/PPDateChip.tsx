@@ -10,8 +10,6 @@ interface DateOptions {
   y: number;
   m: number;
   d: number;
-  h: number;
-  min: number;
 }
 
 const PPDateChip = ({ date }: Props) => {
@@ -23,11 +21,9 @@ const PPDateChip = ({ date }: Props) => {
       y: 31536000,
       m: 2592000,
       d: 86400,
-      h: 3600,
-      min: 60,
     };
 
-    let age = "now";
+    let age = "Today";
     const formattedDate: string = date.toISOString();
 
     const diffInSeconds: number = Math.floor(
