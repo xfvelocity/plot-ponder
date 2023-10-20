@@ -26,7 +26,7 @@ const options = [
 const FilmReview = () => {
   const navigate = useNavigate();
 
-  const { progress, film, reset } = useReviewStore();
+  const { progress, film, reset, resetFilm } = useReviewStore();
 
   // ** Data **
   const [loading, setLoading] = useState<boolean>(false);
@@ -69,6 +69,7 @@ const FilmReview = () => {
           total: 2,
         }}
         showBackBtn
+        backFn={resetFilm}
       />
 
       <div className="film">
