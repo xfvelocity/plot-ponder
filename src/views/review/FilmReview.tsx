@@ -40,12 +40,7 @@ const FilmReview = () => {
     setLoading(true);
 
     const res = await api("POST", "/review", {
-      film: {
-        name: film.name,
-        id: film.id,
-        genres: film.genres,
-        image: film.image,
-      },
+      filmId: film.id,
       rating,
       comments,
       date: new Date(date),
