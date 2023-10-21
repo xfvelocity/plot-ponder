@@ -62,10 +62,23 @@
   }
 
   &-rating {
+    position: relative;
     font-weight: 700;
     margin-left: auto;
     color: map-get($pp-colours, "primary");
     font-size: 18px;
+    z-index: 2;
+  }
+
+  &-rating-container {
+    position: relative;
+
+    .pp-icon {
+      position: absolute;
+      z-index: 1;
+      left: -10px;
+      top: -10px;
+    }
   }
 
   &-bottom {

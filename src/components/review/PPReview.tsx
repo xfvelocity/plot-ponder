@@ -52,7 +52,11 @@ const PPReview = ({ review, showUser = false }: Props) => {
               </div>
             )}
 
-            <p className="pp-review-rating">{review.rating}</p>
+            <div className="pp-review-rating-container">
+              {review.rating === 10 ? <PPIcon src="star" size={38} /> : null}
+
+              <p className="pp-review-rating">{review.rating}</p>
+            </div>
           </div>
         </div>
       </div>
