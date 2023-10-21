@@ -1,4 +1,12 @@
 .footer {
+  &-holder {
+    height: 75px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
   &-container {
     position: fixed;
     display: flex;
