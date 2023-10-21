@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { api } from "@/api";
+import { useUserStore } from "@/stores/user";
 
 // ** Styles **
 import "./profile.scss";
@@ -17,10 +18,11 @@ import { ProfileUser, Review } from "@/types/generic";
 
 const Profile = () => {
   const params = useParams();
+  const { user } = useUserStore();
 
   const loader = useRef(null);
 
-  const [user, setUser] = useState<ProfileUser>({
+  const [profileUser, setProfileUser] = useState<ProfileUser>({
     name: "",
     username: "",
     uuid: "",
@@ -31,6 +33,7 @@ const Profile = () => {
   const [page, setPage] = useState<number>(1);
   const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
 
+  // ** Methods **
   const getUsersProfile = async (): Promise<void> => {
     setLoading(true);
 
@@ -39,7 +42,7 @@ const Profile = () => {
       : await api("GET", `/user`);
 
     if (!res.error) {
-      setUser(res);
+      setProfileUser(res);
     }
 
     setLoading(false);
@@ -47,7 +50,7 @@ const Profile = () => {
 
   const getUsersReview = async (): Promise<void> => {
     const res = params.username
-      ? await api("GET", `/user-reviews/${user.uuid}?page=${page}`)
+      ? await api("GET", `/user-reviews/${profileUser.uuid}?page=${page}`)
       : await api("GET", `/user-reviews?page=${page}`);
 
     if (!res.error) {
@@ -61,33 +64,51 @@ const Profile = () => {
     }
   };
 
+  // ** UseEffect **
   useEffect(() => {
-    getUsersProfile();
+    if (params.username) {
+      getUsersProfile();
+    } else {
+      setProfileUser({
+        name: user.name,
+        username: user.username,
+        uuid: user.uuid,
+        avatar: user.avatar,
+      });
+    }
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          getUsersReview();
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.5,
-      }
-    );
-
-    if (loader.current) {
-      observer.observe(loader.current);
+    if (profileUser.uuid) {
+      getUsersReview();
     }
+  }, [profileUser]);
 
-    return () => {
+  useEffect(() => {
+    if (page > 1) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            getUsersReview();
+          }
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.5,
+        }
+      );
+
       if (loader.current) {
-        observer.unobserve(loader.current);
+        observer.observe(loader.current);
       }
-    };
+
+      return () => {
+        if (loader.current) {
+          observer.unobserve(loader.current);
+        }
+      };
+    }
   }, [reviews]);
 
   return (
@@ -102,10 +123,10 @@ const Profile = () => {
             <div>
               <PPAvatar size={60} />
 
-              <h3>{user.name}</h3>
+              <h3>{profileUser.name}</h3>
               <p className="pp-text-colour-primary">
                 <span className="pp-profile-user-at">@</span>
-                {user.username}
+                {profileUser.username}
               </p>
             </div>
           )}

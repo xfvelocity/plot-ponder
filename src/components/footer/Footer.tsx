@@ -39,7 +39,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="footer-container">
+    <div className="footer-container pp-bg-white">
       {buttons.map((button, i) => (
         <button
           className={`footer-button pp-text-colour-primary pp-bg-white`}
