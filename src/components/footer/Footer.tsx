@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 // ** Componets **
-import PPIcon from "../basic/icon/PPIcon";
-import PPAvatar from "../basic/avatar/PPAvatar";
+import PPIcon from "@/components/basic/icon/PPIcon";
+import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
 // ** Styles **
 import "./footer.scss";
