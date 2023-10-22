@@ -7,6 +7,7 @@ import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
 import FilmSelect from "@/views/review/FilmSelect";
 import FilmReview from "@/views/review/FilmReview";
+import Profile from "@/views/user/Profile";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial
@@ -57,6 +58,22 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/profile",
+    element: (
+      <ContentWrapper>
+        <Profile />
+      </ContentWrapper>
+    ),
+  },
+  {
+    path: "/user/:username",
+    element: (
+      <ContentWrapper>
+        <Profile />
+      </ContentWrapper>
+    ),
   },
 ]);
 
