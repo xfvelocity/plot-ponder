@@ -5,6 +5,8 @@ import Home from "@/views/Home";
 import Register from "@/views/auth/register/Register";
 import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
+import FilmSelect from "@/views/review/FilmSelect";
+import FilmReview from "@/views/review/FilmReview";
 import Profile from "@/views/user/Profile";
 
 /*
@@ -35,6 +37,27 @@ const router = createBrowserRouter([
         <Login />
       </ContentWrapper>
     ),
+  },
+  {
+    path: "/review",
+    children: [
+      {
+        path: "film",
+        element: (
+          <ContentWrapper>
+            <FilmSelect />
+          </ContentWrapper>
+        ),
+      },
+      {
+        path: "review",
+        element: (
+          <ContentWrapper>
+            <FilmReview />
+          </ContentWrapper>
+        ),
+      },
+    ],
   },
   {
     path: "/profile",

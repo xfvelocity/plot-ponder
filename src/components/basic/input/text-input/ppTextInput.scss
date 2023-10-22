@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 1fr 30px;
   align-items: center;
-  border-color: map-get($pp-colours, "grey") !important;
 
   &-content {
     height: 100%;

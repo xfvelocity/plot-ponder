@@ -1,4 +1,8 @@
 .rc-slider {
+  height: 55px;
+  margin-left: 5px;
+  width: 98%;
+
   &-rail {
     height: 20px;
     background: linear-gradient(
@@ -34,7 +38,9 @@
   }
 
   &-mark {
-    top: 35px;
+    top: 30px;
+    left: 5px;
+    width: 97%;
 
     &-text {
       color: rgb(178, 178, 178);

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-// ** Componets **
-import PPIcon from "../basic/icon/PPIcon";
-import PPAvatar from "../basic/avatar/PPAvatar";
+// ** Components **
+import PPIcon from "@/components/basic/icon/PPIcon";
+import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
 // ** Styles **
 import "./footer.scss";
@@ -24,7 +24,7 @@ const buttons: Button[] = [
   {
     name: "Review",
     svg: "review",
-    link: "/",
+    link: "/review/film",
   },
   {
     name: "Profile",
@@ -35,6 +35,7 @@ const buttons: Button[] = [
 
 // ** Component **
 const Footer = () => {
+  // ** Hooks **
   const navigate = useNavigate();
 
   return (
