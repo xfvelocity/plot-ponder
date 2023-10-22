@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
 
+// ** Types **
+import { ProfileUser, Review } from "@/types/generic";
+
 // ** Styles **
 import "./profile.scss";
 
@@ -11,10 +14,7 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import PPReview from "@/components/review/PPReview";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
-import PPLoading from "@/components/basic/loading/PPLoading";
-
-// ** Types **
-import { ProfileUser, Review } from "@/types/generic";
+import PPReviewSkeleton from "@/components/review/PPReviewSkeleton";
 
 const Profile = () => {
   const params = useParams();
@@ -118,7 +118,14 @@ const Profile = () => {
       <div className="pp-profile">
         <div className="pp-profile-user">
           {loading ? (
-            <PPLoading className="pp-mx-auto" size={24} />
+            <div className="pp-profile-user-skeleton">
+              <div className="pp-profile-user-skeleton-img" />
+
+              <div>
+                <div className="pp-profile-user-skeleton-name" />
+                <div className="pp-profile-user-skeleton-username" />
+              </div>
+            </div>
           ) : (
             <div>
               <PPAvatar size={60} />
@@ -138,7 +145,7 @@ const Profile = () => {
 
         {scrollDisabled ? null : (
           <div ref={loader} style={{ marginTop: "20px" }}>
-            <PPLoading className="pp-mx-auto" size={24} />
+            <PPReviewSkeleton amount={reviews.length === 0 ? 3 : 1} />
           </div>
         )}
       </div>

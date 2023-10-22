@@ -4,8 +4,8 @@ import { api } from "@/api";
 // ** Components **
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import PPLoading from "@/components/basic/loading/PPLoading";
 import PPReview from "@/components/review/PPReview";
+import PPReviewSkeleton from "@/components/review/PPReviewSkeleton";
 
 const Home = () => {
   const loader = useRef(null);
@@ -59,7 +59,7 @@ const Home = () => {
 
         {scrollDisabled ? null : (
           <div ref={loader} style={{ marginTop: "20px" }}>
-            <PPLoading className="pp-mx-auto" size={24} />
+            <PPReviewSkeleton amount={reviews.length === 0 ? 3 : 1} />
           </div>
         )}
       </div>
