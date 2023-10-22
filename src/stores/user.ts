@@ -6,6 +6,8 @@ interface User {
   name: string;
   email: string;
   accessToken: string;
+  username: string;
+  avatar: string;
 }
 
 interface UserStore {
@@ -31,6 +33,8 @@ export const useUserStore = create<UserStore>()(
           name: "",
           email: "",
           accessToken: "",
+          username: "",
+          avatar: "",
         },
         setUser: (user) => set({ user }),
       }),

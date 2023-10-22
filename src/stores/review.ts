@@ -19,19 +19,22 @@ interface ReviewStore {
   setProgress: (progress: number) => void;
   setFilm: (film: ReviewFilm) => void;
   reset: () => void;
+  resetFilm: () => void;
 }
+
+const initialFilmState: ReviewFilm = {
+  name: "",
+  id: 0,
+  genres: [],
+  release_date: "",
+  overview: "",
+  image: "",
+};
 
 const initialState = {
   progress: 1,
   review: {},
-  film: {
-    name: "",
-    id: 0,
-    genres: [],
-    release_date: "",
-    overview: "",
-    image: "",
-  },
+  film: { ...initialFilmState },
 };
 
 export const useReviewStore = create<ReviewStore>()(
@@ -41,6 +44,7 @@ export const useReviewStore = create<ReviewStore>()(
       setProgress: (progress: number) => set({ progress }),
       setFilm: (film: ReviewFilm) => set({ film }),
       reset: () => set(initialState),
+      resetFilm: () => set({ film: { ...initialFilmState } }),
     })),
     { name: "review" }
   )

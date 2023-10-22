@@ -15,15 +15,20 @@ interface Props {
     current: number;
   };
   showBackBtn?: boolean;
+  backFn?: () => void;
 }
 
-const Navbar = ({ title, children, progress, showBackBtn }: Props) => {
+const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
 
   // ** Methods **
   const back = (): void => {
     navigate(-1);
+
+    if (backFn) {
+      backFn();
+    }
   };
 
   return (

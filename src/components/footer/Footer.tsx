@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-// ** Components **
+// ** Componets **
 import PPIcon from "@/components/basic/icon/PPIcon";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
@@ -22,11 +22,6 @@ const buttons: Button[] = [
     link: "/",
   },
   {
-    name: "Review",
-    svg: "review",
-    link: "/review/film",
-  },
-  {
     name: "Profile",
     png: "/images/profile-pic.png",
     link: "/profile",
@@ -39,18 +34,36 @@ const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="footer-container">
-      {buttons.map((button, i) => (
+    <>
+      <div className="footer-holder" />
+
+      <div className="footer-container pp-bg-white">
+        {FooterButton(buttons[0])}
+
         <button
-          className={`footer-button pp-text-colour-primary pp-bg-white`}
-          key={i}
-          onClick={() => navigate(button.link)}
+          className="footer-button-review"
+          onClick={() => navigate(`/review/film`)}
         >
-          {button.svg ? <PPIcon src={button.svg} size={20} /> : <PPAvatar />}
-          <p>{button.name}</p>
+          <PPIcon src="review" colour="white" />
         </button>
-      ))}
-    </div>
+
+        {FooterButton(buttons[1])}
+      </div>
+    </>
+  );
+};
+
+const FooterButton = (button: Button) => {
+  const navigate = useNavigate();
+
+  return (
+    <button
+      className={`footer-button pp-text-colour-primary pp-bg-white`}
+      onClick={() => navigate(button.link)}
+    >
+      {button.svg ? <PPIcon src={button.svg} size={24} /> : <PPAvatar />}
+      <p>{button.name}</p>
+    </button>
   );
 };
 

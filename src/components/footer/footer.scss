@@ -1,10 +1,21 @@
 .footer {
+  &-holder {
+    height: 75px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
   &-container {
     position: fixed;
     display: flex;
+    justify-content: center;
+    gap: 90px;
     width: 100%;
     bottom: 0;
     z-index: 10;
+    padding-bottom: 15px;
     box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
@@ -13,17 +24,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    cursor: pointer;
     height: 60px;
     border: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
 
     &:hover {
-      background-color: #dceaff;
+      opacity: 0.8;
     }
 
-    .pp-icon {
+    .pp-icon,
+    .pp-avatar {
       margin-bottom: 3px;
+    }
+
+    &-review {
+      background: map-get($pp-colours, "primary");
+      border: none;
+      border-radius: 100%;
+      height: 60px;
+      width: 60px;
+      cursor: pointer;
+      position: absolute;
+      top: -15px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      .pp-icon {
+        margin: 0 auto;
+      }
     }
   }
 }

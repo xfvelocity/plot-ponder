@@ -6,7 +6,7 @@ interface Props {
   size?: number;
 }
 
-const PPAvatar = ({ size = 20 }: Props) => {
+const PPAvatar = ({ size = 25 }: Props) => {
   return (
     <img
       className="pp-avatar"

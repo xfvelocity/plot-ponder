@@ -4,12 +4,12 @@ import { api } from "@/api";
 // ** Components **
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import PPLoading from "@/components/basic/loading/PPLoading";
 import PPReview from "@/components/review/PPReview";
+import PPReviewSkeleton from "@/components/review/PPReviewSkeleton";
 
 const Home = () => {
   const loader = useRef(null);
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
   const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
   const [reviews, setReviews] = useState<any[]>([]);
 
@@ -38,11 +38,9 @@ const Home = () => {
         threshold: 0.5,
       }
     );
-
     if (loader.current) {
       observer.observe(loader.current);
     }
-
     return () => {
       if (loader.current) {
         observer.unobserve(loader.current);
@@ -56,12 +54,12 @@ const Home = () => {
 
       <div>
         {reviews.map((review, i) => (
-          <PPReview review={review} key={i} />
+          <PPReview review={review} showUser={true} key={i} />
         ))}
 
         {scrollDisabled ? null : (
-          <div ref={loader}>
-            <PPLoading />
+          <div ref={loader} style={{ marginTop: "20px" }}>
+            <PPReviewSkeleton amount={reviews.length === 0 ? 3 : 1} />
           </div>
         )}
       </div>

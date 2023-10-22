@@ -1,6 +1,5 @@
 import { useUserStore } from "@/stores/user";
 import { client } from "./api";
-import { AxiosRequestConfig } from "axios";
 import { useAppStore } from "@/stores/app";
 
 export const api = async (
@@ -10,18 +9,20 @@ export const api = async (
   auth = true
 ) => {
   let res: any;
-  let config: AxiosRequestConfig = {};
+  let config: any = {};
 
   try {
+    config = {
+      headers: {
+        accept: "application/json",
+        ["Client-Auth"]: import.meta.env.VITE_API_CLIENT_TOKEN,
+      },
+    };
+
     if (auth) {
       const user = useUserStore.getState().user;
 
-      config = {
-        headers: {
-          accept: "application/json",
-          Authorization: `${user.accessToken}`,
-        },
-      };
+      config.headers.Authorization = `${user.accessToken}`;
     }
 
     // Decide which method to use based on the passed type

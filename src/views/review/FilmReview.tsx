@@ -26,7 +26,7 @@ const options = [
 const FilmReview = () => {
   const navigate = useNavigate();
 
-  const { progress, film, reset } = useReviewStore();
+  const { progress, film, reset, resetFilm } = useReviewStore();
 
   // ** Data **
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,12 +40,7 @@ const FilmReview = () => {
     setLoading(true);
 
     const res = await api("POST", "/review", {
-      film: {
-        name: film.name,
-        id: film.id,
-        genres: film.genres,
-        image: film.image,
-      },
+      filmId: film.id,
       rating,
       comments,
       date: new Date(date),
@@ -69,6 +64,7 @@ const FilmReview = () => {
           total: 2,
         }}
         showBackBtn
+        backFn={resetFilm}
       />
 
       <div className="film">

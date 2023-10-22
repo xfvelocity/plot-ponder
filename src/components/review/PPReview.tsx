@@ -13,15 +13,16 @@ import { Review } from "@/types/generic";
 
 interface Props {
   review: Review;
+  showUser?: boolean;
 }
 
-const PPReview = ({ review }: Props) => {
+const PPReview = ({ review, showUser = false }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
 
   return (
     <div className="pp-review">
-      {review.user ? (
+      {showUser ? (
         <div
           className="pp-review-user"
           onClick={() => navigate(`/user/${review.user.username}`)}
@@ -45,11 +46,17 @@ const PPReview = ({ review }: Props) => {
           </div>
 
           <div className="pp-review-bottom">
-            {review.user ? null : (
-              <div className="pp-review-bottom-date">PPReviewDate(review)</div>
+            {showUser ? null : (
+              <div className="pp-review-bottom-date">
+                {PPReviewDate(review)}
+              </div>
             )}
 
-            <p className="pp-review-rating">{review.rating}</p>
+            <div className="pp-review-rating-container">
+              {review.rating === 10 ? <PPIcon src="star" size={38} /> : null}
+
+              <p className="pp-review-rating">{review.rating}</p>
+            </div>
           </div>
         </div>
       </div>

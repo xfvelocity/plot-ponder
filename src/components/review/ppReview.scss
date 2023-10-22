@@ -1,21 +1,21 @@
 .pp-review {
   border-bottom: 3px solid map-get($pp-colours, "grey");
+  background: white;
+  padding: 10px 20px;
 
   &-container {
     border-radius: 10px;
     display: flex;
     align-items: stretch;
-    padding: 10px 20px;
-    background: white;
     border-radius: 5px;
   }
 
   &-user {
-    padding: 10px 20px 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
+    margin-bottom: 10px;
     color: map-get($pp-colours, "primary");
 
     &-user {
@@ -62,9 +62,23 @@
   }
 
   &-rating {
+    position: relative;
     font-weight: 700;
     color: map-get($pp-colours, "primary");
     font-size: 18px;
+    z-index: 2;
+  }
+
+  &-rating-container {
+    position: relative;
+    margin-left: auto;
+
+    .pp-icon {
+      position: absolute;
+      z-index: 1;
+      left: -10px;
+      top: -10px;
+    }
   }
 
   &-bottom {
@@ -72,6 +86,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2px;
+    width: 100%;
 
     &-date {
       display: flex;
