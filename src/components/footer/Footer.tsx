@@ -22,11 +22,6 @@ const buttons: Button[] = [
     link: "/",
   },
   {
-    name: "Review",
-    svg: "review",
-    link: "/review/film",
-  },
-  {
     name: "Profile",
     png: "/images/profile-pic.png",
     link: "/profile",
@@ -35,7 +30,6 @@ const buttons: Button[] = [
 
 // ** Component **
 const Footer = () => {
-  // ** Hooks **
   const navigate = useNavigate();
 
   return (
@@ -43,18 +37,32 @@ const Footer = () => {
       <div className="footer-holder" />
 
       <div className="footer-container pp-bg-white">
-        {buttons.map((button, i) => (
-          <button
-            className={`footer-button pp-text-colour-primary pp-bg-white`}
-            key={i}
-            onClick={() => navigate(button.link)}
-          >
-            {button.svg ? <PPIcon src={button.svg} size={20} /> : <PPAvatar />}
-            <p>{button.name}</p>
-          </button>
-        ))}
+        {FooterButton(buttons[0])}
+
+        <button
+          className="footer-button-review"
+          onClick={() => navigate(`/review/film`)}
+        >
+          <PPIcon src="review" colour="white" />
+        </button>
+
+        {FooterButton(buttons[1])}
       </div>
     </>
+  );
+};
+
+const FooterButton = (button: Button) => {
+  const navigate = useNavigate();
+
+  return (
+    <button
+      className={`footer-button pp-text-colour-primary pp-bg-white`}
+      onClick={() => navigate(button.link)}
+    >
+      {button.svg ? <PPIcon src={button.svg} size={24} /> : <PPAvatar />}
+      <p>{button.name}</p>
+    </button>
   );
 };
 
