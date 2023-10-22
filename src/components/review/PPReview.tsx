@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./ppReview.scss";
 
 // ** Components **
-import PPDateChip from "../basic/date-chip/PPDateChip";
-import PPIcon from "../basic/icon/PPIcon";
-import PPAvatar from "../basic/avatar/PPAvatar";
+import PPDateChip from "@/components/basic/date-chip/PPDateChip";
+import PPIcon from "@/components/basic/icon/PPIcon";
+import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
 // ** Types **
 import { Review } from "@/types/generic";

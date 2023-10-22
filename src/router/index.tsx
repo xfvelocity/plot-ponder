@@ -39,22 +39,6 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/profile",
-    element: (
-      <ContentWrapper>
-        <Profile />
-      </ContentWrapper>
-    ),
-  },
-  {
-    path: "/user/:username",
-    element: (
-      <ContentWrapper>
-        <Profile />
-      </ContentWrapper>
-    ),
-  },
-  {
     path: "/review",
     children: [
       {
@@ -74,6 +58,22 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/profile",
+    element: (
+      <ContentWrapper>
+        <Profile />
+      </ContentWrapper>
+    ),
+  },
+  {
+    path: "/user/:username",
+    element: (
+      <ContentWrapper>
+        <Profile />
+      </ContentWrapper>
+    ),
   },
 ]);
 

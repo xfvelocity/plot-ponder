@@ -9,7 +9,7 @@ import { clickOutside } from "@/composables/generic";
 
 // ** Components **
 import PPIcon from "@/components/basic/icon/PPIcon";
-import PPLoading from "../../loading/PPLoading";
+import PPLoading from "@/components/basic/loading/PPLoading";
 
 // ** Types **
 export interface SelectOption {
@@ -30,7 +30,7 @@ interface Props {
 const PPAutoComplete = (props: Props) => {
   // ** Data **
   const select = useRef<HTMLDivElement | null>(null);
-  const [term, setTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
 
   // ** Methods **
@@ -41,7 +41,7 @@ const PPAutoComplete = (props: Props) => {
   const optionSelected = (option: SelectOption): void => {
     if (option.value != props.selectedOption && isSelectOpen) {
       props.setSelectedOption(option.value);
-      setTerm(option.text);
+      setSearchTerm(option.text);
       setIsSelectOpen(false);
     }
   };
@@ -51,16 +51,17 @@ const PPAutoComplete = (props: Props) => {
       <div className="pp-select">
         <div
           className={clsx(`pp-select-toggle pp-input pp-input-outlined`, {
-            "pp-input-active": props.selectedOption || isSelectOpen || term,
+            "pp-input-active":
+              props.selectedOption || isSelectOpen || searchTerm,
           })}
           onClick={() => setIsSelectOpen(true)}
         >
           <label className={`pp-text-colour-black`}>{props.label}</label>
           <input
-            value={term}
+            value={searchTerm}
             onChange={(e) => {
               props.setSearchTerm(e.target.value);
-              setTerm(e.target.value);
+              setSearchTerm(e.target.value);
             }}
           />
 
@@ -88,9 +89,7 @@ const PPAutoComplete = (props: Props) => {
               </div>
             ))}
           </div>
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </div>
   );

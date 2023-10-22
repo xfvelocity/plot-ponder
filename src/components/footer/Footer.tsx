@@ -30,6 +30,7 @@ const buttons: Button[] = [
 
 // ** Component **
 const Footer = () => {
+  // ** Hooks **
   const navigate = useNavigate();
 
   return (
