@@ -127,7 +127,7 @@ const Register = () => {
               iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
             />
             <p className="register-password-hint">
-              Password include 6 characters and 1 number
+              Password must include 6 characters and 1 number
             </p>
           </div>
 
