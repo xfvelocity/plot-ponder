@@ -19,7 +19,15 @@
     }
   }
 
-  .pp-text-input {
-    margin: 20px 0;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &-password-hint {
+    margin-left: 5px;
+    margin-top: 2px;
+    font-size: 9px;
   }
 }

@@ -98,6 +98,7 @@ const Register = () => {
             value={form.username}
             setValue={(e) => setFormValue("username", e)}
           />
+
           <PPTextInput
             label="Name"
             type="name"
@@ -105,6 +106,7 @@ const Register = () => {
             value={form.name}
             setValue={(e) => setFormValue("name", e)}
           />
+
           <PPTextInput
             label="Email"
             type="email"
@@ -112,16 +114,23 @@ const Register = () => {
             value={form.email}
             setValue={(e) => setFormValue("email", e)}
           />
-          <PPTextInput
-            label="Password"
-            value={form.password}
-            required={true}
-            icon={isPasswordShowing ? "eye-slash" : "eye"}
-            type={isPasswordShowing ? "text" : "password"}
-            iconColour="grey"
-            setValue={(e) => setFormValue("password", e)}
-            iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
-          />
+
+          <div>
+            <PPTextInput
+              label="Password"
+              value={form.password}
+              required={true}
+              icon={isPasswordShowing ? "eye-slash" : "eye"}
+              type={isPasswordShowing ? "text" : "password"}
+              iconColour="grey"
+              setValue={(e) => setFormValue("password", e)}
+              iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
+            />
+            <p className="register-password-hint">
+              Password include 6 characters and 1 number
+            </p>
+          </div>
+
           <PPTextInput
             label="Confirm Password"
             value={form.confirmPassword}
