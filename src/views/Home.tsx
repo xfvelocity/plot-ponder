@@ -18,7 +18,7 @@ const Home = () => {
 
     setReviews([...reviews, ...res.data]);
 
-    if (page === res.meta.totalPages) {
+    if (page === res.meta.totalPages || res.data.length === 0) {
       setScrollDisabled(true);
     } else {
       setPage(page + 1);
@@ -57,9 +57,13 @@ const Home = () => {
           <PPReview review={review} showUser={true} key={i} />
         ))}
 
-        {scrollDisabled ? null : (
+        {scrollDisabled ? (
+          <p style={{ textAlign: "center", marginTop: "10px" }}>
+            No reviews found
+          </p>
+        ) : (
           <div ref={loader} style={{ marginTop: "20px" }}>
-            <PPReviewSkeleton amount={reviews.length === 0 ? 3 : 1} />
+            <PPReviewSkeleton amount={reviews.length === 0 ? 5 : 1} />
           </div>
         )}
       </div>
