@@ -9,7 +9,7 @@ interface Props {
 const PPReviewSkeleton = ({ amount = 1 }: Props) => {
   return (
     <>
-      {[...Array(amount)].map((x, i) => (
+      {[...Array(amount)].map((_x, i) => (
         <div key={i} className="pp-review-skeleton">
           <div className="pp-review-skeleton-img" />
 
