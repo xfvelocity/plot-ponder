@@ -14,7 +14,7 @@ const PPToggle = ({ active, setActive, size = 25 }: Props) => {
   return (
     <div
       className="pp-toggle"
-      style={{ "--size": `${size}px` }}
+      style={{ "--size": `${size}px` } as React.CSSProperties}
       onClick={() => setActive(!active)}
     >
       <div
