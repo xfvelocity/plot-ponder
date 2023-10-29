@@ -73,6 +73,7 @@ const PPAutoComplete = (props: Props) => {
                 isSelectOpen ? "pp-select-arrow-active" : ""
               }`}
               src="chevron-down"
+              colour="grey-darken-2"
               size={12}
             />
           </div>

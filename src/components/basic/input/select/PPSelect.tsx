@@ -63,8 +63,8 @@ const PPSelect = (props: Props) => {
           <span className="pp-select-value">{findMatchingOption()}</span>
 
           <PPIcon
-            className={clsx(`pp-select-arrow pp-select-s-arrow`, {
-              "pp-select-arrow-active": isSelectOpen,
+            className={clsx(`pp-select-s-arrow`, {
+              "pp-select-s-arrow-active": isSelectOpen,
             })}
             src="chevron-down"
             colour="grey-darken-2"
