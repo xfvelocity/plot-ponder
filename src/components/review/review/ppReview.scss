@@ -1,7 +1,6 @@
 .pp-review {
-  border-bottom: 3px solid map-get($pp-colours, "grey");
-  background: white;
-  padding: 10px 20px;
+  border-bottom: 2px solid map-get($pp-colours, "grey-lighten-1");
+  padding: 20px;
 
   &-container {
     border-radius: 10px;
@@ -21,6 +20,7 @@
     &-user {
       display: flex;
       align-items: center;
+      font-weight: 500;
     }
 
     &-date {
@@ -59,6 +59,8 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    flex: 1;
+    min-width: 0;
   }
 
   &-rating {
@@ -91,6 +93,37 @@
     &-date {
       display: flex;
       gap: 5px;
+    }
+  }
+
+  @include sm-up {
+    padding: 30px 20px;
+
+    &-user {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    &-title {
+      font-size: 18px;
+    }
+
+    &-description {
+      font-size: 12px;
+    }
+
+    &-poster {
+      height: 200px;
+    }
+
+    &-rating {
+      font-size: 20px;
+    }
+
+    &-rating-container {
+      .pp-icon {
+        top: -11px;
+      }
     }
   }
 }

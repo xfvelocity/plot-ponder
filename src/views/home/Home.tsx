@@ -4,8 +4,8 @@ import { api } from "@/api";
 // ** Components **
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import PPReview from "@/components/review/PPReview";
-import PPReviewSkeleton from "@/components/review/PPReviewSkeleton";
+import PPReview from "@/components/review/review/PPReview";
+import PPReviewSkeleton from "@/components/review/skeleton/PPReviewSkeleton";
 
 const Home = () => {
   const loader = useRef(null);
@@ -52,7 +52,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div>
+      <div className="pp-max-width">
         {reviews.map((review, i) => (
           <PPReview review={review} showUser={true} key={i} />
         ))}

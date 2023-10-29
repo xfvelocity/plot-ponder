@@ -4,6 +4,7 @@ import "./ppDateChip.scss";
 // ** Types **
 interface Props {
   date: Date;
+  fontSize?: number;
 }
 
 interface DateOptions {
@@ -12,7 +13,7 @@ interface DateOptions {
   d: number;
 }
 
-const PPDateChip = ({ date }: Props) => {
+const PPDateChip = ({ date, fontSize = 9 }: Props) => {
   // ** Methods **
   const formatDate = (date: Date): string => {
     if (!date) return "";
@@ -42,7 +43,14 @@ const PPDateChip = ({ date }: Props) => {
     return age;
   };
 
-  return <div className="pp-date-chip">{formatDate(date)}</div>;
+  return (
+    <div
+      className="pp-date-chip"
+      style={{ "--fontSize": fontSize } as React.CSSProperties}
+    >
+      {formatDate(date)}
+    </div>
+  );
 };
 
 export default PPDateChip;

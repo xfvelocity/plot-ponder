@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import "./ppDatePicker.scss";
 
 // ** Components **
-import PPIcon from "../icon/PPIcon";
+import PPIcon from "../../icon/PPIcon";
 
 // ** Types **
 interface Props {
