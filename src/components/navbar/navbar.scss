@@ -43,4 +43,13 @@
       transition: width 0.3s ease-in-out;
     }
   }
+
+  @include sm-up {
+    padding: 20px;
+
+    h3 {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+  }
 }
