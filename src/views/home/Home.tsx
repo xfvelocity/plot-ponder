@@ -59,7 +59,7 @@ const Home = () => {
 
         {scrollDisabled ? null : (
           <div ref={loader} style={{ marginTop: "20px" }}>
-            <PPReviewSkeleton amount={reviews.length === 0 ? 5 : 1} />
+            <PPReviewSkeleton amount={reviews.length === 0 ? 5 : 1} showUser />
           </div>
         )}
       </div>
