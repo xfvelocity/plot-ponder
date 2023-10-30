@@ -2,9 +2,6 @@
 
 Movie review app
 
-Production: https://plotponder.com \
-Test: https://tst.plotponder.com
-
 ## Scripts
 
 Run development build
