@@ -18,6 +18,7 @@ interface Props {
   required?: boolean;
   icon?: string;
   iconColour?: string;
+  className?: string;
   iconFn?: () => void;
   onEnter?: (e: any) => void;
 }
@@ -32,6 +33,7 @@ const PPTextInput = ({
   icon,
   required = false,
   iconColour,
+  className = "",
   iconFn,
   onEnter,
 }: Props) => {
@@ -40,7 +42,7 @@ const PPTextInput = ({
 
   return (
     <div
-      className={clsx(`pp-text-input pp-input pp-input-outlined`, {
+      className={clsx(`pp-text-input pp-input pp-input-outlined ${className}`, {
         "pp-input-active": isActive || !!value,
         "pp-disabled": disabled,
       })}
