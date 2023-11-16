@@ -47,4 +47,22 @@
     bottom: 0;
     right: 0;
   }
+
+  @include sm-up {
+    &-poster {
+      height: 200px;
+    }
+
+    &-title {
+      font-size: 18px;
+    }
+
+    &-description {
+      font-size: 12px;
+    }
+
+    &-year {
+      font-size: 12px;
+    }
+  }
 }

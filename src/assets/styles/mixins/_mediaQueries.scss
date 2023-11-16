@@ -1,0 +1,83 @@
+@mixin xs {
+  // 499px wide or less
+  @media only screen and (max-width: ($breakpoint-xs - 1px)) {
+    @content;
+  }
+}
+
+@mixin sm {
+  // between 500px and 767px
+  @media screen and (min-width: $breakpoint-xs) and (max-width: ($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+@mixin md {
+  // between 768px and 1023px
+  @media screen and (min-width: $breakpoint-sm) and (max-width: ($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  // between 1024px and 1365px
+  @media only screen and (min-width: $breakpoint-md) and (max-width: ($breakpoint-lg - 1px)) {
+    @content;
+  }
+}
+
+@mixin xs-up {
+  // 500px wide or above
+  @media only screen and (min-width: $breakpoint-xs) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  // 768px wide or above
+  @media only screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  // 1024px wide or above
+  @media only screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  // 1366px wide or above
+  @media only screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xs-down {
+  // 499px wide or below
+  @media only screen and (max-width: ($breakpoint-xs - 1px)) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  // 767px wide or below
+  @media only screen and (max-width: ($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  // 1023px wide or below
+  @media only screen and (max-width: ($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  // 1365px wide or below
+  @media only screen and (max-width: ($breakpoint-lg - 1px)) {
+    @content;
+  }
+}

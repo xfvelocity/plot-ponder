@@ -40,6 +40,12 @@ textarea {
   }
 }
 
+.pp-max-width {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .pp-button-reset {
   border: none;
   background: none;
@@ -81,7 +87,7 @@ textarea {
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    @for $i from 1 through 5 {
+    @for $i from 1 through 10 {
       &-#{$i} {
         overflow: hidden;
         display: -webkit-box;
@@ -124,7 +130,7 @@ textarea {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
   100% {
     opacity: 1;

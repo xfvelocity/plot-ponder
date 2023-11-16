@@ -83,12 +83,7 @@ const Register = () => {
       <Navbar />
 
       <div className="register pp-center">
-        <div className="register-message">
-          <h2 className="pp-text-colour-primary">Create an account</h2>
-          <p>
-            Already have an account? <a href="/login">Login</a>
-          </p>
-        </div>
+        <h2 className="pp-text-colour-primary">Register</h2>
 
         <form className="register-form" onSubmit={createAccount}>
           <PPTextInput
@@ -150,6 +145,12 @@ const Register = () => {
             loading={loading}
           />
         </form>
+
+        <div className="register-msg">
+          <p>
+            Already have an account? <a href="/login">Login</a>
+          </p>
+        </div>
       </div>
     </>
   );

@@ -12,9 +12,9 @@ import "./profile.scss";
 // ** Components **
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import PPReview from "@/components/review/PPReview";
+import PPReview from "@/components/review/review/PPReview";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
-import PPReviewSkeleton from "@/components/review/PPReviewSkeleton";
+import PPReviewSkeleton from "@/components/review/skeleton/PPReviewSkeleton";
 
 const Profile = () => {
   const params = useParams();
@@ -115,7 +115,7 @@ const Profile = () => {
     <>
       <Navbar />
 
-      <div className="pp-profile">
+      <div className="pp-profile pp-max-width">
         <div className="pp-profile-user">
           {loading ? (
             <div className="pp-profile-user-skeleton">

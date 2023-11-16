@@ -1,3 +1,8 @@
+$breakpoint-xs: 500px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1366px;
+
 $pp-colours: (
   "black": #000000,
   "white": #ffffff,
@@ -93,3 +98,6 @@ $pp-colours: (
   "grey-darken-3": #424242,
   "grey-darken-4": #212121,
 );
+
+@import "./mixins/mediaQueries.scss";
+@import "./mixins/generic.scss";

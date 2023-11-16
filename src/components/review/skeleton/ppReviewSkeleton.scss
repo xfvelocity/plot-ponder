@@ -1,0 +1,97 @@
+.pp-review-skeleton {
+  padding: 20px;
+  border-bottom: 2px solid map-get($pp-colours, "grey-lighten-1");
+  animation: loading 4s infinite;
+
+  &-inner {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  &-img,
+  &-title,
+  &-desc,
+  &-genres,
+  &-score,
+  &-user-img,
+  &-user-name,
+  &-user-info {
+    background: map-get($pp-colours, "grey-lighten-2");
+  }
+
+  &-img {
+    height: 150px;
+    width: 100px;
+    border-radius: 10px;
+  }
+
+  &-container {
+    width: 80%;
+    margin-top: 2px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  &-desc {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 5px;
+  }
+
+  &-genres,
+  &-score {
+    height: 15px;
+    width: 30px;
+    border-radius: 2px;
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+
+    &-img {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    &-name,
+    &-info {
+      height: 12px;
+      width: 60px;
+      border-radius: 5px;
+    }
+  }
+
+  @include sm-up {
+    &-img {
+      height: 200px;
+      width: 150px;
+    }
+  }
+}

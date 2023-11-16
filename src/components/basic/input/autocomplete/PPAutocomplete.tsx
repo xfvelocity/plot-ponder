@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import clsx from "clsx";
 
 // ** Styles **
-import "./ppSelect.scss";
+import "@/assets/styles/components/select.scss";
 
 // ** Composables **
 import { clickOutside } from "@/composables/generic";
@@ -73,6 +73,7 @@ const PPAutoComplete = (props: Props) => {
                 isSelectOpen ? "pp-select-arrow-active" : ""
               }`}
               src="chevron-down"
+              colour="grey-darken-2"
               size={12}
             />
           </div>

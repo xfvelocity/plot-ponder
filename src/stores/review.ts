@@ -13,10 +13,8 @@ export interface ReviewFilm {
 interface Review {}
 
 interface ReviewStore {
-  progress: number;
   review: Review;
   film: ReviewFilm;
-  setProgress: (progress: number) => void;
   setFilm: (film: ReviewFilm) => void;
   reset: () => void;
   resetFilm: () => void;
@@ -32,7 +30,6 @@ const initialFilmState: ReviewFilm = {
 };
 
 const initialState = {
-  progress: 1,
   review: {},
   film: { ...initialFilmState },
 };
@@ -41,7 +38,6 @@ export const useReviewStore = create<ReviewStore>()(
   persist(
     devtools((set) => ({
       ...initialState,
-      setProgress: (progress: number) => set({ progress }),
       setFilm: (film: ReviewFilm) => set({ film }),
       reset: () => set(initialState),
       resetFilm: () => set({ film: { ...initialFilmState } }),

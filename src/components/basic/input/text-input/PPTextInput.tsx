@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
+import { useMediaQuery } from "@/composables/mediaQueries";
 
 // ** Styles **
 import "./ppTextInput.scss";
@@ -37,6 +38,9 @@ const PPTextInput = ({
   iconFn,
   onEnter,
 }: Props) => {
+  // ** Hooks **
+  const { isMedium } = useMediaQuery();
+
   // ** Data **
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -67,7 +71,12 @@ const PPTextInput = ({
       </div>
 
       {icon && (
-        <PPIcon src={icon} colour={iconColour} size={16} onClick={iconFn} />
+        <PPIcon
+          src={icon}
+          colour={iconColour}
+          size={isMedium ? 18 : 16}
+          onClick={iconFn}
+        />
       )}
     </div>
   );
