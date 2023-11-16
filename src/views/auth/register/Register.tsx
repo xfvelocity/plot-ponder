@@ -65,7 +65,7 @@ const Register = () => {
     const res = await api(
       "POST",
       "/register",
-      { username, name, email, password },
+      { username: username.toLowerCase(), name, email, password },
       false
     );
 
@@ -87,6 +87,7 @@ const Register = () => {
 
         <form className="register-form" onSubmit={createAccount}>
           <PPTextInput
+            className="register-username"
             label="Username"
             type="username"
             required={true}

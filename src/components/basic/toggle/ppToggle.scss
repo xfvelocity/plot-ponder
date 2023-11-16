@@ -1,0 +1,26 @@
+.pp-toggle {
+  position: relative;
+  height: var(--size);
+  width: calc(var(--size) * 2);
+  background: map-get($pp-colours, "grey-lighten-2");
+
+  &-switch {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    height: var(--size);
+    width: calc(var(--size) + 5px);
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+
+    &-active {
+      transform: translateX(calc(var(--size) - 5px));
+    }
+  }
+}
+
+.pp-toggle,
+.pp-toggle-switch {
+  border: 1px solid map-get($pp-colours, "grey-lighten-1");
+  border-radius: 30px;
+}

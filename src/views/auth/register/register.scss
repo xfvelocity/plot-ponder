@@ -1,6 +1,12 @@
 .register {
   min-width: 260px;
 
+  &-username {
+    input {
+      text-transform: lowercase;
+    }
+  }
+
   &-msg {
     p {
       margin-top: 30px;
