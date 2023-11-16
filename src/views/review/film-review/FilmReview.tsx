@@ -68,8 +68,21 @@ const FilmReview = () => {
         <Film review={film} />
 
         <div className="film-review-content">
-          <PPSlider value={rating} setValue={setRating} />
-          <PPDatePicker date={date} setDate={setDate} />
+          <div className="film-review-toggle">
+            <p>Toggle 0.5 ratings</p>
+
+            <PPToggle
+              active={halfRatings}
+              setActive={(value: boolean) => setHalfRatings(value)}
+              size={20}
+            />
+          </div>
+
+          <PPSlider
+            value={rating}
+            halfRatings={halfRatings}
+            setValue={setRating}
+          />
 
           <PPSelect
             label="Where did you watch this?"
@@ -78,32 +91,14 @@ const FilmReview = () => {
             setSelectedOption={setLocation}
           />
 
-          <div className="film-review-content">
-            <div className="film-review-toggle">
-              <p>Toggle 0.5 ratings</p>
+          <PPDatePicker date={date} setDate={setDate} />
 
-              <PPToggle
-                active={halfRatings}
-                setActive={(value: boolean) => setHalfRatings(value)}
-                size={20}
-              />
-            </div>
-
-            <PPSlider
-              value={rating}
-              halfRatings={halfRatings}
-              setValue={setRating}
-            />
-
-            <PPDatePicker date={date} setDate={setDate} />
-
-            <PPTextArea
-              label="Comments"
-              value={comments}
-              rows={5}
-              setValue={setComments}
-            />
-          </div>
+          <PPTextArea
+            label="Comments"
+            value={comments}
+            rows={5}
+            setValue={setComments}
+          />
         </div>
 
         <div className="film-review-btn">
