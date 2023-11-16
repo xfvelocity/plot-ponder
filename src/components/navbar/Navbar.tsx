@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { useMediaQuery } from "@/composables/mediaQueries";
 
 // ** Styles **
 import "./navbar.scss";
@@ -21,6 +22,7 @@ interface Props {
 const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
+  const { isMedium } = useMediaQuery();
 
   // ** Methods **
   const back = (): void => {
@@ -50,7 +52,7 @@ const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
               <h3>{title}</h3>
             ) : (
               <>
-                <PPIcon src="ticket" />
+                <PPIcon src="ticket" size={isMedium ? 28 : 24} />
                 <h3>PlotPonder</h3>
               </>
             )}

@@ -55,4 +55,13 @@ $translateY: 15px;
       transform: scale(0.75) translateY(-$translateY);
     }
   }
+
+  @include sm-up {
+    label,
+    input,
+    select,
+    &-input {
+      font-size: 14px;
+    }
+  }
 }

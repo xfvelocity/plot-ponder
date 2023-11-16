@@ -20,4 +20,8 @@
   input {
     bottom: 8px !important;
   }
+
+  @include sm-up {
+    height: 50px;
+  }
 }

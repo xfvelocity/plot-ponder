@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 
 // ** Pages **
-import Home from "@/views/Home";
+import Home from "@/views/home/Home";
 import Register from "@/views/auth/register/Register";
 import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
 import Profile from "@/views/user/Profile";
-import FilmSelect from "@/views/review/FilmSelect";
-import FilmReview from "@/views/review/FilmReview";
+import FilmSelect from "@/views/review/film-select/FilmSelect";
+import FilmReview from "@/views/review/film-review/FilmReview";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial

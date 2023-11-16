@@ -12,7 +12,7 @@
   &-toggle {
     display: flex;
     align-items: flex-end;
-    padding: 15px 0 15px 0;
+    padding: 15px 0;
     position: relative;
   }
 
@@ -47,7 +47,7 @@
 
     &-item {
       cursor: pointer;
-      padding: 10px;
+      padding: 10px 15px;
       display: flex;
       align-items: center;
 
@@ -61,18 +61,42 @@
     }
   }
 
+  &-arrow,
   &-s-arrow {
     position: relative;
-    top: -2px;
-    margin-right: 10px;
-  }
-
-  &-arrow {
     transition: all 0.3s ease-out;
-    margin-left: 5px;
 
     &-active {
       transform: rotate(180deg);
+    }
+  }
+
+  &-s-arrow {
+    margin-right: 10px;
+    top: -5px;
+
+    &-active {
+      top: 0px;
+    }
+  }
+
+  &-arrow {
+    margin-right: 10px;
+    top: -8px;
+
+    &-active {
+      top: -3px;
+    }
+  }
+
+  @include sm-up {
+    &-items,
+    &-value {
+      font-size: 14px;
+    }
+
+    &-toggle {
+      padding: 18px 0;
     }
   }
 }

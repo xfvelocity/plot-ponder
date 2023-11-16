@@ -3,6 +3,7 @@
 
   input {
     max-width: 93%;
+    appearance: none;
 
     &::-webkit-calendar-picker-indicator {
       background: transparent;
@@ -21,5 +22,9 @@
     position: absolute;
     @include center(false, true);
     right: 10px;
+  }
+
+  @include sm-up {
+    padding: 18px 0px;
   }
 }

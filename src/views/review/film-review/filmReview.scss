@@ -1,0 +1,22 @@
+.film-review {
+  &-content {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 5px;
+  }
+
+  &-toggle {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-btn {
+    @include center(true, false);
+
+    bottom: 30px;
+  }
+}

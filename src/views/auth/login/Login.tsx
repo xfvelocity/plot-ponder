@@ -67,12 +67,7 @@ const Login = () => {
       <Navbar />
 
       <div className="register pp-center">
-        <div className="register-message">
-          <h2 className="pp-text-colour-primary">Log in</h2>
-          <p>
-            No account? <a href="/register">Sign up</a>
-          </p>
-        </div>
+        <h2 className="pp-text-colour-primary">Log in</h2>
 
         <form className="register-form" onSubmit={logIn}>
           <PPTextInput
@@ -100,6 +95,12 @@ const Login = () => {
             loading={loading}
           />
         </form>
+
+        <div className="register-msg">
+          <p>
+            No account? <a href="/register">Sign up</a>
+          </p>
+        </div>
       </div>
     </>
   );

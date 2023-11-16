@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // ** Styles **
-import "./review.scss";
+import "./filmSelect.scss";
 
 // ** Components **
 import PPAutoComplete, {
   SelectOption,
-} from "@/components/basic/input/select/PPAutocomplete";
+} from "@/components/basic/input/autocomplete/PPAutocomplete";
 import Navbar from "@/components/navbar/Navbar";
 
 const FilmSelect = () => {
@@ -23,7 +23,7 @@ const FilmSelect = () => {
     },
   };
 
-  const { progress, film, setFilm } = useReviewStore();
+  const { film, setFilm } = useReviewStore();
 
   const [options, setOptions] = useState<SelectOption[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -72,20 +72,11 @@ const FilmSelect = () => {
 
   return (
     <>
-      <Navbar
-        title="Review"
-        progress={{
-          current: progress,
-          total: 2,
-        }}
-        showBackBtn
-      />
+      <Navbar title="Select a film" showBackBtn />
 
-      <div className="film film-select">
-        <h2>Select a film</h2>
-
+      <div className="film-select pp-max-width">
         <PPAutoComplete
-          label="Film"
+          label="Search for a film"
           selectedOption={film.name}
           setSelectedOption={(id: number) => movieSelected(id)}
           options={options}

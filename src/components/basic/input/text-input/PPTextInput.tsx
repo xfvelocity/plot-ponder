@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
+import { useMediaQuery } from "@/composables/mediaQueries";
 
 // ** Styles **
 import "./ppTextInput.scss";
@@ -18,6 +19,7 @@ interface Props {
   required?: boolean;
   icon?: string;
   iconColour?: string;
+  className?: string;
   iconFn?: () => void;
   onEnter?: (e: any) => void;
 }
@@ -32,15 +34,19 @@ const PPTextInput = ({
   icon,
   required = false,
   iconColour,
+  className = "",
   iconFn,
   onEnter,
 }: Props) => {
+  // ** Hooks **
+  const { isMedium } = useMediaQuery();
+
   // ** Data **
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <div
-      className={clsx(`pp-text-input pp-input pp-input-outlined`, {
+      className={clsx(`pp-text-input pp-input pp-input-outlined ${className}`, {
         "pp-input-active": isActive || !!value,
         "pp-disabled": disabled,
       })}
@@ -65,7 +71,12 @@ const PPTextInput = ({
       </div>
 
       {icon && (
-        <PPIcon src={icon} colour={iconColour} size={16} onClick={iconFn} />
+        <PPIcon
+          src={icon}
+          colour={iconColour}
+          size={isMedium ? 18 : 16}
+          onClick={iconFn}
+        />
       )}
     </div>
   );
