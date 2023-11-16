@@ -11,6 +11,7 @@ import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
 import PPDatePicker from "@/components/basic/date-picker/PPDatePicker";
 import PPSlider from "@/components/basic/slider/PPSlider";
+import PPToggle from "@/components/basic/toggle/PPToggle";
 
 const options = [
   {
@@ -29,6 +30,7 @@ const FilmReview = () => {
   const { progress, film, reset, resetFilm } = useReviewStore();
 
   // ** Data **
+  const [halfRatings, setHalfRatings] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [comments, setComments] = useState<string>("");
   const [date, setDate] = useState<string>("");
@@ -74,7 +76,21 @@ const FilmReview = () => {
           <h2>What did you think?</h2>
 
           <div className="film-review-content">
-            <PPSlider value={rating} setValue={setRating} />
+            <div className="film-review-toggle">
+              <p>Toggle 0.5 ratings</p>
+
+              <PPToggle
+                active={halfRatings}
+                setActive={(value: boolean) => setHalfRatings(value)}
+                size={20}
+              />
+            </div>
+
+            <PPSlider
+              value={rating}
+              halfRatings={halfRatings}
+              setValue={setRating}
+            />
             <PPDatePicker date={date} setDate={setDate} />
 
             <PPSelect
