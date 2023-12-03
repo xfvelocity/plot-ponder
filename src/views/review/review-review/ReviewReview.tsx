@@ -50,6 +50,7 @@ const ReviewReview = () => {
       comments,
       date: new Date(date),
       location: review.type === "fim" ? location : "atHome",
+      type: review.type,
     });
 
     setLoading(false);
