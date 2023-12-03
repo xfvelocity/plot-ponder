@@ -6,14 +6,16 @@ import Register from "@/views/auth/register/Register";
 import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
 import Login from "@/views/auth/login/Login";
 import Profile from "@/views/user/Profile";
-import FilmSelect from "@/views/review/film-select/FilmSelect";
-import FilmReview from "@/views/review/film-review/FilmReview";
+
+// ** Routes **
+import Review from "./routes/review";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial
   Allows you to have multiple pages in your app.
 */
 const router = createBrowserRouter([
+  Review,
   {
     path: "/",
     element: (
@@ -38,27 +40,7 @@ const router = createBrowserRouter([
       </ContentWrapper>
     ),
   },
-  {
-    path: "/review",
-    children: [
-      {
-        path: "film",
-        element: (
-          <ContentWrapper>
-            <FilmSelect />
-          </ContentWrapper>
-        ),
-      },
-      {
-        path: "review",
-        element: (
-          <ContentWrapper>
-            <FilmReview />
-          </ContentWrapper>
-        ),
-      },
-    ],
-  },
+
   {
     path: "/profile",
     element: (

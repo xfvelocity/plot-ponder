@@ -1,11 +1,11 @@
 import { useReviewStore } from "@/stores/review";
 import { useState } from "react";
 import { debounce } from "@/composables/generic";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 // ** Styles **
-import "./filmSelect.scss";
+import "./reviewSelect.scss";
 
 // ** Components **
 import PPAutoComplete, {
@@ -13,9 +13,11 @@ import PPAutoComplete, {
 } from "@/components/basic/input/autocomplete/PPAutocomplete";
 import Navbar from "@/components/navbar/Navbar";
 
-const FilmSelect = () => {
+const ReviewSelect = () => {
   const navigate = useNavigate();
+  const { reviewType } = useParams();
 
+  // ** Data **
   const config = {
     headers: {
       accept: "application/json",
@@ -23,22 +25,24 @@ const FilmSelect = () => {
     },
   };
 
-  const { film, setFilm } = useReviewStore();
+  const { content, setContent } = useReviewStore();
 
   const [options, setOptions] = useState<SelectOption[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const movieSearch = debounce(async (term: string): Promise<void> => {
+  // ** Methods **
+  const contentSearch = debounce(async (term: string): Promise<void> => {
     setLoading(true);
 
+    const type = reviewType === "film" ? "movie" : "tv";
     const res = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?query=${term}&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/search/${type}?query=${term}&language=en-US&page=1`,
       config
     );
 
     setOptions(
       res.data.results.map((result: any) => ({
-        text: result.title,
+        text: result.title || result.name,
         value: result.id,
       }))
     );
@@ -46,17 +50,18 @@ const FilmSelect = () => {
     setLoading(false);
   }, 300);
 
-  const movieSelected = async (movieId: number): Promise<void> => {
+  const contentSelected = async (contentId: number): Promise<void> => {
     setLoading(true);
 
+    const type = reviewType === "film" ? "movie" : "tv";
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}`,
+      `https://api.themoviedb.org/3/${type}/${contentId}`,
       config
     );
 
     const { title, id, genres, release_date, overview, poster_path } = res.data;
 
-    setFilm({
+    setContent({
       name: title,
       id,
       genres: genres.map((x: any) => x.name),
@@ -72,20 +77,23 @@ const FilmSelect = () => {
 
   return (
     <>
-      <Navbar title="Select a film" showBackBtn />
+      <Navbar
+        title={`What ${reviewType} would you like to review?`}
+        showBackBtn
+      />
 
-      <div className="film-select pp-max-width">
+      <div className="review-select pp-max-width">
         <PPAutoComplete
-          label="Search for a film"
-          selectedOption={film.name}
-          setSelectedOption={(id: number) => movieSelected(id)}
+          label={`Search for a ${reviewType}`}
+          selectedOption={content.name}
+          setSelectedOption={(id: number) => contentSelected(id)}
           options={options}
           loading={loading}
-          setSearchTerm={movieSearch}
+          setSearchTerm={contentSearch}
         />
       </div>
     </>
   );
 };
 
-export default FilmSelect;
+export default ReviewSelect;

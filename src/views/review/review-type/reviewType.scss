@@ -1,0 +1,27 @@
+.review-type {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  gap: 15px;
+
+  &-item {
+    width: 100%;
+    padding: 40px 0;
+    margin: 0 auto;
+    border: 1px solid map-get($pp-colours, "grey-lighten-3");
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2 ease-in-out;
+
+    p {
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      border-color: map-get($pp-colours, "primary");
+      opacity: 0.8;
+    }
+  }
+}

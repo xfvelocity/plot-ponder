@@ -21,6 +21,7 @@ interface Props {
   options: SelectOption[];
   selectedOption: string | number;
   setSelectedOption: React.Dispatch<React.SetStateAction<any>>;
+  disabled?: boolean;
 }
 
 const PPSelect = (props: Props) => {
@@ -54,8 +55,13 @@ const PPSelect = (props: Props) => {
         <div
           className={clsx(`pp-select-toggle pp-input pp-input-outlined`, {
             "pp-input-active": props.selectedOption || isSelectOpen,
+            "pp-disabled": props.disabled,
           })}
-          onClick={() => setIsSelectOpen(true)}
+          onClick={() => {
+            if (!props.disabled) {
+              setIsSelectOpen(true);
+            }
+          }}
         >
           <label className={`pp-text-colour-grey-darken-2`}>
             {props.label}
@@ -71,6 +77,7 @@ const PPSelect = (props: Props) => {
             size={12}
           />
         </div>
+
         {isSelectOpen && props.options.length ? (
           <div className="pp-select-items">
             {props.options.map((option, i) => (

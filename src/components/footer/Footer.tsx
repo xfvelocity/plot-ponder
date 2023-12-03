@@ -37,7 +37,7 @@ const Footer = () => {
 
         <button
           className="footer-button-review pp-hover"
-          onClick={() => navigate(`/review/film`)}
+          onClick={() => navigate(`/review/type`)}
         >
           <PPIcon src="review" colour="white" />
         </button>
