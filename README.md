@@ -1,6 +1,6 @@
 # Plot Ponder
 
-Movie review app
+Movie/Tv Series Review App
 
 ## Scripts
 
@@ -23,7 +23,8 @@ npm run preview
 ```
 
 ## Useful links
-[Website]( https://tst.plotponder.com) \
+
+[Website](https://tst.plotponder.com) \
 [API Repo](https://github.com/xfvelocity/plot-ponder-api) \
 [Figma Designs](https://www.figma.com/file/8LRaNUHZsYncQnifAyFobp/PlotPonder-Reviewer?type=design&node-id=0%3A1&mode=design&t=bPgC26bmbvj3w8xo-1)
 

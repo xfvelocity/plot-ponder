@@ -41,12 +41,12 @@ const PPReview = ({ review, showUser = false }: Props) => {
       ) : null}
 
       <div className="pp-review-container">
-        <img className="pp-review-poster" src={review.film.image} />
+        <img className="pp-review-poster" src={review.content.image} />
 
         <div className="pp-review-info">
           <div>
             <p className="pp-review-title pp-text-ellipsis">
-              {review.film.name}
+              {review.content.name}
             </p>
             <p className="pp-review-description pp-text-ellipsis-7">
               {review.comments}
@@ -78,9 +78,16 @@ const PPReviewDate = (review: Review, isMedium: boolean) => {
   return (
     <>
       <PPIcon
-        src={review.location === "atHome" ? "home" : "ticket"}
+        src={
+          review.type === "film"
+            ? review.location === "atHome"
+              ? "home"
+              : "ticket"
+            : "series"
+        }
         size={isMedium ? 16 : 14}
       />
+
       <PPDateChip date={new Date(review.date)} fontSize={isMedium ? 11 : 9} />
     </>
   );

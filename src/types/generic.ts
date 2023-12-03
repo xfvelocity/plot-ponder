@@ -10,11 +10,12 @@ export interface Review {
   date: string;
   location: string;
   rating: number;
-  film: ReviewFilm;
+  content: ReviewContent;
   user: ProfileUser;
+  type: string;
 }
 
-export interface ReviewFilm {
+export interface ReviewContent {
   genres: string[];
   image: string;
   name: string;

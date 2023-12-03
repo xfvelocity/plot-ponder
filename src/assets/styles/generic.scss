@@ -40,6 +40,11 @@ textarea {
   }
 }
 
+.pp-disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
 .pp-max-width {
   max-width: 500px;
   margin-left: auto;

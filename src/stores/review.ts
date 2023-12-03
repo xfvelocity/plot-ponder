@@ -1,26 +1,29 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-export interface ReviewFilm {
+export interface ReviewContent {
   name: string;
   id: number;
   genres: string[];
-  release_date: string;
+  release_date?: string;
+  first_air_date?: string;
   overview: string;
   image: string;
 }
 
-interface Review {}
+interface Review {
+  type: string;
+}
 
 interface ReviewStore {
   review: Review;
-  film: ReviewFilm;
-  setFilm: (film: ReviewFilm) => void;
+  content: ReviewContent;
+  setContent: (content: ReviewContent) => void;
   reset: () => void;
-  resetFilm: () => void;
+  resetContent: () => void;
 }
 
-const initialFilmState: ReviewFilm = {
+const initialContentState: ReviewContent = {
   name: "",
   id: 0,
   genres: [],
@@ -30,17 +33,19 @@ const initialFilmState: ReviewFilm = {
 };
 
 const initialState = {
-  review: {},
-  film: { ...initialFilmState },
+  review: {
+    type: "",
+  },
+  content: { ...initialContentState },
 };
 
 export const useReviewStore = create<ReviewStore>()(
   persist(
     devtools((set) => ({
       ...initialState,
-      setFilm: (film: ReviewFilm) => set({ film }),
+      setContent: (content: ReviewContent) => set({ content }),
       reset: () => set(initialState),
-      resetFilm: () => set({ film: { ...initialFilmState } }),
+      resetContent: () => set({ content: { ...initialContentState } }),
     })),
     { name: "review" }
   )
