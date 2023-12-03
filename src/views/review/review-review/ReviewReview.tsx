@@ -4,11 +4,11 @@ import { useNavigate } from "react-router";
 import { api } from "@/api";
 
 // ** Styles **
-import "./filmReview.scss";
+import "./reviewReview.scss";
 
 // ** Components **
 import Navbar from "@/components/navbar/Navbar";
-import Film from "@/components/film/Film";
+import Content from "@/components/content/Content";
 import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
@@ -27,10 +27,10 @@ const options = [
   },
 ];
 
-const FilmReview = () => {
+const ReviewReview = () => {
   const navigate = useNavigate();
 
-  const { film, reset, resetFilm } = useReviewStore();
+  const { review, content, reset, resetContent } = useReviewStore();
 
   // ** Data **
   const [halfRatings, setHalfRatings] = useState<boolean>(false);
@@ -41,15 +41,15 @@ const FilmReview = () => {
   const [rating, setRating] = useState<number>(0);
 
   // ** Methods **
-  const submitFilm = async (): Promise<void> => {
+  const submitReview = async (): Promise<void> => {
     setLoading(true);
 
     const res = await api("POST", "/review", {
-      filmId: film.id,
+      contentId: content.id,
       rating,
       comments,
       date: new Date(date),
-      location,
+      location: review.type === "fim" ? location : "atHome",
     });
 
     setLoading(false);
@@ -62,13 +62,17 @@ const FilmReview = () => {
 
   return (
     <>
-      <Navbar title="Leave your review" showBackBtn backFn={resetFilm} />
+      <Navbar
+        title={`What are your thoughts on this ${review.type}?`}
+        showBackBtn
+        backFn={resetContent}
+      />
 
       <div className="pp-max-width pp-h-100">
-        <Film review={film} />
+        <Content review={content} />
 
-        <div className="film-review-content">
-          <div className="film-review-toggle">
+        <div className="review-review-content">
+          <div className="review-review-toggle">
             <p>Toggle 0.5 ratings</p>
 
             <PPToggle
@@ -84,12 +88,14 @@ const FilmReview = () => {
             setValue={setRating}
           />
 
-          <PPSelect
-            label="Where did you watch this?"
-            options={options}
-            selectedOption={location}
-            setSelectedOption={setLocation}
-          />
+          {review.type === "film" ? (
+            <PPSelect
+              label="Where did you watch this?"
+              options={options}
+              selectedOption={location}
+              setSelectedOption={setLocation}
+            />
+          ) : null}
 
           <PPDatePicker date={date} setDate={setDate} />
 
@@ -101,12 +107,12 @@ const FilmReview = () => {
           />
         </div>
 
-        <div className="film-review-btn">
+        <div className="review-review-btn">
           <PPButton
             text="Submit"
             width={300}
             loading={loading}
-            onClick={submitFilm}
+            onClick={submitReview}
           />
         </div>
       </div>
@@ -114,4 +120,4 @@ const FilmReview = () => {
   );
 };
 
-export default FilmReview;
+export default ReviewReview;

@@ -57,11 +57,13 @@ const Home = () => {
           <PPReview review={review} showUser={true} key={i} />
         ))}
 
-        {scrollDisabled ? (
+        {reviews.length ? null : (
           <p style={{ textAlign: "center", marginTop: "10px" }}>
             No reviews found
           </p>
-        ) : (
+        )}
+
+        {scrollDisabled ? null : (
           <div ref={loader} style={{ marginTop: "20px" }}>
             <PPReviewSkeleton amount={reviews.length === 0 ? 5 : 1} showUser />
           </div>
