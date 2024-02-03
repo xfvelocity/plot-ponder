@@ -11,33 +11,33 @@
     "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "clsx": "^2.0.0",
-    "rc-slider": "^10.4.0",
+    "axios": "^1.6.7",
+    "clsx": "^2.1.0",
+    "rc-slider": "^10.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "react-svg": "^16.1.31",
-    "zustand": "^4.4.6"
+    "react-router-dom": "^6.22.0",
+    "react-svg": "^16.1.32",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "@types/react": "^18.2.38",
-    "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "@typescript-eslint/parser": "^6.12.0",
-    "@vite-pwa/assets-generator": "^0.0.11",
-    "@vitejs/plugin-react": "^4.2.0",
-    "autoprefixer": "^10.4.16",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.52",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "@vite-pwa/assets-generator": "^0.2.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
     "clsx": "^2.0.0",
-    "eslint": "^8.54.0",
+    "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
+    "eslint-plugin-react-refresh": "^0.4.5",
     "path": "^0.12.7",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.2",
-    "vite-plugin-pwa": "^0.17.0"
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-pwa": "^0.17.5"
   }
 }

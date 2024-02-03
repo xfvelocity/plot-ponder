@@ -12,8 +12,11 @@ const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
   const [reviews, setReviews] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getFeed = async (): Promise<void> => {
+    setLoading(true);
+
     const res = await api("GET", `feed?page=${page}`);
 
     setReviews([...reviews, ...res.data]);
@@ -23,6 +26,8 @@ const Home = () => {
     } else {
       setPage(page + 1);
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -57,11 +62,11 @@ const Home = () => {
           <PPReview review={review} showUser={true} key={i} />
         ))}
 
-        {reviews.length ? null : (
+        {!reviews.length && !loading ? (
           <p style={{ textAlign: "center", marginTop: "10px" }}>
             No reviews found
           </p>
-        )}
+        ) : null}
 
         {scrollDisabled ? null : (
           <div ref={loader} style={{ marginTop: "20px" }}>

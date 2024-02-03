@@ -12,6 +12,6 @@ client.interceptors.response.use(
 );
 
 client.defaults.baseURL =
-  import.meta.env.VITE_API_URL || "http://localhost:8000";
+  import.meta.env.VITE_API_URL || "https://tst-api.plotponder.com";
 
 export { client };
