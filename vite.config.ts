@@ -36,9 +36,9 @@ export default defineConfig({
             type: "image/png",
           },
           {
-            src: "app-icon.svg",
-            sizes: "any",
-            type: "image/svg+xml",
+            src: "maskable-icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
             purpose: "maskable",
           },
         ],
