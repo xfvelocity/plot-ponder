@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // ** Styles **
 import "./ppModal.scss";
@@ -26,19 +26,22 @@ const PPModal = ({
   children,
 }: Props) => {
   // ** Data **
+  const container = useRef<HTMLDivElement | null>(null);
   const content = useRef<HTMLDivElement | null>(null);
 
-  // ** Methods **
-  if (!persistent) {
-    document.addEventListener("click", (e: MouseEvent) => {
-      clickOutside(e, content.current, () => setIsOpen(false));
+  // ** Effect **
+  useEffect(() => {
+    container.current?.addEventListener("click", (e: MouseEvent) => {
+      if (!persistent) {
+        clickOutside(e, content.current, () => setIsOpen(false));
+      }
     });
-  }
+  }, [isOpen]);
 
   return (
     <>
       {isOpen ? (
-        <div className="pp-modal-container">
+        <div ref={container} className="pp-modal-container">
           <div
             ref={content}
             className="pp-modal-content"

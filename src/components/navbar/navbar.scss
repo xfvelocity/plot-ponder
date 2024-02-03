@@ -6,6 +6,7 @@
 
   &-content {
     display: grid;
+    align-items: center;
     grid-template-columns: 40px 1fr 40px;
   }
 

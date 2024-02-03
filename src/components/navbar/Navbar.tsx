@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "@/composables/mediaQueries";
+import { useState } from "react";
 
 // ** Styles **
 import "./navbar.scss";
 
 // ** Components **
 import PPIcon from "@/components/basic/icon/PPIcon";
+import PPSearchModal from "@/components/search/PPSearchModal";
 
 // ** Types **
 interface Props {
   title?: string;
-  children?: React.ReactNode;
   progress?: {
     total: number;
     current: number;
@@ -19,10 +20,13 @@ interface Props {
   backFn?: () => void;
 }
 
-const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
+const Navbar = ({ title, progress, showBackBtn, backFn }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
   const { isMedium } = useMediaQuery();
+
+  // ** Data **
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
 
   // ** Methods **
   const back = (): void => {
@@ -58,7 +62,11 @@ const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
             )}
           </div>
 
-          <div className="navbar-custom">{children}</div>
+          <div className="navbar-custom">
+            <button onClick={() => setIsSearchModalOpen(true)}>
+              <PPIcon src="search" colour="primary" size={16} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -70,6 +78,11 @@ const Navbar = ({ title, children, progress, showBackBtn, backFn }: Props) => {
           />
         </div>
       )}
+
+      <PPSearchModal
+        isOpen={isSearchModalOpen}
+        setIsOpen={setIsSearchModalOpen}
+      />
     </>
   );
 };
