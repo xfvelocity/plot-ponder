@@ -9,6 +9,7 @@ import Profile from "@/views/user/Profile";
 
 // ** Routes **
 import Review from "./routes/review";
+import Content from "@/views/content/Content";
 
 /*
   React router: https://reactrouter.com/en/main/start/tutorial
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
     element: (
       <ContentWrapper>
         <Profile />
+      </ContentWrapper>
+    ),
+  },
+  {
+    path: "/content/:type/:id",
+    element: (
+      <ContentWrapper>
+        <Content />
       </ContentWrapper>
     ),
   },

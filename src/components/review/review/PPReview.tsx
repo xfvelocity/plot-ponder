@@ -10,7 +10,7 @@ import PPIcon from "@/components/basic/icon/PPIcon";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
 // ** Types **
-import { Review } from "@/types/generic";
+import { Review } from "@/types/generic.types";
 
 interface Props {
   review: Review;
@@ -41,7 +41,13 @@ const PPReview = ({ review, showUser = false }: Props) => {
       ) : null}
 
       <div className="pp-review-container">
-        <img className="pp-review-poster" src={review.content.image} />
+        <img
+          className="pp-hover pp-review-poster"
+          src={review.content.image}
+          onClick={() =>
+            navigate(`/content/${review.type}/${review.contentId}`)
+          }
+        />
 
         <div className="pp-review-info">
           <div>

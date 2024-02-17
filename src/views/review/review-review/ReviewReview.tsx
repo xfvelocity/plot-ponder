@@ -8,7 +8,7 @@ import "./reviewReview.scss";
 
 // ** Components **
 import Navbar from "@/components/navbar/Navbar";
-import Content from "@/components/content/Content";
+import ContentSummary from "@/components/content-summary/ContentSummary";
 import PPSelect from "@/components/basic/input/select/PPSelect";
 import PPTextArea from "@/components/basic/input/text-area/PPTextArea";
 import PPButton from "@/components/basic/button/PPButton";
@@ -70,7 +70,7 @@ const ReviewReview = () => {
       />
 
       <div className="pp-max-width pp-h-100">
-        <Content review={content} />
+        <ContentSummary content={content} />
 
         <div className="review-review-content">
           <div className="review-review-toggle">

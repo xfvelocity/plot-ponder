@@ -1,8 +1,13 @@
-export interface ProfileUser {
+import { ProfileUser } from "./generic.types";
+
+export interface Content {
   name: string;
-  username: string;
-  uuid: string;
-  avatar: string;
+  id: number;
+  genres: string[];
+  release_date?: string;
+  first_air_date?: string;
+  overview: string;
+  image: string;
 }
 
 export interface Review {
@@ -13,6 +18,7 @@ export interface Review {
   content: ReviewContent;
   user: ProfileUser;
   type: string;
+  contentId: number;
 }
 
 export interface ReviewContent {
