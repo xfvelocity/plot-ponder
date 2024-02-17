@@ -33,7 +33,7 @@ const Content = () => {
           accept: "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
         },
-      }
+      },
     );
 
     const { title, id, genres, release_date, overview, poster_path } = res.data;
@@ -72,7 +72,7 @@ const Content = () => {
         root: null,
         rootMargin: "0px",
         threshold: 0.5,
-      }
+      },
     );
 
     if (loader.current) {

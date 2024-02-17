@@ -97,7 +97,7 @@ const Profile = () => {
           root: null,
           rootMargin: "0px",
           threshold: 0.5,
-        }
+        },
       );
 
       if (loader.current) {

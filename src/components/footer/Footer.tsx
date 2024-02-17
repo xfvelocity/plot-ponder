@@ -32,7 +32,7 @@ const Footer = () => {
             svg: "home",
             link: "/",
           },
-          isMedium
+          isMedium,
         )}
 
         <button
@@ -48,7 +48,7 @@ const Footer = () => {
             png: "/images/profile-pic.png",
             link: "/profile",
           },
-          isMedium
+          isMedium,
         )}
       </div>
     </>
