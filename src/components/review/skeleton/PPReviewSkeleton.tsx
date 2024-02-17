@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 // ** Styles **
 import "./ppReviewSkeleton.scss";
 
@@ -5,9 +7,14 @@ import "./ppReviewSkeleton.scss";
 interface Props {
   amount?: number;
   showUser?: boolean;
+  showContent?: boolean;
 }
 
-const PPReviewSkeleton = ({ amount = 1, showUser }: Props) => {
+const PPReviewSkeleton = ({
+  amount = 1,
+  showUser,
+  showContent = true,
+}: Props) => {
   return (
     <>
       {[...Array(amount)].map((_x, i) => (
@@ -24,11 +31,18 @@ const PPReviewSkeleton = ({ amount = 1, showUser }: Props) => {
           ) : null}
 
           <div className="pp-review-skeleton-inner">
-            <div className="pp-review-skeleton-img" />
+            {showContent ? <div className="pp-review-skeleton-img" /> : null}
 
-            <div className="pp-review-skeleton-container">
+            <div
+              className={clsx("pp-review-skeleton-container", {
+                "pp-review-skeleton-container-content": showContent,
+              })}
+            >
               <div>
-                <div className="pp-review-skeleton-title" />
+                {showContent ? (
+                  <div className="pp-review-skeleton-title" />
+                ) : null}
+
                 <div className="pp-review-skeleton-desc" />
               </div>
 
