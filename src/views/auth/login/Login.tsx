@@ -64,7 +64,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar showSearch={false} />
 
       <div className="register pp-center">
         <h2 className="pp-text-colour-primary">Log in</h2>

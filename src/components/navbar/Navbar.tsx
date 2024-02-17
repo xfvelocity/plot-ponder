@@ -18,9 +18,16 @@ interface Props {
   };
   showBackBtn?: boolean;
   backFn?: () => void;
+  showSearch?: boolean;
 }
 
-const Navbar = ({ title, progress, showBackBtn, backFn }: Props) => {
+const Navbar = ({
+  title,
+  progress,
+  showBackBtn,
+  backFn,
+  showSearch = true,
+}: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
   const { isMedium } = useMediaQuery();
@@ -63,9 +70,11 @@ const Navbar = ({ title, progress, showBackBtn, backFn }: Props) => {
           </div>
 
           <div className="navbar-custom">
-            <button onClick={() => setIsSearchModalOpen(true)}>
-              <PPIcon src="search" colour="primary" size={16} />
-            </button>
+            {showSearch ? (
+              <button onClick={() => setIsSearchModalOpen(true)}>
+                <PPIcon src="search" colour="primary" size={16} />
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
