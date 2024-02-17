@@ -1,21 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { api } from "@/api";
 
 // ** Types **
-import type { Content } from "@/types/review.types";
+import type { Content, Review } from "@/types/review.types";
 
 // ** Components **
 import ContentSummary from "@/components/content-summary/ContentSummary";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import PPButton from "@/components/basic/button/PPButton";
+import PPReviewSkeleton from "@/components/review/skeleton/PPReviewSkeleton";
+import PPReview from "@/components/review/review/PPReview";
 
 const Content = () => {
   const params = useParams();
 
   // ** Data **
+  const loader = useRef(null);
+  const [page, setPage] = useState<number>(1);
+  const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
   const [content, setContent] = useState<Content>();
+  const [contentReviews, setContentReviews] = useState<Review[]>([]);
 
   // ** Methods **
   const getContent = async (): Promise<void> => {
@@ -42,8 +48,47 @@ const Content = () => {
     });
   };
 
+  const getContentReview = async (): Promise<void> => {
+    const res = await api("GET", `/content/${params.id}/reviews`);
+
+    setContentReviews([...contentReviews, ...res.data]);
+
+    if (page === res.meta.totalPages || res.data.length === 0) {
+      setScrollDisabled(true);
+    } else {
+      setPage(page + 1);
+    }
+  };
+
+  // ** Pagination **
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          getContentReview();
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      }
+    );
+
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+
+    return () => {
+      if (loader.current) {
+        observer.unobserve(loader.current);
+      }
+    };
+  }, [contentReviews]);
+
   useEffect(() => {
     getContent();
+    getContentReview();
   }, []);
 
   return (
@@ -54,7 +99,26 @@ const Content = () => {
         <div>
           <ContentSummary content={content} />
 
-          <PPButton className="pp-mx-auto" text="Review" />
+          <div style={{ marginTop: "20px" }}>
+            {contentReviews.map((review, i) => (
+              <PPReview
+                review={review}
+                showUser={true}
+                showContent={false}
+                key={i}
+              />
+            ))}
+
+            {scrollDisabled ? null : (
+              <div ref={loader} style={{ marginTop: "20px" }}>
+                <PPReviewSkeleton
+                  amount={contentReviews.length === 0 ? 5 : 1}
+                  showUser
+                  showContent={false}
+                />
+              </div>
+            )}
+          </div>
         </div>
       ) : null}
 

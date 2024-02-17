@@ -1,6 +1,8 @@
 .pp-review {
-  border-bottom: 2px solid map-get($pp-colours, "grey-lighten-1");
-  padding: 20px;
+  padding: 15px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 5px;
 
   &-container {
     border-radius: 10px;
@@ -74,6 +76,7 @@
   &-rating-container {
     position: relative;
     margin-left: auto;
+    margin-top: 5px;
 
     .pp-icon {
       position: absolute;
