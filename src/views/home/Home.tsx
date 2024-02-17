@@ -41,7 +41,7 @@ const Home = () => {
         root: null,
         rootMargin: "0px",
         threshold: 0.5,
-      }
+      },
     );
     if (loader.current) {
       observer.observe(loader.current);

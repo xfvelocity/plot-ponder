@@ -21,5 +21,5 @@ export const useAppStore = create<SnackbarStore>()(
       isOpen: false,
     },
     setSnackbar: (snackbar) => set({ snackbar }),
-  }))
+  })),
 );

@@ -6,7 +6,7 @@ export const api = async (
   type: string,
   url: string,
   data = {},
-  auth = true
+  auth = true,
 ) => {
   let res: any;
   let config: any = {};

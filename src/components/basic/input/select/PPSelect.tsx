@@ -31,7 +31,7 @@ const PPSelect = (props: Props) => {
 
   // ** Methods **
   document.addEventListener("click", (e: MouseEvent) =>
-    clickOutside(e, select.current, () => setIsSelectOpen(false))
+    clickOutside(e, select.current, () => setIsSelectOpen(false)),
   );
 
   const optionSelected = (option: SelectOption): void => {
@@ -43,7 +43,7 @@ const PPSelect = (props: Props) => {
 
   const findMatchingOption = (): string => {
     const matchingOption = props.options.find(
-      (option) => option.value == props.selectedOption
+      (option) => option.value == props.selectedOption,
     );
 
     return matchingOption ? matchingOption.text : "";
