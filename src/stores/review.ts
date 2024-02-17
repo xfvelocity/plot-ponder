@@ -36,6 +36,6 @@ export const useReviewStore = create<ReviewStore>()(
       reset: () => set(initialState),
       resetContent: () => set({ content: { ...initialContentState } }),
     })),
-    { name: "review" }
-  )
+    { name: "review" },
+  ),
 );

@@ -1,10 +1,12 @@
 .review-review {
   &-content {
-    padding: 20px 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     border-radius: 5px;
+    margin: 20px;
+    background-color: white;
   }
 
   &-toggle {

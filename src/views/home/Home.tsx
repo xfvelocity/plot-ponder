@@ -41,7 +41,7 @@ const Home = () => {
         root: null,
         rootMargin: "0px",
         threshold: 0.5,
-      }
+      },
     );
     if (loader.current) {
       observer.observe(loader.current);
@@ -57,19 +57,17 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className="pp-max-width">
+      <div className="pp-max-width" style={{ marginTop: "20px" }}>
         {reviews.map((review, i) => (
           <PPReview review={review} showUser={true} key={i} />
         ))}
 
         {!reviews.length && !loading ? (
-          <p style={{ textAlign: "center", marginTop: "10px" }}>
-            No reviews found
-          </p>
+          <p style={{ textAlign: "center" }}>No reviews found</p>
         ) : null}
 
         {scrollDisabled ? null : (
-          <div ref={loader} style={{ marginTop: "20px" }}>
+          <div ref={loader}>
             <PPReviewSkeleton amount={reviews.length === 0 ? 5 : 1} showUser />
           </div>
         )}

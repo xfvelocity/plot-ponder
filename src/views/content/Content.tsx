@@ -33,7 +33,7 @@ const Content = () => {
           accept: "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
         },
-      }
+      },
     );
 
     const { title, id, genres, release_date, overview, poster_path } = res.data;
@@ -72,7 +72,7 @@ const Content = () => {
         root: null,
         rootMargin: "0px",
         threshold: 0.5,
-      }
+      },
     );
 
     if (loader.current) {
@@ -96,10 +96,10 @@ const Content = () => {
       <Navbar />
 
       {content ? (
-        <div>
+        <div className="pp-max-width">
           <ContentSummary content={content} />
 
-          <div style={{ marginTop: "20px" }}>
+          <div style={{ margin: "20px 10px" }}>
             {contentReviews.map((review, i) => (
               <PPReview
                 review={review}
@@ -110,7 +110,7 @@ const Content = () => {
             ))}
 
             {scrollDisabled ? null : (
-              <div ref={loader} style={{ marginTop: "20px" }}>
+              <div ref={loader}>
                 <PPReviewSkeleton
                   amount={contentReviews.length === 0 ? 5 : 1}
                   showUser

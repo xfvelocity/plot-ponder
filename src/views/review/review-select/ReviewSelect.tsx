@@ -37,14 +37,14 @@ const ReviewSelect = () => {
     const type = reviewType === "film" ? "movie" : "tv";
     const res = await axios.get(
       `https://api.themoviedb.org/3/search/${type}?query=${term}&language=en-US&page=1`,
-      config
+      config,
     );
 
     setOptions(
       res.data.results.map((result: any) => ({
         text: result.title || result.name,
         value: result.id,
-      }))
+      })),
     );
 
     setLoading(false);
@@ -56,7 +56,7 @@ const ReviewSelect = () => {
     const type = reviewType === "film" ? "movie" : "tv";
     const res = await axios.get(
       `https://api.themoviedb.org/3/${type}/${contentId}`,
-      config
+      config,
     );
 
     const { title, id, genres, release_date, overview, poster_path } = res.data;

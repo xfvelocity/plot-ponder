@@ -37,7 +37,7 @@ const ReviewReview = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [comments, setComments] = useState<string>("");
   const [date, setDate] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<string>("atHome");
   const [rating, setRating] = useState<number>(0);
 
   // ** Methods **

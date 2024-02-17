@@ -66,7 +66,7 @@ const Register = () => {
       "POST",
       "/register",
       { username: username.toLowerCase(), name, email, password },
-      false
+      false,
     );
 
     // If user was created, set the user in the store and navigate to the home page

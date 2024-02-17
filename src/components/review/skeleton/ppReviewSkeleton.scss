@@ -1,6 +1,8 @@
 .pp-review-skeleton {
-  padding: 20px;
-  border-bottom: 2px solid map-get($pp-colours, "grey-lighten-1");
+  padding: 15px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 5px;
   animation: loading 4s infinite;
 
   &-inner {
@@ -93,6 +95,8 @@
   }
 
   @include sm-up {
+    margin: 10px 0;
+
     &-img {
       height: 200px;
       width: 150px;
