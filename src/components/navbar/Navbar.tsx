@@ -7,7 +7,7 @@ import "./navbar.scss";
 
 // ** Components **
 import PPIcon from "@/components/basic/icon/PPIcon";
-import PPSearchModal from "@/components/search/PPSearchModal";
+import SearchModal from "@/components/search/SearchModal";
 
 // ** Types **
 interface Props {
@@ -79,7 +79,7 @@ const Navbar = ({ title, progress, showBackBtn, backFn }: Props) => {
         </div>
       )}
 
-      <PPSearchModal
+      <SearchModal
         isOpen={isSearchModalOpen}
         setIsOpen={setIsSearchModalOpen}
       />

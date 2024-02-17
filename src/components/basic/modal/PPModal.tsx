@@ -16,6 +16,7 @@ interface Props {
   children?: React.ReactNode;
   minSize?: number;
   persistent?: boolean;
+  closeIcon?: boolean;
 }
 
 const PPModal = ({
@@ -24,6 +25,7 @@ const PPModal = ({
   minSize = 250,
   persistent,
   children,
+  closeIcon = true,
 }: Props) => {
   // ** Data **
   const container = useRef<HTMLDivElement | null>(null);
@@ -47,7 +49,7 @@ const PPModal = ({
             className="pp-modal-content"
             style={{ minWidth: `${minSize}px`, minHeight: `${minSize}px` }}
           >
-            {persistent ? null : (
+            {!closeIcon || persistent ? null : (
               <button onClick={() => setIsOpen(false)}>
                 <PPIcon src="close" size={12} />
               </button>
