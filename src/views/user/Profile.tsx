@@ -4,7 +4,8 @@ import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
 
 // ** Types **
-import { ProfileUser, Review } from "@/types/generic";
+import { ProfileUser } from "@/types/generic.types";
+import { Review } from "@/types/review.types";
 
 // ** Styles **
 import "./profile.scss";
@@ -96,7 +97,7 @@ const Profile = () => {
           root: null,
           rootMargin: "0px",
           threshold: 0.5,
-        }
+        },
       );
 
       if (loader.current) {

@@ -19,6 +19,7 @@
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 3px;
+    max-width: 200px;
   }
 
   &-description {
@@ -49,6 +50,10 @@
   }
 
   @include sm-up {
+    &-container {
+      margin: 20px 10px;
+    }
+
     &-poster {
       height: 200px;
     }

@@ -1,29 +1,18 @@
+import { Content } from "@/types/review.types";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-export interface ReviewContent {
-  name: string;
-  id: number;
-  genres: string[];
-  release_date?: string;
-  first_air_date?: string;
-  overview: string;
-  image: string;
-}
-
-interface Review {
-  type: string;
-}
-
 interface ReviewStore {
-  review: Review;
-  content: ReviewContent;
-  setContent: (content: ReviewContent) => void;
+  review: {
+    type: string;
+  };
+  content: Content;
+  setContent: (content: Content) => void;
   reset: () => void;
   resetContent: () => void;
 }
 
-const initialContentState: ReviewContent = {
+const initialContentState: Content = {
   name: "",
   id: 0,
   genres: [],
@@ -43,10 +32,10 @@ export const useReviewStore = create<ReviewStore>()(
   persist(
     devtools((set) => ({
       ...initialState,
-      setContent: (content: ReviewContent) => set({ content }),
+      setContent: (content: Content) => set({ content }),
       reset: () => set(initialState),
       resetContent: () => set({ content: { ...initialContentState } }),
     })),
-    { name: "review" }
-  )
+    { name: "review" },
+  ),
 );

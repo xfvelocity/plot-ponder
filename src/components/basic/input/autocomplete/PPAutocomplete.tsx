@@ -35,7 +35,7 @@ const PPAutoComplete = (props: Props) => {
 
   // ** Methods **
   document.addEventListener("click", (e: MouseEvent) =>
-    clickOutside(e, select.current, () => setIsSelectOpen(false))
+    clickOutside(e, select.current, () => setIsSelectOpen(false)),
   );
 
   const optionSelected = (option: SelectOption): void => {

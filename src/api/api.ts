@@ -8,7 +8,7 @@ client.interceptors.response.use(
   },
   async (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 client.defaults.baseURL =

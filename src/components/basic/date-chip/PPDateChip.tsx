@@ -28,7 +28,7 @@ const PPDateChip = ({ date, fontSize = 9 }: Props) => {
     const formattedDate: string = date.toISOString();
 
     const diffInSeconds: number = Math.floor(
-      (new Date().valueOf() - new Date(formattedDate).valueOf()) / 1000
+      (new Date().valueOf() - new Date(formattedDate).valueOf()) / 1000,
     );
 
     for (const [key, value] of Object.entries(options)) {

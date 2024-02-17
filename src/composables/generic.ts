@@ -1,7 +1,7 @@
 export const clickOutside = (
   event: MouseEvent,
   element: HTMLDivElement | null,
-  fn: () => void
+  fn: () => void,
 ): void => {
   if (element && !element.contains(event.target as Node)) {
     fn();
