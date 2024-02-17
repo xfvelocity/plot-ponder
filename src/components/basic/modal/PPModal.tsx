@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // ** Styles **
 import "./ppModal.scss";
@@ -16,6 +16,7 @@ interface Props {
   children?: React.ReactNode;
   minSize?: number;
   persistent?: boolean;
+  closeIcon?: boolean;
 }
 
 const PPModal = ({
@@ -24,27 +25,31 @@ const PPModal = ({
   minSize = 250,
   persistent,
   children,
+  closeIcon = true,
 }: Props) => {
   // ** Data **
+  const container = useRef<HTMLDivElement | null>(null);
   const content = useRef<HTMLDivElement | null>(null);
 
-  // ** Methods **
-  if (!persistent) {
-    document.addEventListener("click", (e: MouseEvent) => {
-      clickOutside(e, content.current, () => setIsOpen(false));
+  // ** Effect **
+  useEffect(() => {
+    container.current?.addEventListener("click", (e: MouseEvent) => {
+      if (!persistent) {
+        clickOutside(e, content.current, () => setIsOpen(false));
+      }
     });
-  }
+  }, [isOpen]);
 
   return (
     <>
       {isOpen ? (
-        <div className="pp-modal-container">
+        <div ref={container} className="pp-modal-container">
           <div
             ref={content}
             className="pp-modal-content"
             style={{ minWidth: `${minSize}px`, minHeight: `${minSize}px` }}
           >
-            {persistent ? null : (
+            {!closeIcon || persistent ? null : (
               <button onClick={() => setIsOpen(false)}>
                 <PPIcon src="close" size={12} />
               </button>

@@ -1,0 +1,35 @@
+.pp-search-user-skeleton {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  padding: 10px;
+  border-bottom: 1px solid map-get($pp-colours, "grey-lighten-3");
+  animation: loading 4s infinite;
+
+  &-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+
+  &-details {
+    margin-left: 5px;
+  }
+
+  &-name {
+    height: 10px;
+    width: 50px;
+  }
+
+  &-username {
+    margin-top: 3px;
+    height: 7px;
+    width: 40px;
+  }
+
+  &-avatar,
+  &-name,
+  &-username {
+    background: map-get($pp-colours, "grey-lighten-2");
+  }
+}

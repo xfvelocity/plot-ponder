@@ -1,0 +1,26 @@
+.pp-search-user {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  padding: 10px;
+  border-bottom: 1px solid map-get($pp-colours, "grey-lighten-3");
+
+  &-details {
+    margin-left: 5px;
+  }
+
+  h4 {
+    font-weight: 600;
+    line-height: 1;
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 10px;
+    color: map-get($pp-colours, "primary");
+
+    span {
+      font-size: 9px;
+    }
+  }
+}

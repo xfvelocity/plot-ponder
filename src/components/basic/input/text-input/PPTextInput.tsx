@@ -1,5 +1,7 @@
-import clsx from "clsx";
 import { useState } from "react";
+import clsx from "clsx";
+
+// ** Composables **
 import { useMediaQuery } from "@/composables/mediaQueries";
 
 // ** Styles **
@@ -20,6 +22,7 @@ interface Props {
   icon?: string;
   iconColour?: string;
   className?: string;
+  iconSize?: number;
   iconFn?: () => void;
   onEnter?: (e: any) => void;
 }
@@ -34,6 +37,7 @@ const PPTextInput = ({
   icon,
   required = false,
   iconColour,
+  iconSize,
   className = "",
   iconFn,
   onEnter,
@@ -74,7 +78,7 @@ const PPTextInput = ({
         <PPIcon
           src={icon}
           colour={iconColour}
-          size={isMedium ? 18 : 16}
+          size={iconSize ? iconSize : isMedium ? 18 : 16}
           onClick={iconFn}
         />
       )}
