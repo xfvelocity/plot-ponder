@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: map-get($pp-colours, "background");
 }
 
 h1,
@@ -38,6 +39,13 @@ textarea {
   &:hover {
     opacity: 0.7;
   }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+
+  @extend .pp-hover;
 }
 
 .pp-disabled {

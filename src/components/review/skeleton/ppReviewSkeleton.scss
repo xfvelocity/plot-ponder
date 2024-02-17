@@ -27,11 +27,15 @@
   }
 
   &-container {
-    width: 80%;
+    width: 100%;
     margin-top: 2px;
-    margin-left: 10px;
     display: flex;
     flex-direction: column;
+
+    &-content {
+      width: 80% !important;
+      margin-left: 10px;
+    }
   }
 
   &-title {

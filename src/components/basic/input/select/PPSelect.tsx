@@ -31,7 +31,7 @@ const PPSelect = (props: Props) => {
 
   // ** Methods **
   document.addEventListener("click", (e: MouseEvent) =>
-    clickOutside(e, select, () => setIsSelectOpen(false))
+    clickOutside(e, select.current, () => setIsSelectOpen(false))
   );
 
   const optionSelected = (option: SelectOption): void => {

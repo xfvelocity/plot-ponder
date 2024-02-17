@@ -10,14 +10,15 @@ import PPIcon from "@/components/basic/icon/PPIcon";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
 
 // ** Types **
-import { Review } from "@/types/generic";
+import { Review } from "@/types/review.types";
 
 interface Props {
   review: Review;
   showUser?: boolean;
+  showContent?: boolean;
 }
 
-const PPReview = ({ review, showUser = false }: Props) => {
+const PPReview = ({ review, showUser = false, showContent = true }: Props) => {
   // ** Hooks **
   const navigate = useNavigate();
   const { isMedium } = useMediaQuery();
@@ -41,13 +42,24 @@ const PPReview = ({ review, showUser = false }: Props) => {
       ) : null}
 
       <div className="pp-review-container">
-        <img className="pp-review-poster" src={review.content.image} />
+        {showContent ? (
+          <img
+            className="pp-hover pp-review-poster"
+            src={review.content.image}
+            onClick={() =>
+              navigate(`/content/${review.type}/${review.contentId}`)
+            }
+          />
+        ) : null}
 
         <div className="pp-review-info">
           <div>
-            <p className="pp-review-title pp-text-ellipsis">
-              {review.content.name}
-            </p>
+            {showContent ? (
+              <p className="pp-review-title pp-text-ellipsis">
+                {review.content.name}
+              </p>
+            ) : null}
+
             <p className="pp-review-description pp-text-ellipsis-7">
               {review.comments}
             </p>
