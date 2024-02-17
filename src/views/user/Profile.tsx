@@ -4,7 +4,8 @@ import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
 
 // ** Types **
-import { ProfileUser, Review } from "@/types/generic.types";
+import { ProfileUser } from "@/types/generic.types";
+import { Review } from "@/types/review.types";
 
 // ** Styles **
 import "./profile.scss";
