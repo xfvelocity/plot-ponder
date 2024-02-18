@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { ForwardedRef, forwardRef, useState } from "react";
 import clsx from "clsx";
 
 // ** Composables **
@@ -43,7 +43,7 @@ const PPTextInput = forwardRef(function PPTextInput(
     iconFn,
     onEnter,
   }: Props,
-  ref,
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   // ** Hooks **
   const { isMedium } = useMediaQuery();
