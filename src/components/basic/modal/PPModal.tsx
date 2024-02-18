@@ -38,6 +38,8 @@ const PPModal = ({
         clickOutside(e, content.current, () => setIsOpen(false));
       }
     });
+
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
   return (

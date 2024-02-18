@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "@/api";
 
 // ** Composables **
@@ -18,6 +18,7 @@ interface Props {
 
 const SearchModal = ({ isOpen, setIsOpen }: Props) => {
   // ** Data **
+  const input = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [results, setResults] = useState<any[]>([]);
@@ -35,6 +36,12 @@ const SearchModal = ({ isOpen, setIsOpen }: Props) => {
     }
   }, 300);
 
+  useEffect(() => {
+    if (isOpen) {
+      input.current?.focus();
+    }
+  }, [isOpen]);
+
   return (
     <PPModal
       isOpen={isOpen}
@@ -42,25 +49,26 @@ const SearchModal = ({ isOpen, setIsOpen }: Props) => {
       closeIcon={false}
       minSize={350}
     >
-      <div style={{ marginTop: "15px" }}>
+      <div style={{ padding: "15px" }}>
         <PPTextInput
+          ref={input}
           value={search}
           setValue={(value: string) => {
             setSearch(value);
             userSearch(value);
           }}
           icon="search"
-          label="Search"
+          label="Search for a user"
           iconSize={14}
         />
-      </div>
 
-      <div>
-        {loading
-          ? [...Array(5)].map((_x, i) => <SearchUserSkeleton key={i} />)
-          : results.map((user) => (
-              <SearchUser user={user} key={user.username} />
-            ))}
+        <div>
+          {loading
+            ? [...Array(5)].map((_x, i) => <SearchUserSkeleton key={i} />)
+            : results.map((user) => (
+                <SearchUser user={user} key={user.username} />
+              ))}
+        </div>
       </div>
     </PPModal>
   );

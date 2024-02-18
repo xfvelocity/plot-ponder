@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import clsx from "clsx";
 
 // ** Composables **
@@ -27,21 +27,24 @@ interface Props {
   onEnter?: (e: any) => void;
 }
 
-const PPTextInput = ({
-  value,
-  setValue,
-  type = "text",
-  placeholder,
-  label,
-  disabled = false,
-  icon,
-  required = false,
-  iconColour,
-  iconSize,
-  className = "",
-  iconFn,
-  onEnter,
-}: Props) => {
+const PPTextInput = forwardRef(function PPTextInput(
+  {
+    value,
+    setValue,
+    type = "text",
+    placeholder,
+    label,
+    disabled = false,
+    icon,
+    required = false,
+    iconColour,
+    iconSize,
+    className = "",
+    iconFn,
+    onEnter,
+  }: Props,
+  ref,
+) {
   // ** Hooks **
   const { isMedium } = useMediaQuery();
 
@@ -57,6 +60,7 @@ const PPTextInput = ({
     >
       <div className="pp-text-input-content">
         <input
+          ref={ref}
           value={value}
           type={type}
           required={required}
@@ -84,6 +88,6 @@ const PPTextInput = ({
       )}
     </div>
   );
-};
+});
 
 export default PPTextInput;
