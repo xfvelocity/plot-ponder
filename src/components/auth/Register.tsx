@@ -1,16 +1,15 @@
 import { api } from "@/api";
 import { useUserStore } from "@/stores/user";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-// ** Styles **
-import "./register.scss";
 
 // ** Components **
 import PPTextInput from "@/components/basic/input/text-input/PPTextInput";
 import PPButton from "@/components/basic/button/PPButton";
-import Navbar from "@/components/navbar/Navbar";
 
+// ** Styles **
+import "./auth.scss";
+
+// ** Types **
 interface Form {
   username: string;
   name: string;
@@ -19,10 +18,12 @@ interface Form {
   confirmPassword: string;
 }
 
-const Register = () => {
-  // ** Router **
-  const navigate = useNavigate();
+interface Props {
+  setIsOpen: (value: boolean) => void;
+  setIsLogin: (value: boolean) => void;
+}
 
+const Register = ({ setIsOpen, setIsLogin }: Props) => {
   // ** Store **
   const { setUser } = useUserStore();
 
@@ -37,7 +38,7 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  // ** Functions **
+  // ** Methods **
   const formInvalid = (): boolean => {
     // Check if all items in the form have values
     return Object.values(form).some((value) => !value);
@@ -72,7 +73,7 @@ const Register = () => {
     // If user was created, set the user in the store and navigate to the home page
     if (res?.uuid) {
       setUser(res);
-      navigate("/");
+      setIsOpen(false);
     }
 
     setLoading(false);
@@ -80,14 +81,12 @@ const Register = () => {
 
   return (
     <>
-      <Navbar />
-
-      <div className="register pp-center">
+      <div className="auth">
         <h2 className="pp-text-colour-primary">Register</h2>
 
-        <form className="register-form" onSubmit={createAccount}>
+        <form className="auth-form" onSubmit={createAccount}>
           <PPTextInput
-            className="register-username"
+            className="auth-username"
             label="Username"
             type="username"
             required={true}
@@ -122,7 +121,7 @@ const Register = () => {
               setValue={(e) => setFormValue("password", e)}
               iconFn={() => setIsPasswordShowing(!isPasswordShowing)}
             />
-            <p className="register-password-hint">
+            <p className="auth-password-hint">
               Password must include 6 characters and 1 number
             </p>
           </div>
@@ -146,9 +145,12 @@ const Register = () => {
           />
         </form>
 
-        <div className="register-msg">
+        <div className="auth-msg">
           <p>
-            Already have an account? <a href="/login">Login</a>
+            Already have an account?{" "}
+            <a className="pp-cursor-pointer" onClick={() => setIsLogin(true)}>
+              Login
+            </a>
           </p>
         </div>
       </div>

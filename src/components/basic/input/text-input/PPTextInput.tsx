@@ -1,5 +1,7 @@
+import { ForwardedRef, forwardRef, useState } from "react";
 import clsx from "clsx";
-import { useState } from "react";
+
+// ** Composables **
 import { useMediaQuery } from "@/composables/mediaQueries";
 
 // ** Styles **
@@ -20,24 +22,29 @@ interface Props {
   icon?: string;
   iconColour?: string;
   className?: string;
+  iconSize?: number;
   iconFn?: () => void;
   onEnter?: (e: any) => void;
 }
 
-const PPTextInput = ({
-  value,
-  setValue,
-  type = "text",
-  placeholder,
-  label,
-  disabled = false,
-  icon,
-  required = false,
-  iconColour,
-  className = "",
-  iconFn,
-  onEnter,
-}: Props) => {
+const PPTextInput = forwardRef(function PPTextInput(
+  {
+    value,
+    setValue,
+    type = "text",
+    placeholder,
+    label,
+    disabled = false,
+    icon,
+    required = false,
+    iconColour,
+    iconSize,
+    className = "",
+    iconFn,
+    onEnter,
+  }: Props,
+  ref: ForwardedRef<HTMLInputElement>,
+) {
   // ** Hooks **
   const { isMedium } = useMediaQuery();
 
@@ -53,6 +60,7 @@ const PPTextInput = ({
     >
       <div className="pp-text-input-content">
         <input
+          ref={ref}
           value={value}
           type={type}
           required={required}
@@ -74,12 +82,12 @@ const PPTextInput = ({
         <PPIcon
           src={icon}
           colour={iconColour}
-          size={isMedium ? 18 : 16}
+          size={iconSize ? iconSize : isMedium ? 18 : 16}
           onClick={iconFn}
         />
       )}
     </div>
   );
-};
+});
 
 export default PPTextInput;

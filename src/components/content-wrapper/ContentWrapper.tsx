@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useUserStore } from "../../stores/user";
-import PPSnackbar from "../basic/snackbar/PPSnackbar";
 import { useAppStore } from "@/stores/app";
+
+// ** Components **
+import PPSnackbar from "@/components/basic/snackbar/PPSnackbar";
+import AuthModal from "@/components/auth/AuthModal";
 
 // ** Types **
 interface Props {
@@ -10,12 +10,8 @@ interface Props {
 }
 
 const ContentWrapper = (props: Props) => {
-  // ** Hooks **
-  const navigate = useNavigate();
-  const location = useLocation();
-
   // ** Store Hooks **
-  const { user } = useUserStore();
+  const { showAuthModal, setShowAuthModal } = useAppStore();
   const { snackbar, setSnackbar } = useAppStore();
 
   // ** Functions **
@@ -26,23 +22,11 @@ const ContentWrapper = (props: Props) => {
     });
   };
 
-  useEffect(() => {
-    if (["/login", "/register"].includes(location.pathname)) {
-      // If the user is on the login or register page and they are logged in,
-      // redirect them to the home page.
-      if (user.uuid) {
-        navigate("/");
-      }
-    } else if (!user.uuid) {
-      // If the user is not on the login or register page and they are not logged in,
-      // redirect them to the login page.
-      navigate("/login");
-    }
-  }, [location]);
-
   return (
     <>
       <div className="pp-h-100">{props.children}</div>
+
+      <AuthModal isOpen={showAuthModal} setIsOpen={setShowAuthModal} />
 
       <PPSnackbar
         text={snackbar.text}

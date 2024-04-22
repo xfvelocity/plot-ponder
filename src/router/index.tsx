@@ -2,9 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 // ** Pages **
 import Home from "@/views/home/Home";
-import Register from "@/views/auth/register/Register";
 import ContentWrapper from "@/components/content-wrapper/ContentWrapper";
-import Login from "@/views/auth/login/Login";
 import Profile from "@/views/user/Profile";
 
 // ** Routes **
@@ -25,23 +23,6 @@ const router = createBrowserRouter([
       </ContentWrapper>
     ),
   },
-  {
-    path: "/register",
-    element: (
-      <ContentWrapper>
-        <Register />
-      </ContentWrapper>
-    ),
-  },
-  {
-    path: "/login",
-    element: (
-      <ContentWrapper>
-        <Login />
-      </ContentWrapper>
-    ),
-  },
-
   {
     path: "/profile",
     element: (
