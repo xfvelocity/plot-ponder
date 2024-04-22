@@ -3,14 +3,19 @@ import "./ppAvatar.scss";
 
 // ** Types **
 interface Props {
+  className?: string;
   size?: number;
   image?: string;
 }
 
-const PPAvatar = ({ size = 25, image = "/images/profile-pic.png" }: Props) => {
+const PPAvatar = ({
+  className,
+  size = 25,
+  image = "/images/profile-pic.png",
+}: Props) => {
   return (
     <div
-      className="pp-avatar pp-mx-auto"
+      className={`pp-avatar ${className}`}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
       {image ? (

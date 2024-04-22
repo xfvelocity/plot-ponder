@@ -63,8 +63,13 @@ const Navbar = ({
               <h3>{title}</h3>
             ) : (
               <>
-                <PPIcon src="ticket" size={isMedium ? 28 : 24} />
-                <h3>PlotPonder</h3>
+                <div
+                  className="navbar-title-content pp-hover"
+                  onClick={() => navigate("/")}
+                >
+                  <PPIcon src="ticket" size={isMedium ? 28 : 24} />
+                  <h3>PlotPonder</h3>
+                </div>
               </>
             )}
           </div>

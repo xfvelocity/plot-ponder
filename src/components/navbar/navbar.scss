@@ -26,6 +26,11 @@
       margin-left: 5px;
       font-size: 14px;
     }
+
+    &-content {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &-custom {

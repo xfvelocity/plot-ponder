@@ -16,7 +16,12 @@ const AuthModal = ({ isOpen, setIsOpen, backdrop }: Props) => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
   return (
-    <PPModal isOpen={isOpen} backdrop={backdrop} setIsOpen={setIsOpen}>
+    <PPModal
+      isOpen={isOpen}
+      backdrop={backdrop}
+      minSize={310}
+      setIsOpen={setIsOpen}
+    >
       {isLogin ? (
         <Login setIsOpen={setIsOpen} setIsLogin={setIsLogin} />
       ) : (

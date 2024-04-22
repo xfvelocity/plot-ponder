@@ -129,7 +129,7 @@ const Profile = () => {
             </div>
           ) : (
             <div>
-              <PPAvatar size={60} />
+              <PPAvatar className="pp-mx-auto" size={60} />
 
               <h3>{profileUser.name}</h3>
               <p className="pp-text-colour-primary">
