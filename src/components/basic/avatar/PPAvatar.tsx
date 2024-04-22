@@ -4,16 +4,21 @@ import "./ppAvatar.scss";
 // ** Types **
 interface Props {
   size?: number;
+  image?: string;
 }
 
-const PPAvatar = ({ size = 25 }: Props) => {
+const PPAvatar = ({ size = 25, image = "/images/profile-pic.png" }: Props) => {
   return (
-    <img
-      className="pp-avatar"
-      width={size}
-      height={size}
-      src="/images/profile-pic.png"
-    />
+    <div
+      className="pp-avatar pp-mx-auto"
+      style={{ width: `${size}px`, height: `${size}px` }}
+    >
+      {image ? (
+        <img className="pp-avatar" width={size} height={size} src={image} />
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 

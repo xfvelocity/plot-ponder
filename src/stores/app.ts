@@ -10,7 +10,9 @@ interface Snackbar {
 
 interface SnackbarStore {
   snackbar: Snackbar;
-  setSnackbar: (user: Snackbar) => void;
+  showAuthModal: boolean;
+  setSnackbar: (snackbar: Snackbar) => void;
+  setShowAuthModal: (value: boolean) => void;
 }
 
 export const useAppStore = create<SnackbarStore>()(
@@ -20,6 +22,8 @@ export const useAppStore = create<SnackbarStore>()(
       type: "success",
       isOpen: false,
     },
+    showAuthModal: false,
     setSnackbar: (snackbar) => set({ snackbar }),
+    setShowAuthModal: (value) => set({ showAuthModal: value }),
   })),
 );

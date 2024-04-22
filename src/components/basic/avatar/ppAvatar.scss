@@ -1,5 +1,8 @@
 .pp-avatar {
   border-radius: 50%;
   margin-bottom: 1px;
+}
+
+div.pp-avatar {
   border: 1px solid map-get($pp-colours, "primary");
 }

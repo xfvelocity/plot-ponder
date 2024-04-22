@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
-
-// ** Styles **
-import "./ppModal.scss";
+import clsx from "clsx";
 
 // ** Composables
 import { clickOutside } from "@/composables/generic";
+
+// ** Styles **
+import "./ppModal.scss";
 
 // ** Components **
 import PPIcon from "@/components/basic/icon/PPIcon";
@@ -17,6 +18,7 @@ interface Props {
   minSize?: number;
   persistent?: boolean;
   closeIcon?: boolean;
+  backdrop?: boolean;
 }
 
 const PPModal = ({
@@ -26,6 +28,7 @@ const PPModal = ({
   persistent,
   children,
   closeIcon = true,
+  backdrop = true,
 }: Props) => {
   // ** Data **
   const container = useRef<HTMLDivElement | null>(null);
@@ -45,14 +48,22 @@ const PPModal = ({
   return (
     <>
       {isOpen ? (
-        <div ref={container} className="pp-modal-container">
+        <div
+          ref={container}
+          className={clsx(`pp-modal-container`, {
+            "pp-modal-backdrop": backdrop,
+          })}
+        >
           <div
             ref={content}
             className="pp-modal-content"
             style={{ minWidth: `${minSize}px`, minHeight: `${minSize}px` }}
           >
             {!closeIcon || persistent ? null : (
-              <button onClick={() => setIsOpen(false)}>
+              <button
+                className="pp-modal-close"
+                onClick={() => setIsOpen(false)}
+              >
                 <PPIcon src="close" size={12} />
               </button>
             )}

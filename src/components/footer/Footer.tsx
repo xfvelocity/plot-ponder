@@ -1,25 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@/composables/mediaQueries";
+import { useUserStore } from "@/stores/user";
+import { useAppStore } from "@/stores/app";
+
+// ** Styles **
+import "./footer.scss";
 
 // ** Componets **
 import PPIcon from "@/components/basic/icon/PPIcon";
 import PPAvatar from "@/components/basic/avatar/PPAvatar";
-
-// ** Styles **
-import "./footer.scss";
 
 // ** Types **
 interface Button {
   name: string;
   svg?: string;
   png?: string;
-  link: string;
+  link?: string;
+  action?: () => void;
 }
 
 const Footer = () => {
   // ** Hooks **
   const navigate = useNavigate();
+
   const { isMedium } = useMediaQuery();
+  const { setShowAuthModal } = useAppStore();
+  const { user } = useUserStore();
+
+  // ** Methods **
+  const leaveReview = (): void => {
+    if (user.uuid) {
+      navigate(`/review/type`);
+    } else {
+      setShowAuthModal(true);
+    }
+  };
 
   return (
     <>
@@ -35,19 +50,22 @@ const Footer = () => {
           isMedium,
         )}
 
-        <button
-          className="footer-button-review pp-hover"
-          onClick={() => navigate(`/review/type`)}
-        >
+        <button className="footer-button-review pp-hover" onClick={leaveReview}>
           <PPIcon src="review" colour="white" />
         </button>
 
         {FooterButton(
-          {
-            name: "Profile",
-            png: "/images/profile-pic.png",
-            link: "/profile",
-          },
+          user.uuid
+            ? {
+                name: "Profile",
+                png: "/images/profile-pic.png",
+                link: "/profile",
+              }
+            : {
+                name: "Log in",
+                png: "",
+                action: () => setShowAuthModal(true),
+              },
           isMedium,
         )}
       </div>
@@ -58,15 +76,24 @@ const Footer = () => {
 const FooterButton = (button: Button, isMedium: boolean) => {
   const navigate = useNavigate();
 
+  // ** Methods **
+  const handleButtonClick = (): void => {
+    if (button.action) {
+      button.action();
+    } else if (button.link) {
+      navigate(button.link);
+    }
+  };
+
   return (
     <button
       className={`footer-button pp-text-colour-primary pp-bg-white pp-hover`}
-      onClick={() => navigate(button.link)}
+      onClick={handleButtonClick}
     >
       {button.svg ? (
         <PPIcon src={button.svg} size={isMedium ? 28 : 24} />
       ) : (
-        <PPAvatar size={isMedium ? 28 : 24} />
+        <PPAvatar size={isMedium ? 28 : 24} image={button.png} />
       )}
       <p>{button.name}</p>
     </button>
