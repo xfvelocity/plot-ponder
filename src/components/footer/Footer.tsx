@@ -76,6 +76,8 @@ const Footer = () => {
 const FooterButton = (button: Button, isMedium: boolean) => {
   const navigate = useNavigate();
 
+  const { user } = useUserStore();
+
   // ** Methods **
   const handleButtonClick = (): void => {
     if (button.action) {
@@ -92,8 +94,10 @@ const FooterButton = (button: Button, isMedium: boolean) => {
     >
       {button.svg ? (
         <PPIcon src={button.svg} size={isMedium ? 28 : 24} />
-      ) : (
+      ) : user.uuid ? (
         <PPAvatar size={isMedium ? 28 : 24} image={button.png} />
+      ) : (
+        <PPIcon src="user" colour="primary" size={isMedium ? 28 : 24} />
       )}
       <p>{button.name}</p>
     </button>
