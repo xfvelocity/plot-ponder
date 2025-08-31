@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 // ** Router **
 import router from "./router/index";
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router";
 
 // ** Styles **
 import "@/assets/styles/index.scss";

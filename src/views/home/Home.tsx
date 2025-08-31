@@ -17,7 +17,6 @@ const Home = () => {
   const [scrollDisabled, setScrollDisabled] = useState<boolean>(false);
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [previousUserUuid, setPreviousUserUuid] = useState<string>(user.uuid);
 
   // ** Methods **
   const getFeed = async (): Promise<void> => {
@@ -60,15 +59,11 @@ const Home = () => {
   }, [reviews]);
 
   useEffect(() => {
-    if (!previousUserUuid && user.uuid) {
-      setPage(1);
-      setScrollDisabled(false);
-      setReviews([]);
+    setPage(1);
+    setScrollDisabled(false);
+    setReviews([]);
 
-      getFeed();
-    }
-
-    setPreviousUserUuid(user.uuid);
+    getFeed();
   }, [user.uuid]);
 
   return (

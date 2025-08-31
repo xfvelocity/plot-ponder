@@ -1,5 +1,5 @@
 import { useReviewStore } from "@/stores/review";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 // ** Styles **
 import "./reviewType.scss";

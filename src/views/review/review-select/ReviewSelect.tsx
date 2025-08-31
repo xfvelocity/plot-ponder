@@ -1,7 +1,7 @@
 import { useReviewStore } from "@/stores/review";
 import { useState } from "react";
 import { debounce } from "@/composables/generic";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
 // ** Styles **

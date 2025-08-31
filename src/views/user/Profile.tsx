@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import { api } from "@/api";
 import { useUserStore } from "@/stores/user";

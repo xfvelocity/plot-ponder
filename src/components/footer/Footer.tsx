@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useMediaQuery } from "@/composables/mediaQueries";
 import { useUserStore } from "@/stores/user";
 import { useAppStore } from "@/stores/app";
